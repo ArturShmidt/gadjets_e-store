@@ -1,5 +1,5 @@
-import Accessories from "./favorites";
+import Favorites from "./favorites";
 
 export default function Page() {
-  return <Accessories />;
+  return <Favorites />;
 }
