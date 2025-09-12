@@ -26,7 +26,7 @@ const NavBar = () => {
                     <Link href=""></Link>
                 </li>
             </ul>
-            WORKIND UL
+            {/* WORKIND UL
             <ul className="flex flex-row gap-4">
                     <li>
                         <Link href="/">Home</Link>
@@ -37,7 +37,7 @@ const NavBar = () => {
                     <li>
                         <Link href="/itemcard">ItemCard</Link>
                     </li>
-            </ul>
+            </ul> */}
             <div>
                 <Link href="/favorites"><span> icon_1</span></Link>
                 <Link href="/shopcard"><span>icon_2</span></Link>
