@@ -1,4 +1,4 @@
-import Favorites from "./favorites";
+import Favorites from './favorites';
 
 export default function Page() {
   return <Favorites />;
