@@ -1,4 +1,5 @@
 'use client';
+// import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
 
 export default function Home() {
@@ -10,6 +11,8 @@ export default function Home() {
         {/* ТЕCТОВИЙ КЕЙС */}
         {/* ← Веде на products/[productId]/page.tsx */}
         <Link href={`/products/${someProductId}`}>View iPhone 15 Pro</Link>
+        {/* working example of ProductCart */}
+        {/* <ProductCart /> */}
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductCart from './ProductCart';
 
 // тупий компонент, що просто прийматиме вже готовий(відсортований і тд) список товарів і відображатиме його.
 
@@ -17,7 +17,7 @@ const ProductList = () => {
             className="w-1/2 md:w-1/3 lg:w-1/4"
             key={el}
           >
-            <ProductCard />
+            <ProductCart />
           </div>
         ))}
       </div>
