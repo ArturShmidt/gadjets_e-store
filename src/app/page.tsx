@@ -1,3 +1,4 @@
+'use client';
 // import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
 
