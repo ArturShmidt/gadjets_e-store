@@ -14,7 +14,7 @@ const ProductList = () => {
 
         {Array.from({ length: 5 }, (_, index) => index).map((el) => (
           <div
-            className="w-1/2 md:w-1/3 lg:w-1/4"
+            className="w-full md:w-1/3 lg:w-1/4"
             key={el}
           >
             <ProductCart />
