@@ -8,7 +8,7 @@ const Footer = () => {
   };
   return (
     <footer className="text-white w-full border-t border-zinc-700">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 p-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 px-4 py-8">
         <div className="text-2xl font-extrabold leading-none">
           NICE👌
           <br />

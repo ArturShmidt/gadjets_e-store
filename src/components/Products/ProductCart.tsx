@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import phoneImage from '../../../public/img/phones/apple-iphone-14-pro/gold/00.webp';
+import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
 
 // відображення
 const ProductCart = () => {

@@ -8,6 +8,8 @@
 @theme {
   --color-item-bg: #161827;
   --color-product-add-btn: #905bff;
+  --color-text-light: #f1f2f9;
+  --color-text-gray: #75767f;
 }
 
 @theme inline {
@@ -53,4 +55,12 @@ body {
 
 .tracking-4percent {
   letter-spacing: 4%;
+}
+
+.text-light {
+  color: var(--color-text-light);
+}
+
+.text-gray {
+  color: var(--color-text-gray);
 }
