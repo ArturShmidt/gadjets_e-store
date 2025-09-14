@@ -18,7 +18,7 @@ const menuItems = [
 const Menu: React.FC<Props> = ({ onClose }) => {
   return (
     <>
-      <div className="fixed inset-0 top-12 bg-white text-[#89939A] flex justify-between flex-col">
+      <div className="fixed inset-0 top-12 bg-white text-[#89939A] flex justify-between flex-col dark:bg-dark-theme-bg">
         <ul className=" flex flex-col items-center pt-12 gap-4 font-extrabold text-[12px] uppercase z-50">
           {menuItems.map(({ href, label }) => (
             <li key={href}>
