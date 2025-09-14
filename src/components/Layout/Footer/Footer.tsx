@@ -1,7 +1,71 @@
-import React from 'react';
+'use client';
+
+import Link from 'next/link';
 
 const Footer = () => {
-  return <div>Footer</div>;
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  return (
+    <footer className="text-white w-full border-t border-zinc-700">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 p-8">
+        <div className="text-2xl font-extrabold leading-none">
+          NICE👌
+          <br />
+          GADGETS
+        </div>
+
+        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4">
+          <Link
+            href="https://github.com/ArturShmidt/gadjets_e-store"
+            className="hover:text-gray-400"
+            target="_blank"
+          >
+            GITHUB
+          </Link>
+          <Link
+            href="#"
+            className="hover:text-gray-400"
+          >
+            CONTACTS
+          </Link>
+          <Link
+            href="#"
+            className="hover:text-gray-400"
+          >
+            RIGHTS
+          </Link>
+        </nav>
+
+        <div className="flex items-center gap-4 justify-center">
+          <button
+            onClick={scrollToTop}
+            className="text-gray-400 hover:text-white"
+          >
+            Back to top
+          </button>
+          <button
+            onClick={scrollToTop}
+            className="bg-gray-800 p-3 rounded-md hover:bg-gray-700"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 15l7-7 7 7"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
