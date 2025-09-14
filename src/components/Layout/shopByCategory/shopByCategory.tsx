@@ -7,7 +7,10 @@ import AccessoriesCatPhoto from '@public/img/accessories-cat-photo.png';
 const ShopByCategory = () => {
   return (
     <div>
-      <h2 className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal pb-6">
+      <h2
+        className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
+       sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal pb-6"
+      >
         Shop by category
       </h2>
       <div className="flex flex-col gap-8 sm:flex-row sm:gap-4 aspect-square">
