@@ -21,17 +21,17 @@ const Menu: React.FC<Props> = ({ onClose }) => {
   return (
     <>
       <div className="fixed inset-0 top-12 bg-white flex justify-between flex-col dark:bg-dark-theme-bg">
-        <ul className=" flex flex-col items-center pt-12 gap-4 z-50">
+        <ul className=" flex flex-col items-center pt-6 gap-4 z-50">
           {menuItems.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
                 onClick={onClose}
                 className="
-              relative text-[#89939A] text-[12px] font-extrabold uppercase tracking-4percent
-              hover:text-[#313237] 
+              relative text-light-theme-text-menu text-[12px] font-extrabold uppercase tracking-[1]
+              hover:text-light-theme-text-hover 
               transition-colors duration-200
-              after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-[#313237] after:bottom-[-8px] 
+              after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-light-theme-text-hover after:bottom-[-8px] 
               after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 dark:hover:text-white 
               dark:after:bg-dark-theme-text dark:text-text-gray"
               >
@@ -44,8 +44,8 @@ const Menu: React.FC<Props> = ({ onClose }) => {
         <div className="flex justify-center items-center h-16">
           <Link
             href="/favorites"
-            className="w-40 h-16 border-r border-t border-[#E2E6E9] dark:border-[#3B3E4A] flex justify-center relative
-               after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-[#313237] after:bottom-0
+            className="w-40 h-16 border-r border-t border-light-theme-border-color dark:border-dark-theme-border-color flex justify-center relative
+               after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-light-theme-text-hover after:bottom-0
                after:scale-x-0 hover:after:scale-x-100 after:origin-bottom after:transition-transform after:duration-200 dark:after:bg-dark-theme-text"
           >
             {/* black favorites */}
@@ -66,8 +66,8 @@ const Menu: React.FC<Props> = ({ onClose }) => {
 
           <Link
             href="/shoppingcart"
-            className="w-40 h-16 border-t border-[#E2E6E9] dark:border-[#3B3E4A] flex justify-center relative
-               after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-[#313237] after:bottom-0
+            className="w-40 h-16 border-t border-light-theme-border-color dark:border-dark-theme-border-color flex justify-center relative
+               after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-light-theme-text-hover after:bottom-0
                after:scale-x-0 hover:after:scale-x-100 after:origin-bottom after:transition-transform after:duration-200 dark:after:bg-dark-theme-text"
           >
             {/* black cart */}

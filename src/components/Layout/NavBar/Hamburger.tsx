@@ -14,19 +14,19 @@ const Hamburger: React.FC<Props> = ({ opened, onOpened }) => {
     >
       <span
         className={cn(
-          'h-[1px] w-full bg-black  transition-transform duration-300 rounded dark:bg-white',
+          'h-[1px] w-full bg-light-theme-text-hover  transition-transform duration-300 rounded dark:bg-dark-theme-text',
           { 'rotate-45 translate-y-1.5': opened },
         )}
       />
       <span
         className={cn(
-          'h-[1px] w-full bg-black transition-opacity duration-300 rounded dark:bg-white',
+          'h-[1px] w-full bg-light-theme-text-hover transition-opacity duration-300 rounded dark:bg-dark-theme-text',
           { 'opacity-0': opened },
         )}
       />
       <span
         className={cn(
-          'h-[1px] w-full bg-black transition-transform duration-300 rounded dark:bg-white',
+          'h-[1px] w-full bg-light-theme-text-hover transition-transform duration-300 rounded dark:bg-dark-theme-text',
           { '-rotate-45 -translate-y-0.5': opened },
         )}
       />

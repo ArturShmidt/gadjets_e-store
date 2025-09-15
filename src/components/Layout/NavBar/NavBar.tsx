@@ -24,7 +24,7 @@ const NavBar = () => {
   }, [opened]);
 
   return (
-    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-[#E2E6E9] dark:border-[#3B3E4A] dark:bg-dark-theme-bg">
+    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg">
       <Link href="/">
         <Image
           src={LogoWhite}
@@ -48,7 +48,7 @@ const NavBar = () => {
           </Link>
         </div>
       )}
-      <div className="col-start-4 ml-7.5 border-l border-[#E2E6E9] dark:border-[#3B3E4A] h-full flex items-center content-center justify-end ">
+      <div className="col-start-4 ml-7.5 border-l border-light-theme-border-color dark:border-dark-theme-border-color h-full flex items-center content-center justify-end ">
         <Hamburger
           opened={opened}
           onOpened={setOpened}
