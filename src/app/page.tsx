@@ -1,6 +1,5 @@
 'use client';
 import ShopByCategory from '@/components/Layout/shopByCategory/shopByCategory';
-import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 // import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
 
@@ -17,7 +16,6 @@ export default function Home() {
         <Link href={`/products/${someProductId}`}>View iPhone 15 Pro</Link>
       </div>
       <div>
-        <ThemeSwitcher />
         <ShopByCategory />
       </div>
       {/* </main> */}

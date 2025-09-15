@@ -1,11 +1,16 @@
 'use client';
+// #region Imports
 
 import React from 'react';
 import cn from 'classnames';
+
+// #endregion
+
 type Props = {
   opened: boolean;
   onOpened: (value: boolean) => void;
 };
+
 const Hamburger: React.FC<Props> = ({ opened, onOpened }) => {
   return (
     <div
