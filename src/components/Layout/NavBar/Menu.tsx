@@ -20,7 +20,7 @@ const menuItems = [
 const Menu: React.FC<Props> = ({ onClose }) => {
   return (
     <>
-      <div className="fixed inset-0 top-12 bg-white flex justify-between flex-col dark:bg-dark-theme-bg">
+      <div className="fixed inset-0 top-12 bg-white flex justify-between flex-col dark:bg-dark-theme-bg z-10">
         <ul className=" flex flex-col items-center pt-6 gap-4 z-50">
           {menuItems.map(({ href, label }) => (
             <li key={href}>
