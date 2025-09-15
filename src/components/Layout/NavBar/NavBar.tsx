@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Logo from '@/img/Logo.svg';
 import LogoBlack from '@/img/Logo(Black).svg';
+import LogoWhite from '@/img/Logo(White).svg';
 import Link from 'next/link';
 import Hamburger from './Hamburger';
 import Menu from './Menu';
@@ -24,20 +24,18 @@ const NavBar = () => {
   }, [opened]);
 
   return (
-    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-[#E2E6E9] dark:bg-dark-theme-bg">
+    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg">
       <Link href="/">
-        {opened ?
-          <Image
-            src={LogoBlack}
-            alt="logo"
-            className="my-[13px]"
-          />
-        : <Image
-            src={Logo}
-            alt="logo"
-            className="my-[13px]"
-          />
-        }
+        <Image
+          src={LogoWhite}
+          alt="logo"
+          className="my-[13px] hidden dark:block"
+        />
+        <Image
+          src={LogoBlack}
+          alt="logo"
+          className="my-[13px] dark:hidden"
+        />
       </Link>
 
       {false && (
@@ -50,7 +48,7 @@ const NavBar = () => {
           </Link>
         </div>
       )}
-      <div className="col-start-4 ml-7.5 border-l border-[#E2E6E9] h-full flex items-center content-center justify-end ">
+      <div className="col-start-4 ml-7.5 border-l border-light-theme-border-color dark:border-dark-theme-border-color h-full flex items-center content-center justify-end ">
         <Hamburger
           opened={opened}
           onOpened={setOpened}

@@ -11,10 +11,14 @@
   --color-product-add-btn-hover: #905bff;
   --color-product-add-btn-selected: #323542;
 
+  --color-light-theme-text-hover: #313237;
   --color-light-theme-text: #0f0f11;
+  --color-light-theme-border-color: #e2e6e9;
+  --color-light-theme-text-menu: #89939a;
 
   --color-dark-theme-bg: #0f1121;
   --color-dark-theme-text: #f1f2f9;
+  --color-dark-theme-border-color: #3b3e4a;
 }
 
 @theme inline {
@@ -80,10 +84,6 @@ body {
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
-}
-
-.tracking-4percent {
-  letter-spacing: 4%;
 }
 
 .text-light {
