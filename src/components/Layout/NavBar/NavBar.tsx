@@ -24,7 +24,7 @@ const NavBar = () => {
   }, [opened]);
 
   return (
-    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-[#E2E6E9]">
+    <div className="h-12 grid grid-cols-4 gap-4 px-4 border-b border-[#E2E6E9] dark:bg-dark-theme-bg">
       <Link href="/">
         {opened ?
           <Image

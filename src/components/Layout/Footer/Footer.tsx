@@ -7,15 +7,15 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <footer className="text-white w-full border-t border-zinc-700">
+    <footer className="w-full border-t border-zinc-700 dark:bg-dark-theme-bg">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 px-4 py-8">
-        <div className="text-2xl font-extrabold leading-none">
+        <div className="text-2xl font-extrabold leading-none dark:text-dark-theme-text">
           NICE👌
           <br />
           GADGETS
         </div>
 
-        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4">
+        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4  dark:text-dark-theme-text">
           <Link
             href="https://github.com/ArturShmidt/gadjets_e-store"
             className="hover:text-gray-400"
