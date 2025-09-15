@@ -1,7 +1,7 @@
 'use client';
-import ShopByCategory from '@/components/Layout/shopByCategory/ShopByCategor';
-import AppleLoader from '@/components/UI/loader/Load';
-import ProductSlider from '@/components/UI/productSlider/ProductSlid';
+import ShopByCategory from '@/components/Layout/shopByCategory/ShopByCategory';
+import AppleLoader from '@/components/UI/loader/Loader';
+import ProductSlider from '@/components/UI/productSlider/ProductSlider';
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 // import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
