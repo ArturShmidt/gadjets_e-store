@@ -64,7 +64,8 @@ const Carousel = () => {
           className="hidden bg-[#323542] bg-opacity-50 text-[#F1F2F9] items-center justify-center
                     sm:flex sm:w-[32px] sm:mx-[24px] sm:h-[189px]
                     md:h-[240px]
-                    lg:h-[400px]"
+                    lg:h-[400px]
+                    xl:ml-[150px]"
         >
           &#10094;
         </button>
@@ -100,30 +101,34 @@ const Carousel = () => {
                     <div
                       className="sm:bg-[#222222] rounded-2xl flex flex-col justify-center
                                   h-full w-full
-                                  sm:m-2 sm:p-4"
+                                  sm:m-2 sm:p-4
+                                  lg:m-4 lg:p-8 lg:justify-normal"
                     >
                       <p
                         className="font-[Mont] text-center font-extrabold text-2xl leading-[106%] bg-clip-text text-transparent 
                                   bg-gradient-to-r from-[#891CE8] via-[#7560FA] to-[#E963FF]
-                                  pt-6 sm:pt-0 sm:text-left"
+                                  pt-6 sm:pt-0 sm:text-left md:text-3xl lg:text-5xl"
                       >
                         {slide.text}
                       </p>
                       <p
                         className="font-[Mont] text-center font-extrabold text-2xl leading-[106%] bg-clip-text text-transparent 
                                   bg-gradient-to-r from-[#891CE8] via-[#7560FA] to-[#E963FF]
-                                  sm:text-left"
+                                  sm:text-left md:text-3xl lg:text-5xl"
                       >
                         {slide.subText}
                       </p>
 
                       <div className="hidden sm:block">
-                        <p className="opacity-80 text-[#AEAEAE] sm:text-[12px] sm:pt-[10px]">
+                        <p className="opacity-80 text-[#AEAEAE] sm:text-[12px] sm:pt-[10px] md:text-[16px]">
                           {slide.slogan}
                         </p>
                         <button
                           className="font-[Mont] border border-gray-500 text-[10px] text-white 
-                                          rounded-full hover:cursor-pointer sm:mt-6 sm:px-4 sm:py-2"
+                                          rounded-full hover:cursor-pointer
+                                          sm:mt-6 sm:px-4 sm:py-2
+                                          md:mt-8 md:px-6 md:py-3
+                                          lg:mt-20 lg:px-14 lg:py-5 lg:text-[18px]"
                         >
                           ORDER NOW
                         </button>
@@ -137,13 +142,13 @@ const Carousel = () => {
                     <div className="text-center">
                       <h2
                         className="font-[SF Pro Display] font-[590] text-white text-3xl
-                                        sm:text-[18px]"
+                                        sm:text-[18px] md:text-[24px] lg:text-[36px] lg:pt-8"
                       >
                         {slide.product}
                       </h2>
                       <p
                         className="font-[SF Pro Display] font-[400] text-[#9B9B9B] text-xs
-                                        pt-2 sm:pt-0 sm:text-[8px]"
+                                        pt-2 sm:pt-0 sm:text-[8px] md:text-[10px] lg:text-[14px]"
                       >
                         {slide.productSlogan}
                       </p>
@@ -156,7 +161,7 @@ const Carousel = () => {
                         alt={slide.product}
                         width={574}
                         height={341}
-                        className="w-[230px] sm:w-[200px] lg:w-[368px]"
+                        className="w-[230px] sm:w-[200px] md:w-[250px] lg:w-[400px]"
                       />
                     </div>
                   </div>
@@ -172,7 +177,8 @@ const Carousel = () => {
           className="hidden bg-[#323542] bg-opacity-50 text-[#F1F2F9] items-center justify-center
                     sm:flex sm:w-[32px] sm:mx-[24px] sm:h-[189px]
                     md:h-[240px]
-                    lg:h-[400px]"
+                    lg:h-[400px]
+                    xl:mr-[150px]"
         >
           &#10095;
         </button>
