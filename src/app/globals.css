@@ -18,10 +18,12 @@
   --color-light-theme-text: #0f0f11;
   --color-light-theme-border-color: #e2e6e9;
   --color-light-theme-text-menu: #89939a;
+  --color-light-theme-border-active: #b4bdc3;
 
   --color-dark-theme-bg: #0f1121;
   --color-dark-theme-text: #f1f2f9;
   --color-dark-theme-border-color: #3b3e4a;
+  --color-dark-theme-border-hover: #4a4d58;
 }
 
 @theme inline {
