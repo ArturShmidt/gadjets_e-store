@@ -1,5 +1,7 @@
 'use client';
 import ShopByCategory from '@/components/Layout/shopByCategory/shopByCategory';
+import AppleLoader from '@/components/UI/loader/loader';
+import ProductSlider from '@/components/UI/productSlider/productSlider';
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 // import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
@@ -18,7 +20,19 @@ export default function Home() {
       </div>
       <div>
         <ThemeSwitcher />
+        <ProductSlider />
         <ShopByCategory />
+        <AppleLoader className="text-white" />
+        <AppleLoader
+          size="lg"
+          speed={2}
+          className="text-white"
+        />
+        <AppleLoader
+          size={100}
+          speed={0.8}
+          className="text-white"
+        />
       </div>
       {/* </main> */}
       {/* </div> */}
