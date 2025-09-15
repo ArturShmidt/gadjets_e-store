@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import ProductCart from '@/components/Products/ProductCart';
 
 export default function ProductSlider() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function ProductSlider() {
 
   const nameOfCtegory = ['Brand new models'];
 
-  const slides = ['Slide 1', 'Slide 2', 'Slide 3', 'Slide 4', 'Slide 5'];
+  const slides = [0, 1, 2, 3, 4, 5];
 
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
@@ -78,19 +79,20 @@ export default function ProductSlider() {
             prevEl: '.custom-prev',
           }}
           breakpoints={{
-            0: { slidesPerView: 1.5 },
+            0: { slidesPerView: 1.4 },
             640: { slidesPerView: 2.5 },
             1200: { slidesPerView: 4 },
           }}
           className="multiple-slide-carousel"
         >
-          {slides.map((text, index) => (
-            <SwiperSlide key={index}>
-              <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
+          {slides.map((numb) => (
+            <SwiperSlide key={numb}>
+              <ProductCart />
+              {/* <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
                 <span className="text-2xl font-semibold text-indigo-600">
                   {text}
                 </span>
-              </div>
+              </div> */}
             </SwiperSlide>
           ))}
 
