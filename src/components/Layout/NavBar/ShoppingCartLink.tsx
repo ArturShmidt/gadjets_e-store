@@ -11,7 +11,7 @@ const ShoppingCart: React.FC = () => {
   return (
     <Link
       href="/shoppingcart"
-      className="w-full h-16 border-light-theme-border-color dark:border-dark-theme-border-color flex justify-center relative dark:after:bg-dark-theme-text"
+      className="h-16 border-light-theme-border-color dark:border-dark-theme-border-color flex justify-center items-center dark:after:bg-dark-theme-text"
     >
       {/* black cart */}
 

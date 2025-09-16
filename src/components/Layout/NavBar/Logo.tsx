@@ -14,13 +14,13 @@ export default function Logo() {
       <Image
         src={LogoWhiteDesktop}
         alt="logo"
-        className="my-[13px] xl:my-[18px] h-[22px] w-[64px] xl:h-[28px] xl:w-[80px] hidden dark:block"
+        className="my-[13px] lg:my-[18px] h-[22px] w-[64px] lg:h-[28px] lg:w-[80px] hidden dark:block"
       />
 
       <Image
         src={LogoPinkDesktop}
         alt="logo"
-        className="my-[13px] xl:my-[18px] h-[22px] w-[64px] xl:h-[28px] xl:w-[80px] dark:hidden"
+        className="my-[13px] lg:my-[18px] h-[22px] w-[64px] lg:h-[28px] lg:w-[80px] dark:hidden"
       />
     </Link>
   );
