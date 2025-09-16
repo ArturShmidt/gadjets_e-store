@@ -7,12 +7,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCart from '@/components/Products/ProductCart';
 
-export default function ProductSlider() {
+interface ProductSliderProps {
+  title: string;
+}
+
+export default function ProductSlider({ title }: ProductSliderProps) {
   useEffect(() => {
     // Swiper's navigation module is already loaded via `modules: [Navigation]`
   }, []);
-
-  const nameOfCtegory = ['Brand new models'];
 
   const slides = [0, 1, 2, 3, 4, 5];
 
@@ -23,7 +25,7 @@ export default function ProductSlider() {
           className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
        sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
         >
-          {nameOfCtegory}
+          {title}
         </h2>
         <div className="flex flex-row gap-4">
           <button
