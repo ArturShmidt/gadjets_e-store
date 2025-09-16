@@ -9,7 +9,7 @@ interface ProductCartProps {
 // відображення
 const ProductCart = ({ product }: ProductCartProps) => {
   return (
-    <div className="w-[212px] h-[439px] bg-item-bg">
+    <div className="w-[212px] h-[439px] bg-item-bg mb-10">
       <div className="p-8">
         <div className="flex justify-center">
           <Image
