@@ -43,23 +43,21 @@ type Phone = {
 const ProductDetails: React.FC<Props> = ({ productId }) => {
   const typedPhoneData: Phone[] = phoneData;
 
-  const testPhoneData = typedPhoneData.find((el) =>
-    el.id.includes('apple-iphone-14-pro'),
-  );
+  const phoneDetails = typedPhoneData.find((el) => el.id === productId);
 
-  if (!productId || !testPhoneData) {
+  if (!productId || !phoneDetails) {
     return null;
   }
 
   const specsData = [
-    { label: 'Screen', value: testPhoneData.screen },
-    { label: 'Resolution', value: testPhoneData.resolution },
-    { label: 'Processor', value: testPhoneData.processor },
-    { label: 'RAM', value: testPhoneData.ram },
-    { label: 'Built in memory', value: testPhoneData.capacity },
-    { label: 'Camera', value: testPhoneData.camera },
-    { label: 'Zoom', value: testPhoneData.zoom },
-    { label: 'Cell', value: testPhoneData.cell.join(', ') },
+    { label: 'Screen', value: phoneDetails.screen },
+    { label: 'Resolution', value: phoneDetails.resolution },
+    { label: 'Processor', value: phoneDetails.processor },
+    { label: 'RAM', value: phoneDetails.ram },
+    { label: 'Built in memory', value: phoneDetails.capacity },
+    { label: 'Camera', value: phoneDetails.camera },
+    { label: 'Zoom', value: phoneDetails.zoom },
+    { label: 'Cell', value: phoneDetails.cell.join(', ') },
   ];
 
   // console.log(typedPhoneData);
@@ -67,30 +65,30 @@ const ProductDetails: React.FC<Props> = ({ productId }) => {
   return (
     <div className="flex flex-col sm:flex-row sm:flex-wrap dark:bg-dark-theme-bg ">
       <ProductDetailsHeroSectionHeader
-        name={testPhoneData.name}
-        category={testPhoneData.category}
+        name={phoneDetails.name}
+        category={phoneDetails.category}
       />
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsHeroSection
-          category={testPhoneData.category}
-          name={testPhoneData.name}
-          images={testPhoneData.images}
+          category={phoneDetails.category}
+          name={phoneDetails.name}
+          images={phoneDetails.images}
         />
       </div>
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsOrderOptions
-          namespaceId={testPhoneData.namespaceId}
-          colorsAvailable={testPhoneData.colorsAvailable}
-          color={testPhoneData.color}
-          capacityAvailable={testPhoneData.capacityAvailable}
-          capacity={testPhoneData.capacity}
-          priceDiscount={testPhoneData.priceDiscount}
-          priceRegular={testPhoneData.priceRegular}
+          namespaceId={phoneDetails.namespaceId}
+          colorsAvailable={phoneDetails.colorsAvailable}
+          color={phoneDetails.color}
+          capacityAvailable={phoneDetails.capacityAvailable}
+          capacity={phoneDetails.capacity}
+          priceDiscount={phoneDetails.priceDiscount}
+          priceRegular={phoneDetails.priceRegular}
         />
       </div>
       <div className="w-full lg:flex lg:gap-8 mt-8">
         <div className="w-full sm:px-4 mt-8">
-          <ProductDetailsAbout description={testPhoneData.description} />
+          <ProductDetailsAbout description={phoneDetails.description} />
         </div>
         <div className="w-full sm:px-4 mt-8">
           <ProductDetailsSpecs specsData={specsData} />
