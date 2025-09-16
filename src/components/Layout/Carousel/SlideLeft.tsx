@@ -11,7 +11,7 @@ interface SlideProps {
 const leftPanelClass = `
   flex flex-col justify-center h-full w-full
   rounded-2xl
-  sm:bg-[#222222] sm:m-2 sm:p-4
+  sm:bg-carousel-title-bg sm:m-2 sm:p-4
   lg:m-4 lg:p-8 lg:justify-normal
 `;
 
@@ -19,7 +19,7 @@ const headingGradientFirst = `
   font-[Mont] font-extrabold text-2xl leading-[106%]
   text-center sm:text-left
   bg-clip-text text-transparent
-  bg-gradient-to-r from-[#891CE8] via-[#7560FA] to-[#E963FF]
+  bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third
   pt-6 sm:pt-0
   md:text-3xl
   lg:text-5xl
@@ -29,7 +29,7 @@ const headingGradientSecond = `
   font-[Mont] font-extrabold text-2xl leading-[106%]
   text-center sm:text-left
   bg-clip-text text-transparent
-  bg-gradient-to-r from-[#891CE8] via-[#7560FA] to-[#E963FF]
+  bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third
   md:text-3xl
   lg:text-5xl
 `;
@@ -43,7 +43,7 @@ const sloganClass = `
 const orderButtonClass = `
   font-[Mont] text-white text-[10px]
   border border-gray-500 rounded-full
-  hover:cursor-pointer hover:bg-[#333333] hover:border-[#AAAAAA]
+  hover:cursor-pointer hover:bg-dark-theme-border-color hover:border-dark-theme-btn-hover
   sm:mt-6 sm:px-4 sm:py-2
   md:mt-8 md:px-6 md:py-3
   lg:mt-20 lg:px-14 lg:py-5 lg:text-[18px]
