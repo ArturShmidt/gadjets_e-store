@@ -4,7 +4,7 @@ import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
 import { Product } from '@/types/product';
 
 interface ProductCartProps {
-  product: Product;
+  product: Product | [];
 }
 // відображення
 const ProductCart = ({ product }: ProductCartProps) => {
