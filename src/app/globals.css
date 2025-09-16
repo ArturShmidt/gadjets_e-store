@@ -19,8 +19,6 @@
 
   --color-dark-theme-bg: #0f1121;
   --color-dark-theme-text: #f1f2f9;
-  --color-dark-theme-border-color: #3b3e4a;
-  --color-dark-theme-border-hover: #4a4d58;
 }
 
 @theme inline {
@@ -86,6 +84,10 @@ body {
   src: url('/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+}
+
+.tracking-4percent {
+  letter-spacing: 4%;
 }
 
 .text-light {
