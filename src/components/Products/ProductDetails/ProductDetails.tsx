@@ -7,6 +7,7 @@ import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
 import ProductDetailsSpecs from './ProductDetailsSpecs';
 import ProductDetailsOrderOptions from './ProductDetailsOrderOptions';
+import ProductDetailsHeroSectionHeader from './ProductDetailsHeroSectionHeader';
 
 interface Props {
   productId: string;
@@ -65,6 +66,10 @@ const ProductDetails: React.FC<Props> = ({ productId }) => {
 
   return (
     <div className="flex flex-col sm:flex-row sm:flex-wrap dark:bg-dark-theme-bg ">
+      <ProductDetailsHeroSectionHeader
+        name={testPhoneData.name}
+        category={testPhoneData.category}
+      />
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsHeroSection
           category={testPhoneData.category}
