@@ -3,7 +3,6 @@ import Carousel from '@/components/Layout/Carousel/Carousel';
 import ShopByCategory from '@/components/Layout/shopByCategory/ShopByCategory';
 import AppleLoader from '@/components/UI/loader/Loader';
 import ProductSlider from '@/components/UI/productSlider/ProductSlider';
-import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 // import ProductCart from '@/components/Products/ProductCart';
 import Link from 'next/link';
 
@@ -21,7 +20,6 @@ export default function Home() {
       </div>
       <div>
         <Carousel />
-        <ThemeSwitcher />
         <ProductSlider />
         <ShopByCategory />
         <AppleLoader className="text-white" />
