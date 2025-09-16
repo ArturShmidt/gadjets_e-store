@@ -10,7 +10,6 @@ interface ProductListProps {
 const ProductList = ({ productlist }: ProductListProps) => {
   return (
     <>
-      <div>ProductList</div>
       <div className="flex flex-wrap">
         {/* .map по списку, видаючи ліст з ProductCart */}
         {/* просто створення масиву від 0 до 4, і мапінг товарів для прикладу */}

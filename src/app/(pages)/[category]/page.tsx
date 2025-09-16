@@ -28,7 +28,7 @@ export default async function CategoryPage({
   }
   return (
     <div className="dark:bg-dark-theme-bg px-4 sm:px-6 lg:px-8 pt-6 pb-16 lg:pb-20">
-      <h1 className="capitalize">Icon from MYKYTA: {categoryName}</h1>
+      <h1 className="capitalize">ICON {categoryName}</h1>
       {/* 3. Відображаємо список товарів */}
       {/* <ProductList products={products} /> */}
       <Catalog categoryName={categoryName} />
