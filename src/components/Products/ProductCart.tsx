@@ -1,58 +1,126 @@
 import Image from 'next/image';
 import React from 'react';
-import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
 import { Product } from '@/types/product';
+import Link from 'next/link';
 
 interface ProductCartProps {
-  product: Product | [];
+  product?: Product;
 }
-// відображення
-const ProductCart = ({ product }: ProductCartProps) => {
-  return (
-    <div className="w-[212px] h-[439px] bg-item-bg mb-10">
-      <div className="p-8">
-        <div className="flex justify-center">
-          <Image
-            src={phoneImage}
-            width={148}
-            height={123}
-            sizes="(max-width: 639px) 148px, (max-width: 1199px) 173px, 208px"
-            alt="Phone image"
-          />
-        </div>
 
-        <h3 className="font-semibold text-[14px] leading-[21px] text-white">
-          Apple iPhone 14 Pro
-          <br />
-          128GB Silver (MQ023)
+const ProductCart = ({ product }: ProductCartProps) => {
+  const imgSrc = `/${product?.image}`;
+
+  return (
+    <div
+      className="
+        border border-light-theme-border-color
+        rounded-2xl
+        w-[287px] h-[440px]
+        sm:w-[288px] sm:h-[506px]
+        md:w-[229px] md:h-[506px]
+        lg:w-[272px] lg:h-[506px]
+        dark:bg-item-bg dark:border-dark-theme-border-color
+      "
+    >
+      <div className="p-8">
+        {/* Image */}
+        <Link
+          href={`/product/${product?.id}`}
+          className="
+            relative flex justify-center
+            h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
+          "
+        >
+          <Image
+            src={imgSrc}
+            style={{ objectFit: 'contain' }}
+            width={208}
+            height={196}
+            alt="Phone Name"
+            className="transition-transform duration-300 ease-in-out hover:scale-110"
+          />
+        </Link>
+
+        {/* Product Name */}
+        <h3 className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover">
+          <Link
+            href={`/product/${product?.id}`}
+            className="hover:underline"
+          >
+            {product?.name}
+          </Link>
         </h3>
+
+        {/* Price */}
         <div className="my-2">
-          <p className="font-extrabold text-[22px] leading-snug text-white">
-            $999
-          </p>
+          <div className="flex gap-[8px]">
+            <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
+              ${product?.price}
+            </p>
+            <p className="font-semibold text-[22px] leading-snug text-light-theme-text-menu dark:text-text-gray line-through">
+              ${product?.fullPrice}
+            </p>
+          </div>
           <div className="border-b border-zinc-700 mt-2"></div>
         </div>
+
+        {/* Specs */}
         <div className="space-y-2 text-sm text-gray-400">
           <div className="flex justify-between items-center">
-            <span>Screen</span>
-            <span className="text-white">6.1&quot; OLED</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              Screen
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product?.screen}
+            </span>
           </div>
           <div className="flex justify-between items-center">
-            <span>Capacity</span>
-            <span className="text-white">128 GB</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              Capacity
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product?.capacity}
+            </span>
           </div>
           <div className="flex justify-between items-center">
-            <span>RAM</span>
-            <span className="text-white">6 GB</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              RAM
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product?.ram}
+            </span>
           </div>
         </div>
+
+        {/* Buttons */}
         <div className="flex items-center gap-2 mt-4">
-          <button className="h-[40px]  flex-grow bg-product-add-btn text-white text-sm leading-[21px] rounded-md">
+          <button
+            className="
+              h-[40px] flex-grow
+              bg-light-theme-btn-product-bg text-white
+              dark:bg-product-add-btn dark:text-text-light
+              text-sm leading-[21px]
+              rounded-md
+              transition-shadow duration-200
+              hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
+              hover:cursor-pointer
+              dark:hover:bg-dark-theme-btn-hover
+            "
+          >
             Add to cart
           </button>
-          <button className="bg-gray-700 p-2.5 rounded-md ">
+
+          <button
+            className="
+              bg-white dark:bg-gray-700
+              p-2.5 rounded-full
+              border border-light-theme-border-active
+              hover:border-light-theme-text hover:cursor-pointer
+              dark:hover:bg-dark-theme-border-hover dark:hover:border-dark-theme-border-color
+            "
+          >
             <svg
-              className="w-5 h-5 text-white"
+              className="w-5 h-5 dark:text-text-light"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
