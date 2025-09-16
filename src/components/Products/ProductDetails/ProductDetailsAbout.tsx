@@ -11,7 +11,7 @@ interface Props {
 
 const ProductDetailsAbout: React.FC<Props> = ({ description }) => {
   return (
-    <div className="text-light-theme-text dark:text-dark-theme-text max-w-2xl px-4 py-8">
+    <div className="text-light-theme-text dark:text-dark-theme-text px-4 py-8">
       <h2 className="text-2xl font-bold mb-4">About</h2>
       <hr className="border-gray-700 mb-8" />
       <div className="space-y-8">
