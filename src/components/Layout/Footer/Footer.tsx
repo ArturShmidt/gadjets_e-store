@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="w-full border-t border-light-theme-border-color dark:bg-dark-theme-bg dark:border-dark-theme-border-color">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 px-4 py-8">
-        <div className="text-2xl font-extrabold leading-none dark:text-dark-theme-text">
+        <div className="text-light-theme-logo text-2xl font-extrabold leading-none dark:text-dark-theme-text">
           NICE👌
           <br />
           GADGETS
