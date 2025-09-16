@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
 
 interface Product {
   id: number;
@@ -16,7 +15,6 @@ interface ProductCartProps {
   product: Product;
 }
 
-// відображення
 const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const imgSrc = `/${product.image}`;
 
@@ -32,10 +30,10 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
       <div className="p-8">
         <div className="relative flex justify-center h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]">
           <Image
-            src={phoneImage}
+            src={imgSrc}
             fill
             style={{ objectFit: 'contain' }}
-            alt="Phone image"
+            alt={product.name}
           />
         </div>
 
