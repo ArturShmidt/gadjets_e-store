@@ -4,11 +4,11 @@ import { Product } from '@/types/product';
 import Link from 'next/link';
 
 interface ProductCartProps {
-  product: Product;
+  product?: Product;
 }
 
 const ProductCart = ({ product }: ProductCartProps) => {
-  const imgSrc = `/${product.image}`;
+  const imgSrc = `/${product?.image}`;
 
   return (
     <div
@@ -25,7 +25,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
       <div className="p-8">
         {/* Image */}
         <Link
-          href={`/product/${product.id}`}
+          href={`/product/${product?.id}`}
           className="
             relative flex justify-center
             h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
@@ -36,7 +36,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
             style={{ objectFit: 'contain' }}
             width={208}
             height={196}
-            alt={product.name}
+            alt="Phone Name"
             className="transition-transform duration-300 ease-in-out hover:scale-110"
           />
         </Link>
@@ -44,10 +44,10 @@ const ProductCart = ({ product }: ProductCartProps) => {
         {/* Product Name */}
         <h3 className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover">
           <Link
-            href={`/product/${product.id}`}
+            href={`/product/${product?.id}`}
             className="hover:underline"
           >
-            {product.name}
+            {product?.name}
           </Link>
         </h3>
 
@@ -55,10 +55,10 @@ const ProductCart = ({ product }: ProductCartProps) => {
         <div className="my-2">
           <div className="flex gap-[8px]">
             <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
-              ${product.price}
+              ${product?.price}
             </p>
             <p className="font-semibold text-[22px] leading-snug text-light-theme-text-menu dark:text-text-gray line-through">
-              ${product.fullPrice}
+              ${product?.fullPrice}
             </p>
           </div>
           <div className="border-b border-zinc-700 mt-2"></div>
@@ -71,7 +71,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
               Screen
             </span>
             <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
-              {product.screen}
+              {product?.screen}
             </span>
           </div>
           <div className="flex justify-between items-center">
@@ -79,7 +79,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
               Capacity
             </span>
             <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
-              {product.capacity}
+              {product?.capacity}
             </span>
           </div>
           <div className="flex justify-between items-center">
@@ -87,7 +87,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
               RAM
             </span>
             <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
-              {product.ram}
+              {product?.ram}
             </span>
           </div>
         </div>
