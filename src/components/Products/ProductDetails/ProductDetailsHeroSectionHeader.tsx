@@ -12,7 +12,7 @@ const ProductDetailsHeroSectionHeader: React.FC<Props> = ({
   category,
 }) => {
   return (
-    <div className="p-4">
+    <div className="p-4 dark:text-dark-theme-text">
       <ProductDetailsHeroSectionNavBar
         category={category}
         name={name}
