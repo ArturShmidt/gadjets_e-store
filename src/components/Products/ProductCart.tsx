@@ -1,54 +1,70 @@
 import Image from 'next/image';
 import React from 'react';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-  image: string;
-}
+import { Product } from '@/types/product';
+import Link from 'next/link';
 
 interface ProductCartProps {
   product: Product;
 }
 
-const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
+const ProductCart = ({ product }: ProductCartProps) => {
   const imgSrc = `/${product.image}`;
 
   return (
     <div
-      className="border border-light-theme-border-color rounded-2xl 
-                        w-[287px] h-[440px] 
-                        sm:w-[288px] sm:h-[506px] 
-                        md:w-[229px] md:h-[506px] 
-                        lg:w-[272px] lg:h-[506px]
-                        dark:bg-item-bg dark:border-none dark:rounded-none"
+      className="
+        border border-light-theme-border-color
+        rounded-2xl
+        w-[287px] h-[440px]
+        sm:w-[288px] sm:h-[506px]
+        md:w-[229px] md:h-[506px]
+        lg:w-[272px] lg:h-[506px]
+        dark:bg-item-bg dark:border-dark-theme-border-color
+      "
     >
       <div className="p-8">
-        <div className="relative flex justify-center h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]">
+        {/* Image */}
+        <Link
+          href={`/product/${product.id}`}
+          className="
+            relative flex justify-center
+            h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
+          "
+        >
           <Image
             src={imgSrc}
-            fill
             style={{ objectFit: 'contain' }}
+            width={208}
+            height={196}
             alt={product.name}
+            className="transition-transform duration-300 ease-in-out hover:scale-110"
           />
-        </div>
+        </Link>
 
-        <h3
-          className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light
-                      pt-[24px]"
-        >
-          {product.name}
+        {/* Product Name */}
+        <h3 className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover">
+          <Link
+            href={`/product/${product.id}`}
+            className="hover:underline"
+          >
+            {product.name}
+          </Link>
         </h3>
+
+        {/* Price */}
         <div className="my-2">
-          <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
-            ${product.price}
-          </p>
+          <div className="flex gap-[8px]">
+            <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
+              ${product.price}
+            </p>
+            <p className="font-semibold text-[22px] leading-snug text-light-theme-text-menu dark:text-text-gray line-through">
+              ${product.fullPrice}
+            </p>
+          </div>
           <div className="border-b border-zinc-700 mt-2"></div>
         </div>
+
+        {/* Specs */}
         <div className="space-y-2 text-sm text-gray-400">
           <div className="flex justify-between items-center">
             <span className="text-light-theme-text-menu dark:text-text-gray">
@@ -75,19 +91,33 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
             </span>
           </div>
         </div>
+
+        {/* Buttons */}
         <div className="flex items-center gap-2 mt-4">
           <button
-            className="h-[40px] flex-grow 
-                          bg-light-theme-button-product-bg text-white 
-                          dark:bg-product-add-btn dark:text-text-light 
-                            text-sm leading-[21px] rounded-md dark:rounded-none"
+            className="
+              h-[40px] flex-grow
+              bg-light-theme-btn-product-bg text-white
+              dark:bg-product-add-btn dark:text-text-light
+              text-sm leading-[21px]
+              rounded-md
+              transition-shadow duration-200
+              hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
+              hover:cursor-pointer
+              dark:hover:bg-dark-theme-btn-hover
+            "
           >
             Add to cart
           </button>
+
           <button
-            className="bg-white dark:bg-gray-700 p-2.5 
-                            rounded-full dark:rounded-none 
-                            border border-light-theme-border-active dark:border-none"
+            className="
+              bg-white dark:bg-gray-700
+              p-2.5 rounded-full
+              border border-light-theme-border-active
+              hover:border-light-theme-text hover:cursor-pointer
+              dark:hover:bg-dark-theme-border-hover dark:hover:border-dark-theme-border-color
+            "
           >
             <svg
               className="w-5 h-5 dark:text-text-light"
