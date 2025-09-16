@@ -2,14 +2,30 @@ import Image from 'next/image';
 import React from 'react';
 import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  screen: string;
+  capacity: string;
+  ram: string;
+  image: string;
+}
+
+interface ProductCartProps {
+  product: Product;
+}
+
 // відображення
-const ProductCart = () => {
+const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
+  const imgSrc = `/${product.image}`;
+
   return (
     <div className="w-[212px] h-[439px] bg-item-bg">
       <div className="p-8">
         <div className="flex justify-center">
           <Image
-            src={phoneImage}
+            src={imgSrc}
             width={148}
             height={123}
             sizes="(max-width: 639px) 148px, (max-width: 1199px) 173px, 208px"
@@ -18,28 +34,26 @@ const ProductCart = () => {
         </div>
 
         <h3 className="font-semibold text-[14px] leading-[21px] text-white">
-          Apple iPhone 14 Pro
-          <br />
-          128GB Silver (MQ023)
+          {product.name}
         </h3>
         <div className="my-2">
           <p className="font-extrabold text-[22px] leading-snug text-white">
-            $999
+            ${product.price}
           </p>
           <div className="border-b border-zinc-700 mt-2"></div>
         </div>
         <div className="space-y-2 text-sm text-gray-400">
           <div className="flex justify-between items-center">
             <span>Screen</span>
-            <span className="text-white">6.1&quot; OLED</span>
+            <span className="text-white">{product.screen}</span>
           </div>
           <div className="flex justify-between items-center">
             <span>Capacity</span>
-            <span className="text-white">128 GB</span>
+            <span className="text-white">{product.capacity}</span>
           </div>
           <div className="flex justify-between items-center">
             <span>RAM</span>
-            <span className="text-white">6 GB</span>
+            <span className="text-white">{product.ram}</span>
           </div>
         </div>
         <div className="flex items-center gap-2 mt-4">
