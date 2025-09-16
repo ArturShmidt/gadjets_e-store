@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import phoneData from '../../../api/phones.json';
+import phoneData from '@/api/phones.json';
 import ProductSlider from '../../UI/productSlider/ProductSlider';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
