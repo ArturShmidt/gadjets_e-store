@@ -96,7 +96,7 @@ const ProductDetails: React.FC<Props> = ({ productId }) => {
           <ProductDetailsSpecs specsData={specsData} />
         </div>
       </div>
-      <ProductSlider />
+      <ProductSlider title={'You may also like'} />
     </div>
   );
 };
