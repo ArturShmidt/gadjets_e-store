@@ -91,7 +91,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
         >
           {slides.map((numb) => (
             <SwiperSlide key={numb}>
-              <ProductCart />
+              <ProductCart product={[]} />
               {/* <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
                 <span className="text-2xl font-semibold text-indigo-600">
                   {text}

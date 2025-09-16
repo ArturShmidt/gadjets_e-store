@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 import phoneImage from '@public/img/phones/apple-iphone-14-pro/gold/00.webp';
+import { Product } from '@/types/product';
 
+interface ProductCartProps {
+  product: Product | [];
+}
 // відображення
-const ProductCart = () => {
+const ProductCart = ({ product }: ProductCartProps) => {
   return (
     <div className="w-[212px] h-[439px] bg-item-bg">
       <div className="p-8">
