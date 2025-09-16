@@ -12,17 +12,12 @@ import SlideLeft from './SlideLeft';
 import SlideRight from './SlideRight';
 
 const buttonClass = `
-  hidden sm:flex
-  items-center justify-center
-
-  sm:w-[32px] sm:mx-[24px] sm:h-[189px]
-  md:h-[240px] lg:h-[400px]
-
-  bg-white text-black border border-[#B4BDC3] rounded-2xl
-  hover:cursor-pointer hover:border-[#0F0F11]
-
-  dark:bg-[#323542] dark:bg-opacity-50 dark:text-[#F1F2F9] dark:border-none dark:rounded-none
-  dark:hover:bg-[#4A4D58]
+  hidden sm:flex items-center justify-center
+  sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
+  bg-white text-black border border-light-theme-border-active rounded-2xl
+  hover:cursor-pointer hover:border-light-theme-text
+  dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-none dark:rounded-none
+  dark:hover:bg-dark-theme-border-hover
 `;
 const Carousel = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
@@ -46,7 +41,7 @@ const Carousel = () => {
       </div>
 
       {/* Swiper */}
-      <div className="w-full dark:bg-dark-theme-bg flex items-start justify-center">
+      <div className="w-full dark:bg-dark-theme-bg flex items-start justify-center pb-[88px] sm:pb-[96px] lg:pb-[112px]">
         <button
           ref={prevRef}
           className={`${buttonClass}`}
@@ -77,7 +72,7 @@ const Carousel = () => {
                 <div
                   className="bg-black flex flex-col sm:flex-row 
                                 h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
-                                rounded-2xl dark:rounded-none"
+                                rounded-2xl dark:rounded-none active:cursor-grabbing"
                 >
                   <SlideLeft slide={slide} />
                   <SlideRight slide={slide} />
