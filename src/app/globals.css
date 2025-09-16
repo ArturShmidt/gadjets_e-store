@@ -19,6 +19,11 @@
 
   --color-dark-theme-bg: #0f1121;
   --color-dark-theme-text: #f1f2f9;
+  --color-dark-theme-border-color: #3b3e4a;
+  --color-dark-theme-border-hover: #4a4d58;
+  --color-dark-theme-btn-primary: #905bff;
+  --color-dark-theme-btn-hover: #a378ff;
+  --color-dark-theme-btn-selected: #323542;
 }
 
 @theme inline {
