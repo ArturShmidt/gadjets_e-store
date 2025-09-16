@@ -7,7 +7,7 @@ import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 import Link from 'next/link';
 
 export default function Home() {
-  const someProductId = 'apple-iphone-15-pro'; // Приклад ID товару
+  const someProductId = 'apple-iphone-14-pro'; // Приклад ID товару
   return (
     <div className="flex flex-col pb-16 pt-6 sm:pt-8 lg:pb-20 lg:pt-14 dark:bg-dark-theme-bg">
       {/* <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20"> */}

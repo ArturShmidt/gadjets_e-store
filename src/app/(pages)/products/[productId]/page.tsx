@@ -1,3 +1,5 @@
+import ProductDetails from '@/components/Products/ProductDetails/ProductDetails';
+
 export default async function ProductPage({
   params,
 }: {
@@ -12,8 +14,7 @@ export default async function ProductPage({
   return (
     <article>
       {/* 3. Відображаємо детальну інформацію про товар */}
-      <h1>{productId} Details</h1>
-      {/* <ProductDetails product={product} /> */}
+      <ProductDetails productId={productId} />
     </article>
   );
 }
