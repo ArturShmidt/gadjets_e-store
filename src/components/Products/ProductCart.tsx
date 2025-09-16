@@ -21,48 +21,78 @@ const ProductCart: React.FC<ProductCartProps> = ({ product }) => {
   const imgSrc = `/${product.image}`;
 
   return (
-    <div className="w-[212px] h-[439px] bg-item-bg">
+    <div
+      className="border border-light-theme-border-color rounded-2xl 
+                        w-[287px] h-[440px] 
+                        sm:w-[288px] sm:h-[506px] 
+                        md:w-[229px] md:h-[506px] 
+                        lg:w-[272px] lg:h-[506px]
+                        dark:bg-item-bg dark:border-none dark:rounded-none"
+    >
       <div className="p-8">
-        <div className="flex justify-center">
+        <div className="relative flex justify-center h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]">
           <Image
-            src={imgSrc}
-            width={148}
-            height={123}
-            sizes="(max-width: 639px) 148px, (max-width: 1199px) 173px, 208px"
+            src={phoneImage}
+            fill
+            style={{ objectFit: 'contain' }}
             alt="Phone image"
           />
         </div>
 
-        <h3 className="font-semibold text-[14px] leading-[21px] text-white">
+        <h3
+          className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light
+                      pt-[24px]"
+        >
           {product.name}
         </h3>
         <div className="my-2">
-          <p className="font-extrabold text-[22px] leading-snug text-white">
+          <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
             ${product.price}
           </p>
           <div className="border-b border-zinc-700 mt-2"></div>
         </div>
         <div className="space-y-2 text-sm text-gray-400">
           <div className="flex justify-between items-center">
-            <span>Screen</span>
-            <span className="text-white">{product.screen}</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              Screen
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product.screen}
+            </span>
           </div>
           <div className="flex justify-between items-center">
-            <span>Capacity</span>
-            <span className="text-white">{product.capacity}</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              Capacity
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product.capacity}
+            </span>
           </div>
           <div className="flex justify-between items-center">
-            <span>RAM</span>
-            <span className="text-white">{product.ram}</span>
+            <span className="text-light-theme-text-menu dark:text-text-gray">
+              RAM
+            </span>
+            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+              {product.ram}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-2 mt-4">
-          <button className="h-[40px]  flex-grow bg-product-add-btn text-white text-sm leading-[21px] rounded-md">
+          <button
+            className="h-[40px] flex-grow 
+                          bg-light-theme-button-product-bg text-white 
+                          dark:bg-product-add-btn dark:text-text-light 
+                            text-sm leading-[21px] rounded-md dark:rounded-none"
+          >
             Add to cart
           </button>
-          <button className="bg-gray-700 p-2.5 rounded-md ">
+          <button
+            className="bg-white dark:bg-gray-700 p-2.5 
+                            rounded-full dark:rounded-none 
+                            border border-light-theme-border-active dark:border-none"
+          >
             <svg
-              className="w-5 h-5 text-white"
+              className="w-5 h-5 dark:text-text-light"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
