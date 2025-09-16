@@ -1,4 +1,5 @@
 'use client';
+import Carousel from '@/components/Layout/Carousel/Carousel';
 import ShopByCategory from '@/components/Layout/shopByCategory/ShopByCategory';
 import AppleLoader from '@/components/UI/loader/Loader';
 import ProductSlider from '@/components/UI/productSlider/ProductSlider';
@@ -18,6 +19,7 @@ export default function Home() {
         <Link href={`/products/${someProductId}`}>View iPhone 15 Pro</Link>
       </div>
       <div>
+        <Carousel />
         <ProductSlider />
         <ShopByCategory />
         <AppleLoader className="text-white" />

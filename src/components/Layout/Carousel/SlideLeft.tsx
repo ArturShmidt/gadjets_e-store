@@ -39,6 +39,7 @@ const orderButtonClass = `
   sm:mt-6 sm:px-4 sm:py-2
   md:mt-8 md:px-6 md:py-3
   lg:mt-20 lg:px-14 lg:py-5 lg:text-[18px]
+  hover:bg-[#333333] hover:border-[#aaa]
 `;
 
 const SlideLeft: React.FC<SlideProps> = ({ slide }) => (

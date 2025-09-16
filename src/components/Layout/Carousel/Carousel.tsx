@@ -13,12 +13,17 @@ import SlideRight from './SlideRight';
 
 const buttonClass = `
   hidden sm:flex
-  bg-[#323542] bg-opacity-50 text-[#F1F2F9]
   items-center justify-center
+
   sm:w-[32px] sm:mx-[24px] sm:h-[189px]
   md:h-[240px] lg:h-[400px]
-`;
 
+  bg-white text-black border border-[#B4BDC3] rounded-2xl
+  hover:cursor-pointer hover:border-[#0F0F11]
+
+  dark:bg-[#323542] dark:bg-opacity-50 dark:text-[#F1F2F9] dark:border-none dark:rounded-none
+  dark:hover:bg-[#4A4D58]
+`;
 const Carousel = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -30,7 +35,12 @@ const Carousel = () => {
     <div className="w-full">
       {/* Заголовок */}
       <div className="dark:bg-dark-theme-bg px-6 py-6 sm:px-8 sm:py-12">
-        <h1 className="font-[Mont] font-[800] text-3xl text-[#F1F2F9] tracking-[-0.01em] sm:text-5xl">
+        <h1
+          className=" font-[Mont] font-[800] 
+                        text-3xl sm:text-5xl 
+                        tracking-[-0.01em] 
+                        text-black dark:text-[#F1F2F9]"
+        >
           Welcome to Nice Gadgets store!
         </h1>
       </div>
@@ -64,7 +74,11 @@ const Carousel = () => {
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-black flex flex-col sm:flex-row h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]">
+                <div
+                  className="bg-black flex flex-col sm:flex-row 
+                                h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
+                                rounded-2xl dark:rounded-none"
+                >
                   <SlideLeft slide={slide} />
                   <SlideRight slide={slide} />
                 </div>
