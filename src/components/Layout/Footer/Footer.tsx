@@ -15,7 +15,7 @@ const Footer = () => {
           GADGETS
         </div>
 
-        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4  dark:text-dark-theme-text">
+        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4 text-light-theme-text-menu dark:text-dark-theme-text">
           <Link
             href="https://github.com/ArturShmidt/gadjets_e-store"
             className="hover:text-gray-400"
@@ -46,7 +46,9 @@ const Footer = () => {
           </button>
           <button
             onClick={scrollToTop}
-            className="bg-gray-800 p-3 rounded-md hover:bg-gray-700"
+            className="border border-light-theme-border-active dark:border-none
+             dark:bg-dark-theme-btn-selected dark:text-dark-theme-text 
+             p-3 rounded-full dark:rounded-none hover:border-light-theme-text dark:hover:bg-dark-theme-border-hover"
           >
             <svg
               className="w-5 h-5"
