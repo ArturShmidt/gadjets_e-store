@@ -20,8 +20,9 @@ export default function Home() {
       </div>
       <div>
         <Carousel />
-        <ProductSlider />
+        <ProductSlider title="Brand new models" />
         <ShopByCategory />
+        <ProductSlider title="Hot prices" />
         <AppleLoader className="text-white" />
         <AppleLoader
           size="lg"

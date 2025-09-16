@@ -6,7 +6,7 @@ import AccessoriesCatPhoto from '@public/img/accessories-cat-photo.png';
 
 const ShopByCategory = () => {
   return (
-    <div className="text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8">
+    <div className="text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16 lg:pb-20">
       <h2
         className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
        sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal pb-6"
