@@ -43,11 +43,15 @@ type Phone = {
 const ProductDetails: React.FC<Props> = ({ productId }) => {
   const typedPhoneData: Phone[] = phoneData;
 
-  const phoneDetails = typedPhoneData.find((el) => el.id === productId);
+  const phoneDetails = typedPhoneData.find(
+    (el) => el.namespaceId === productId,
+  );
 
   if (!productId || !phoneDetails) {
-    return null;
+    return;
   }
+
+  console.log(productId);
 
   const specsData = [
     { label: 'Screen', value: phoneDetails.screen },
