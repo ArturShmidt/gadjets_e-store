@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -16,7 +16,7 @@ const buttonClass = `
   sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
   bg-white text-black border border-light-theme-border-active rounded-2xl
   hover:cursor-pointer hover:border-light-theme-text
-  dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-none dark:rounded-none
+  dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-dark-theme-border-color
   dark:hover:bg-dark-theme-border-hover
 `;
 const Carousel = () => {
@@ -41,53 +41,62 @@ const Carousel = () => {
       </div>
 
       {/* Swiper */}
-      <div className="w-full dark:bg-dark-theme-bg flex items-start justify-center pb-[88px] sm:pb-[96px] lg:pb-[112px]">
-        <button
-          ref={prevRef}
-          className={`${buttonClass}`}
-        >
-          &#10094;
-        </button>
-
-        {swiperReady && (
-          <Swiper
-            modules={[Pagination, Navigation]}
-            pagination={{ clickable: true }}
-            loop
-            slidesPerView={1}
-            navigation={{ prevEl: prevRef.current!, nextEl: nextRef.current! }}
-            onBeforeInit={(swiper) => {
-              if (
-                swiper.params.navigation &&
-                typeof swiper.params.navigation !== 'boolean'
-              ) {
-                swiper.params.navigation.prevEl = prevRef.current!;
-                swiper.params.navigation.nextEl = nextRef.current!;
-              }
-            }}
-            className="w-full"
+      <div className="w-full dark:bg-dark-theme-bg flex flex-col items-center pb-[88px] sm:pb-[96px] lg:pb-[112px]">
+        <div className="flex items-start justify-center w-full">
+          <button
+            ref={prevRef}
+            className={buttonClass}
           >
-            {slides.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <div
-                  className="bg-black flex flex-col sm:flex-row 
-                                h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
-                                rounded-2xl dark:rounded-none active:cursor-grabbing"
-                >
-                  <SlideLeft slide={slide} />
-                  <SlideRight slide={slide} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
+            &#10094;
+          </button>
 
-        <button
-          ref={nextRef}
-          className={`${buttonClass}`}
-        >
-          &#10095;
-        </button>
+          {swiperReady && (
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              pagination={{ clickable: true, el: '.custom-pagination' }}
+              loop
+              slidesPerView={1}
+              navigation={{
+                prevEl: prevRef.current!,
+                nextEl: nextRef.current!,
+              }}
+              autoplay={{ delay: 4000, disableOnInteraction: false }}
+              onBeforeInit={(swiper) => {
+                if (
+                  swiper.params.navigation &&
+                  typeof swiper.params.navigation !== 'boolean'
+                ) {
+                  swiper.params.navigation.prevEl = prevRef.current!;
+                  swiper.params.navigation.nextEl = nextRef.current!;
+                }
+              }}
+              className="w-full"
+            >
+              {slides.map((slide, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className="bg-black flex flex-col sm:flex-row 
+                                h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
+                                rounded-2xl active:cursor-grabbing"
+                  >
+                    <SlideLeft slide={slide} />
+                    <SlideRight slide={slide} />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
+
+          <button
+            ref={nextRef}
+            className={buttonClass}
+          >
+            &#10095;
+          </button>
+        </div>
+
+        {/* кастомна пагінація */}
+        <div className="custom-pagination mt-6 flex justify-center"></div>
       </div>
     </div>
   );
