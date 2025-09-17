@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -13,9 +13,9 @@ interface ProductSliderProps {
 }
 
 export default function ProductSlider({ title }: ProductSliderProps) {
-  useEffect(() => {
-    // Swiper's navigation module is already loaded via `modules: [Navigation]`
-  }, []);
+  // Використовуємо useRef для кнопок
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
 
   const visiblePhones = products.filter(
     (product) => product.year === Math.max(...products.map((p) => p.year)),
@@ -42,15 +42,13 @@ export default function ProductSlider({ title }: ProductSliderProps) {
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
       <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
-        <h2
-          className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
-       sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
-        >
+        <h2 className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal">
           {title}
         </h2>
         <div className="flex flex-row gap-4">
           <button
-            className="custom-prev group p-2 flex justify-center items-center border border-light-theme-border-active
+            ref={prevRef}
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -71,7 +69,8 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           </button>
 
           <button
-            className="custom-next group p-2 flex justify-center items-center border border-light-theme-border-active
+            ref={nextRef}
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -98,8 +97,16 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           spaceBetween={30}
           loop={true}
           navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
+            nextEl: nextRef.current,
+            prevEl: prevRef.current,
+          }}
+          onInit={(swiper) => {
+            // @ts-expect-error: Swiper types don't know about refs
+            swiper.params.navigation.prevEl = prevRef.current;
+            // @ts-expect-error: Swiper types don't know about refs
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
           }}
           breakpoints={{
             0: { slidesPerView: 1.4 },
@@ -113,11 +120,6 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           {visibleProducts.map((product) => (
             <SwiperSlide key={product.id}>
               <ProductCart product={product} />
-              {/* <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
-                <span className="text-2xl font-semibold text-indigo-600">
-                  {text}
-                </span>
-              </div> */}
             </SwiperSlide>
           ))}
 
