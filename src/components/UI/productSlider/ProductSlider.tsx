@@ -6,6 +6,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCart from '@/components/Products/ProductCart';
+import products from '@public/api/products.json';
 
 interface ProductSliderProps {
   title: string;
@@ -16,7 +17,27 @@ export default function ProductSlider({ title }: ProductSliderProps) {
     // Swiper's navigation module is already loaded via `modules: [Navigation]`
   }, []);
 
-  const slides = [0, 1, 2, 3, 4, 5];
+  const visiblePhones = products.filter(
+    (product) => product.year === Math.max(...products.map((p) => p.year)),
+  );
+
+  const getTopDiscounts = (category: string, count: number) => {
+    return products
+      .filter((p) => p.category === category)
+      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+      .slice(0, count);
+  };
+
+  const visibleHot = [
+    ...getTopDiscounts('phones', 4),
+    ...getTopDiscounts('tablets', 3),
+    ...getTopDiscounts('accessories', 3),
+  ];
+
+  const visibleProducts =
+    title === 'Brand new models' ? visiblePhones
+    : title === 'Hot prices' ? visibleHot
+    : [];
 
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
@@ -89,9 +110,9 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           }}
           className="multiple-slide-carousel"
         >
-          {slides.map((numb) => (
-            <SwiperSlide key={numb}>
-              <ProductCart />
+          {visibleProducts.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCart product={product} />
               {/* <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
                 <span className="text-2xl font-semibold text-indigo-600">
                   {text}

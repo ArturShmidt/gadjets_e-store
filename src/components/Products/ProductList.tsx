@@ -47,7 +47,8 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
                  text-light-theme-text dark:text-text-light border
                  border-light-theme-border-active
                  focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
-                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]"
+                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
+                 dark:border-dark-theme-btn-selected"
           >
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
@@ -72,7 +73,8 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
                  text-light-theme-text dark:text-text-light border
                  border-light-theme-border-active
                  focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
-                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]"
+                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
+                 dark:border-dark-theme-btn-selected"
           >
             <option value="16">16</option>
             <option value="32">32</option>
