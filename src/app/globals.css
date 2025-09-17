@@ -33,6 +33,8 @@
   --color-dark-theme-btn-primary: #905bff;
   --color-dark-theme-btn-hover: #a378ff;
   --color-dark-theme-btn-selected: #323542;
+
+  --breakpoint-lg-max: 75rem;
 }
 
 @theme inline {
