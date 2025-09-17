@@ -52,7 +52,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           <button
             className="custom-prev group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
-            dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full dark:rounded-none hover:border-light-theme-text transition"
+            dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
               className="h-5 w-5 text-light-theme-text dark:text-dark-theme-text"
@@ -73,7 +73,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           <button
             className="custom-next group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
-            dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full dark:rounded-none hover:border-light-theme-text transition"
+            dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
               className="h-5 w-5 text-light-theme-text dark:text-dark-theme-text"
