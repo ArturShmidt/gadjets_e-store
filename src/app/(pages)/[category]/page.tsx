@@ -1,5 +1,6 @@
 import Catalog from '@/components/Products/Catalog';
 import { getValidCategories } from '@/lib/categories';
+import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
@@ -17,12 +18,17 @@ export default async function CategoryPage({
 }: {
   params: { category: string };
 }) {
-  const categoryName = params.category;
+  const categoryName = (await Promise.resolve(params)).category;
+
+  if (categoryName === 'shoppingcart') {
+    return <ShoppingCart />;
+  }
   // список товарів
   // const products = await fetchProductsByCategory(categoryName);
 
   // список наявних категорій
   const validCategories = await getValidCategories();
+
   if (!validCategories.includes(params.category)) {
     notFound();
   }

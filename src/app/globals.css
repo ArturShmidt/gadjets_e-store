@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@tailwind utilities;
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -25,6 +23,7 @@
   --color-light-theme-border-active: #b4bdc3;
   --color-light-theme-logo: #f447af;
   --color-light-theme-btn-product-bg: #216cff;
+  --color-light-theme-checkout-shoppingcart: #216cff;
 
   --color-dark-theme-bg: #0f1121;
   --color-dark-theme-text: #f1f2f9;

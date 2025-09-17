@@ -13,19 +13,19 @@ const ThemeSwitcher = () => {
   }, []);
 
   if (!mounted) {
-    return <div className="w-10 h-10" />;
+    return <div className="w-[14px] h-[10px]" />;
   }
 
   return (
     <button
       onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-      className="relative w-10 h-10 flex items-center justify-center rounded-full transition-transform duration-500 hover:rotate-180 hover:cursor-pointer"
+      className="relative w-[14px] h-[10px] flex items-center justify-center rounded-full transition-transform duration-500 hover:rotate-180 hover:cursor-pointer"
     >
       {mode === 'light' ?
         <p>
           <Sun animateOnHover />
         </p>
-      : <p className="bg-white rounded-full">
+      : <p className="dark:text-dark-theme-text rounded-full">
           <MoonStar animateOnHover />
         </p>
       }

@@ -1,0 +1,31 @@
+// #region Imports
+
+import ArrowLeftBlack from '@/components/UI/icons/ArrowLeft(Black).svg';
+import ArrowLeftWhite from '@/components/UI/icons/ArrowLeft(White).svg';
+import Image from 'next/image';
+import React from 'react';
+// #endregion
+
+const ArrowLeftComponent: React.FC = () => {
+  return (
+    <>
+      {/* black cart */}
+
+      <Image
+        src={ArrowLeftBlack}
+        alt="ArrowLeft"
+        className="dark:hidden"
+      />
+
+      {/* white cart */}
+
+      <Image
+        src={ArrowLeftWhite}
+        alt="ArrowLeft"
+        className="hidden dark:block"
+      />
+    </>
+  );
+};
+
+export default ArrowLeftComponent;
