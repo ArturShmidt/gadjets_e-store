@@ -2,7 +2,7 @@
 
 // #region Imports
 
-import { ProductType } from '@/types/ProductType';
+import { ProductType } from '@/types/CategoryType';
 import Image from 'next/image';
 import React from 'react';
 import MinusComponent from '../../UI/ShoppingCart/MinusComponent';

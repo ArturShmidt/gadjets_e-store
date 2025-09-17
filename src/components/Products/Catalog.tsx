@@ -2,16 +2,14 @@
 
 import ProductList from './ProductList';
 import products from '@public/api/products.json';
+import CategoryHeading from './CategoryHeading';
+
 // Smart-компонент, компонент для сортування і іншої роботи з данними.
-interface CatalogProps {
+type CatalogProps = {
   categoryName: string;
-}
+};
 
-const Catalog = ({ categoryName }: CatalogProps) => {
-  // опрацьовуємо список
-  const formattedCategory =
-    categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-
+const Catalog: React.FC<CatalogProps> = ({ categoryName }) => {
   const visibleProducts = products.filter(
     (product) => product.category === categoryName,
   );
@@ -20,20 +18,10 @@ const Catalog = ({ categoryName }: CatalogProps) => {
 
   return (
     <>
-      <h1
-        className="font-[Mont] font-[800] text-[32px] leading-[41px] sm:text-[48px] sm:leading-[56px]
-       tracking-[-0.01em] text-light-theme-text dark:text-dark-theme-text pb-2"
-      >
-        {categoryName === 'phones' ?
-          `Mobile ${categoryName.toLowerCase()}`
-        : formattedCategory}
-      </h1>
-      <p
-        className="font-[Mont] font-[600] text-[14px] leading-[21px]
-        text-light-theme-text-menu dark:text-text-gray"
-      >
-        {total} models
-      </p>
+      <CategoryHeading
+        categoryName={categoryName}
+        total={total}
+      />
       <ProductList
         productlist={visibleProducts}
         total={total}

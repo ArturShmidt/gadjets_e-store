@@ -9,19 +9,15 @@ import React from 'react';
 const ArrowLeftComponent: React.FC = () => {
   return (
     <>
-      {/* black cart */}
-
       <Image
         src={ArrowLeftBlack}
-        alt="ArrowLeft"
+        alt="ArrowLeftBlack"
         className="dark:hidden"
       />
 
-      {/* white cart */}
-
       <Image
         src={ArrowLeftWhite}
-        alt="ArrowLeft"
+        alt="ArrowLeftWhite"
         className="hidden dark:block"
       />
     </>
