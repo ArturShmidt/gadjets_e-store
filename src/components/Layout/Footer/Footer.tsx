@@ -1,68 +1,58 @@
 'use client';
 
 import Link from 'next/link';
-
+import Logo from '../../UI/NavBar/Logo';
+import { FooterCategories } from '@/types/FooterCategories';
+import ArrowUpComponent from '../../UI/Footer/ArrowUpComponent';
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <footer className="w-full border-t border-light-theme-border-color dark:bg-dark-theme-bg dark:border-dark-theme-border-color">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-8 px-4 py-8">
-        <div className="text-light-theme-logo text-2xl font-extrabold leading-none dark:text-dark-theme-text">
-          NICE👌
-          <br />
-          GADGETS
-        </div>
 
-        <nav className="flex flex-col sm:flex-row items-start gap-4 sm:gap-4 text-light-theme-text-menu dark:text-dark-theme-text">
-          <Link
-            href="https://github.com/ArturShmidt/gadjets_e-store"
-            className="hover:text-gray-400"
-            target="_blank"
-          >
-            GITHUB
-          </Link>
-          <Link
-            href="#"
-            className="hover:text-gray-400"
-          >
-            CONTACTS
-          </Link>
-          <Link
-            href="#"
-            className="hover:text-gray-400"
-          >
-            RIGHTS
-          </Link>
+    <footer className="border-light-theme-border-color dark:bg-dark-theme-bg dark:border-dark-theme-border-color w-full border-t">
+      <div className="flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <Logo placement="footer" />
+        <nav className="flex flex-col items-start sm:flex-row gap-4 sm:gap-[13.5px] lg:gap-[106.5px]">
+          {FooterCategories.map((category) => {
+            return (
+              <Link
+                key={category.label}
+                href={category.href}
+                className="
+    relative text-[12px] font-bold leading-[11px] tracking-[0.04em] 
+    text-light-theme-text-menu dark:text-light-theme-text-menu hover:text-light-theme-text
+    sm:transition-colors sm:duration-200
+    sm:after:absolute sm:after:left-0 sm:after:right-0 sm:after:h-[2px] 
+    sm:after:bg-light-theme-text sm:after:top-[-44px]  
+    sm:after:scale-x-0 sm:hover:after:scale-x-100 sm:after:origin-top sm:after:transition-transform sm:after:duration-200
+    dark:hover:text-white sm:dark:after:bg-dark-theme-text
+  "
+                target="_blank"
+              >
+                {category.label.toUpperCase()}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-4 justify-center">
+        <div className="flex items-center justify-center gap-4">
           <button
             onClick={scrollToTop}
-            className="text-gray-400 hover:text-white"
+            className="text-[12px] font-bold leading-none tracking-[0.04em] 
+            text-light-theme-text-menu dark:text-text-gray dark:hover:text-dark-theme-text hover:text-light-theme-text
+            cursor-pointer"
           >
             Back to top
           </button>
           <button
             onClick={scrollToTop}
-            className="border border-light-theme-border-active dark:border-none
-             dark:bg-dark-theme-btn-selected dark:text-dark-theme-text 
-             p-3 rounded-full dark:rounded-none hover:border-light-theme-text dark:hover:bg-dark-theme-border-hover"
+
+            className="bg-white dark:bg-dark-theme-btn-selected
+            border dark:border-[0] border-light-theme-border-active rounded-[48px] hover:border-light-theme-text dark:hover:bg-dark-theme-border-hover
+            flex justify-center items-center h-8 w-8 cursor-pointer selected-dark-theme-btn-primary"
           >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 15l7-7 7 7"
-              />
-            </svg>
+            <ArrowUpComponent />
           </button>
         </div>
       </div>
