@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import path from 'path';
 import { promises as fs } from 'fs';
-import { ProductType as ProductDetails } from '@/types/ProductType';
+import { ProductType as ProductDetails } from '@/types/CategoryType';
 import { Product as ProductSummary } from '@/types/product';
 
 const categoryToFileMap = {

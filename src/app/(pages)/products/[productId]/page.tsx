@@ -1,20 +1,38 @@
+import { getProducts, getProductById } from '@/lib/services/product.service';
 import ProductDetails from '@/components/Products/ProductDetails/ProductDetails';
+import { notFound } from 'next/navigation';
 
+/**
+ * 1. ВАЛІДАЦІЯ: Створюємо список всіх існуючих сторінок товарів
+ */
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map((product) => ({
+    productId: product.itemId,
+  }));
+}
+
+export const dynamicParams = false;
+
+/**
+ * 2. ОСНОВНИЙ КОМПОНЕНТ СТОРІНКИ (Серверний)
+ */
 export default async function ProductPage({
   params,
 }: {
   params: { productId: string };
 }) {
-  // 1. Отримуємо ID товару з URL
-  const productId = params.productId; // напр., "iphone-15-pro"
+  const { productId } = params;
 
-  // 2. Завантажуємо дані для цього конкретного товару
-  // const product = await fetchProductById(productId);
+  // 3. ЗАВАНТАЖЕННЯ ДАНИХ НА СЕРВЕРІ
+  const initialProduct = await getProductById(productId);
 
-  return (
-    <article>
-      {/* 3. Відображаємо детальну інформацію про товар */}
-      <ProductDetails productId={productId} />
-    </article>
-  );
+  // Якщо сервіс повернув null (товар не знайдено), показуємо 404
+  if (!initialProduct) {
+    notFound();
+  }
+
+  // 4. РЕНДЕР КЛІЄНТСЬКОГО КОМПОНЕНТА
+  // Передаємо завантажені дані в клієнтський компонент
+  return <ProductDetails initialProduct={initialProduct} />;
 }
