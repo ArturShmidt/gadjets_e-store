@@ -1,3 +1,13 @@
+enum SortOption {
+  Newest = 'newest',
+  Oldest = 'oldest',
+}
+
+enum ItemsPerPageOption {
+  Sixteen = 16,
+  ThirtyTwo = 32,
+  SixtyFour = 64,
+}
 import React, { useState } from 'react';
 import ProductCart from './ProductCart';
 import { Product } from '@/types/product';
@@ -11,7 +21,7 @@ interface ProductListProps {
 
 const ProductList = ({ productlist, total }: ProductListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(16);
+  const [perPage, setPerPage] = useState(ItemsPerPageOption.Sixteen);
   const listRef = React.useRef<HTMLDivElement>(null);
 
   const indexOfLastItem = currentPage * perPage;
@@ -50,8 +60,14 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
                  bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
                  dark:border-dark-theme-btn-selected"
           >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
+            {Object.entries(SortOption).map(([key, value]) => (
+              <option
+                key={value}
+                value={value}
+              >
+                {key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -76,9 +92,16 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
                  bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
                  dark:border-dark-theme-btn-selected"
           >
-            <option value="16">16</option>
-            <option value="32">32</option>
-            <option value="64">64</option>
+            {Object.values(ItemsPerPageOption)
+              .filter((v) => typeof v === 'number')
+              .map((value) => (
+                <option
+                  key={value}
+                  value={value}
+                >
+                  {value}
+                </option>
+              ))}
           </select>
         </div>
       </div>
