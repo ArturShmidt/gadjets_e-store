@@ -1,6 +1,8 @@
 enum SortOption {
   Newest = 'newest',
   Oldest = 'oldest',
+  Expensive = 'xpensive',
+  Cheapest = 'cheapest',
 }
 
 enum ItemsPerPageOption {
@@ -22,11 +24,27 @@ interface ProductListProps {
 const ProductList = ({ productlist, total }: ProductListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(ItemsPerPageOption.Sixteen);
+  const [sortBy, setSortBy] = useState(SortOption.Newest);
   const listRef = React.useRef<HTMLDivElement>(null);
+
+  const sortedProducts = [...productlist].sort((a, b) => {
+    switch (sortBy) {
+      case SortOption.Newest:
+        return b.year - a.year;
+      case SortOption.Oldest:
+        return a.year - b.year;
+      case SortOption.Expensive:
+        return b.price - a.price;
+      case SortOption.Cheapest:
+        return a.price - b.price;
+      default:
+        return 0;
+    }
+  });
 
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
-  const currentItems = productlist.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = sortedProducts.slice(indexOfFirstItem, indexOfLastItem);
 
   // Scroll to top of product list on page change
   const handlePageChange = (page: number) => {
@@ -51,6 +69,8 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
           <select
             id="sort"
             name="sort"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
             className="w-34 sm:w-47 lg:w-44 bg-light-theme-bg-dark
                  dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
                  font-[Mont] font-[600] text-[14px] leading-[21px]
