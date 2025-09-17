@@ -9,7 +9,6 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-
     <footer className="border-light-theme-border-color dark:bg-dark-theme-bg dark:border-dark-theme-border-color w-full border-t">
       <div className="flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
         <Logo placement="footer" />
@@ -47,7 +46,6 @@ const Footer = () => {
           </button>
           <button
             onClick={scrollToTop}
-
             className="bg-white dark:bg-dark-theme-btn-selected
             border dark:border-[0] border-light-theme-border-active rounded-[48px] hover:border-light-theme-text dark:hover:bg-dark-theme-border-hover
             flex justify-center items-center h-8 w-8 cursor-pointer selected-dark-theme-btn-primary"
