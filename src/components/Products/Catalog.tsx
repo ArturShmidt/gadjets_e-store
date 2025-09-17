@@ -22,7 +22,7 @@ const Catalog = ({ categoryName }: CatalogProps) => {
     <>
       <h1
         className="font-[Mont] font-[800] text-[32px] leading-[41px] sm:text-[48px] sm:leading-[56px]
-       tracking-[-0.01em] text-light-theme-text dark:text-dark-theme-text pt-6 pb-2 sm:pt-10"
+       tracking-[-0.01em] text-light-theme-text dark:text-dark-theme-text pb-2"
       >
         {categoryName === 'phones' ?
           `Mobile ${categoryName.toLowerCase()}`

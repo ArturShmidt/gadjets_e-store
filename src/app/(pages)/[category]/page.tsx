@@ -41,7 +41,10 @@ export default async function CategoryPage({
   return (
     <div className="dark:bg-dark-theme-bg px-4 sm:px-6 lg:px-8 pt-6 pb-16 lg:pb-20">
       <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
-        <Link href="/">
+        <Link
+          href="/"
+          className="transition-transform duration-300 hover:scale-[1.2]"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
