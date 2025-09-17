@@ -25,7 +25,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
       <div className="p-8">
         {/* Image */}
         <Link
-          href={`/product/${product?.itemId}`}
+          href={`/products/${product?.itemId}`}
           className="
             relative flex justify-center
             h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
@@ -44,7 +44,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
         {/* Product Name */}
         <h3 className="font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover">
           <Link
-            href={`/product/${product?.itemId}`}
+            href={`/products/${product?.itemId}`}
             className="hover:underline"
           >
             {product?.name}
