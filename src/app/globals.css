@@ -114,6 +114,30 @@ body {
   color: var(--color-text-gray);
 }
 
+/* Базовий булет */
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+  background-color: var(--color-light-theme-border-color) !important;
+  opacity: 1 !important;
+}
+
+/* Активний булет */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-light-theme-text) !important;
+}
+
+/* Базовий булет (темна тема) */
+html.dark .swiper-pagination-bullet {
+  background-color: var(--color-dark-theme-border-color) !important;
+}
+
+/* Активний булет (темна тема) */
+html.dark .swiper-pagination-bullet-active {
+  background-color: var(--color-text-light) !important;
+}
+
 /* :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
