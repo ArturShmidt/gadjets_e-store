@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -51,11 +51,15 @@ const Carousel = () => {
 
         {swiperReady && (
           <Swiper
-            modules={[Pagination, Navigation]}
+            modules={[Pagination, Navigation, Autoplay]}
             pagination={{ clickable: true }}
             loop
             slidesPerView={1}
             navigation={{ prevEl: prevRef.current!, nextEl: nextRef.current! }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
             onBeforeInit={(swiper) => {
               if (
                 swiper.params.navigation &&
