@@ -16,7 +16,7 @@ const buttonClass = `
   sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
   bg-white text-black border border-light-theme-border-active rounded-2xl
   hover:cursor-pointer hover:border-light-theme-text
-  dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-none dark:rounded-none
+  dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-dark-theme-border-color
   dark:hover:bg-dark-theme-border-hover
 `;
 const Carousel = () => {
@@ -72,7 +72,7 @@ const Carousel = () => {
                 <div
                   className="bg-black flex flex-col sm:flex-row 
                                 h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
-                                rounded-2xl dark:rounded-none active:cursor-grabbing"
+                                rounded-2xl active:cursor-grabbing"
                 >
                   <SlideLeft slide={slide} />
                   <SlideRight slide={slide} />
