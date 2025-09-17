@@ -1,14 +1,18 @@
 // #region Imports
 
-import Catalog from '@/components/Products/Catalog';
-import { getValidCategories } from '@/lib/categories';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+
+import Catalog from '@/components/Products/Catalog';
 import HomeIconComponent from '@/components/UI/HomeIconComponent';
 import ArrowRightCategoryComponent from '@/components/UI/ArrowRightCategoryComponent';
-import ArrowLeftComponent from '@/components/UI/ShoppingCart/ArrowLeftComponent';
-import { isShoppingCartPage } from '@/lib/utils';
 import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
+import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
+
+import { CategoryName } from '@/types/CategoryName';
+
+import { getValidCategories } from '@/lib/categories';
+import { isShoppingCartPage } from '@/lib/utils';
 
 // #endregion
 export const dynamicParams = false;
@@ -24,7 +28,7 @@ export const dynamicParams = false;
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: { category: CategoryName };
 }) {
   const categoryName = (await Promise.resolve(params)).category;
   const IsShoppingCartPage = isShoppingCartPage(`/${categoryName}`);
@@ -43,24 +47,9 @@ export default async function CategoryPage({
   }
 
   return (
-    <div className="dark:bg-dark-theme-bg px-4 sm:px-6 lg:px-8 pt-6 pb-16 lg:pb-20">
+    <div className="dark:bg-dark-theme-bg px-4 sm:px-6 lg:px-8 pt-6 pb-16 lg:pb-20 min-h-screen">
       {IsShoppingCartPage ?
-        <nav className="lg:flex lg:justify-start lg:items-start lg:flex-col">
-          <button className="flex mb-6 sm:mb-4 w-13 cursor-pointer">
-            <div
-              className="mr-1 
-          text-light-theme-text dark:text-dark-theme-text "
-            >
-              <ArrowLeftComponent />
-            </div>
-            <span className="text-light-theme-text-menu dark:text-dark-theme-text font-bold text-[12px] ">
-              Back
-            </span>
-          </button>
-          <h2 className="font-bold text-[32px] sm:text-[48px] leading-[41px] sm:leading-[56px] text-light-theme-text dark:text-dark-theme-text">
-            Cart
-          </h2>
-        </nav>
+        <CartHeading />
       : <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
           <Link
             href="/"

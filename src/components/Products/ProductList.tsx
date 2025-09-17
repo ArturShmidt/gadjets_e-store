@@ -1,20 +1,14 @@
-enum SortOption {
-  Newest = 'newest',
-  Oldest = 'oldest',
-  Expensive = 'xpensive',
-  Cheapest = 'cheapest',
-}
+// #region Imports
 
-enum ItemsPerPageOption {
-  Sixteen = 16,
-  ThirtyTwo = 32,
-  SixtyFour = 64,
-}
 import React, { useState } from 'react';
 import ProductCart from './ProductCart';
 import { Product } from '@/types/product';
 import { Pagination } from '../UI/pagination/Pagination';
 import { useIsFavoritesPage } from '@/hooks/useIsFavoritesPage';
+import { ItemsPerPageOption } from '@/types/ItemsPerPageOption';
+import { SortOption } from '@/types/SortOption';
+
+// #endregion
 
 // тупий компонент, що просто прийматиме вже готовий(відсортований і тд) список товарів і відображатиме його.
 interface ProductListProps {
@@ -75,13 +69,13 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
               className="w-34 sm:w-47 lg:w-44 bg-light-theme-bg-dark
-                 dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
-                 font-[Mont] font-[600] text-[14px] leading-[21px]
-                 text-light-theme-text dark:text-text-light border
-                 border-light-theme-border-active
-                 focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
-                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
-                 dark:border-dark-theme-btn-selected"
+                  dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
+                  font-[Mont] font-[600] text-[14px] leading-[21px]
+                  text-light-theme-text dark:text-text-light border
+                  border-light-theme-border-active
+                  focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
+                  bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
+                  dark:border-dark-theme-btn-selected"
             >
               {Object.entries(SortOption).map(([key, value]) => (
                 <option
@@ -107,13 +101,13 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
               value={perPage}
               onChange={(e) => setPerPage(Number(e.target.value))}
               className="w-34 lg:w-32 bg-light-theme-bg-dark
-                 dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
-                 font-[Mont] font-[600] text-[14px] leading-[21px]
-                 text-light-theme-text dark:text-text-light border
-                 border-light-theme-border-active
-                 focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
-                 bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
-                 dark:border-dark-theme-btn-selected"
+                dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
+                font-[Mont] font-[600] text-[14px] leading-[21px]
+                text-light-theme-text dark:text-text-light border
+                border-light-theme-border-active
+                focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
+                bg-[url('/icons/arrow-down.svg')] bg-no-repeat bg-[right_0.75rem_center]
+                dark:border-dark-theme-btn-selected"
             >
               {Object.values(ItemsPerPageOption)
                 .filter((v) => typeof v === 'number')

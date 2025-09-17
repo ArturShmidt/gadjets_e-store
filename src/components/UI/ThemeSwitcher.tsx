@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useThemeSwitcher } from '@/hooks/useThemeSwitcher';
-import { Sun } from '../animate-ui/icons/sun';
-import { MoonStar } from '../animate-ui/icons/moon-star';
+import { Sun } from '@/components/animate-ui/icons/sun';
+import { MoonStar } from '@/components/animate-ui/icons/moon-star';
 
 const ThemeSwitcher = () => {
   const [mode, setMode] = useThemeSwitcher();

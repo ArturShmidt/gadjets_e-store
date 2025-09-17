@@ -2,11 +2,12 @@
 
 import ProductList from './ProductList';
 import products from '@public/api/products.json';
-import CategoryHeading from './CategoryHeading';
+import CategoryHeading from '@/components/UI/CategoriesHeading';
+import { CategoryName } from '@/types/CategoryName';
 
 // Smart-компонент, компонент для сортування і іншої роботи з данними.
 type CatalogProps = {
-  categoryName: string;
+  categoryName: CategoryName;
 };
 
 const Catalog: React.FC<CatalogProps> = ({ categoryName }) => {

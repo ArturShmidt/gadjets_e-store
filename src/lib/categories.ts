@@ -1,15 +1,10 @@
-export const VALID_CATEGORIES = [
-  'phones',
-  'tablets',
-  'accessories',
-  'shoppingcart',
-  'favorites',
-];
+import { CategoryName } from '@/types/CategoryName';
+const valid_categories = Object.values(CategoryName);
 
 export const getValidCategories = async () => {
   // В реальному проєкті ви б робили запит до бази даних чи CMS
   // const response = await fetch('https://.../api/categories');
   // const data = await response.json();
   // return data.map(category => category.slug);
-  return VALID_CATEGORIES;
+  return valid_categories;
 };

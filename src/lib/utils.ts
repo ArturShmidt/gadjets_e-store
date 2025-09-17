@@ -1,3 +1,4 @@
+import { CategoryName } from '@/types/CategoryName';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -7,5 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 
 // перевіряє чи ми зараз на сторінці корзини
 export function isShoppingCartPage(pathname: string) {
-  return pathname === '/shoppingcart';
+  return pathname === '/cart';
 }

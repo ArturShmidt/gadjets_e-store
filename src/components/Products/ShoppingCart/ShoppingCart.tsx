@@ -2,16 +2,16 @@
 // #region Imports
 
 import React from 'react';
-import ShoppingCartItem from './ShoppingCartItem';
-import accessries from '../../../../public/api/accessories.json';
-import CheckoutSummary from './CheckoutSummary';
+import ShoppingCartItem from '@/components/Products/ShoppingCart/ShoppingCartItem';
+import accessries from '@public/api/accessories.json';
+import CheckoutSummary from '@/components/Products/ShoppingCart/CheckoutSummary';
 
 // #endregion
 
 const ShoppingCart: React.FC = () => {
   return (
     <div
-      className="pt-6 sm:pt-10 px-4 sm:px-6 lg:px-8 lg:pb-20 lg:flex lg:flex-col
+      className="pt-6 sm:pt-10 px-4 sm:px-6 lg:px-8 lg:flex lg:flex-col
       text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg "
     >
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
@@ -25,7 +25,7 @@ const ShoppingCart: React.FC = () => {
             );
           })}
         </div>
-        <div className=" flex justify-center  pb-14 lg:pb-0 ">
+        <div className=" flex justify-center pb-14 lg:pb-0 ">
           <CheckoutSummary />
         </div>
       </div>

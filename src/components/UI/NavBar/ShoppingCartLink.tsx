@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import CartBlack from '@/components/UI/icons/Cart(Black).svg';
 import CartWhite from '@/components/UI/icons/Cart(White).svg';
+import { CategoryName } from '@/types/CategoryName';
 
 // #endregion
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
   return (
     <Link
-      href="/shoppingcart"
+      href={`${CategoryName.Cart}`}
       onClick={onClose}
       className={`
         ${fullWidth ? 'w-full h-16 border-t flex justify-center relative' : 'inline-flex'}
@@ -24,16 +25,14 @@ const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
         after:scale-x-0 hover:after:scale-x-100 after:origin-bottom after:transition-transform after:duration-200 dark:after:bg-dark-theme-text
       `}
     >
-      {/* black cart */}
       <Image
         src={CartBlack}
-        alt="cart"
+        alt="CartBlack"
         className="dark:hidden"
       />
-      {/* white cart */}
       <Image
         src={CartWhite}
-        alt="cart"
+        alt="CartWhite"
         className="hidden dark:block"
       />
     </Link>

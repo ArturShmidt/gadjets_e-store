@@ -1,10 +1,11 @@
 // #region Imports
 
 import React from 'react';
+
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
-import ShoppingCartLink from '../../UI/NavBar/ShoppingCartLink';
-import FavoritesLink from '../../UI/NavBar/FavoritesLink';
-import CategoriesMenu from '../../UI/NavBar/CategoriesMenu';
+import ShoppingCartLink from '@/components/UI/NavBar/ShoppingCartLink';
+import FavoritesLink from '@/components/UI/NavBar/FavoritesLink';
+import CategoriesMenu from '@/components/UI/NavBar/CategoriesMenu';
 
 // #endregion
 

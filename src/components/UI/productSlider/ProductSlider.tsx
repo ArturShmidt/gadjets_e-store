@@ -44,14 +44,14 @@ export default function ProductSlider({ title }: ProductSliderProps) {
       <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
         <h2
           className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
-       sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
+      sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
         >
           {title}
         </h2>
         <div className="flex flex-row gap-4">
           <button
             className="custom-prev group p-2 flex justify-center items-center border border-light-theme-border-active
-           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
@@ -72,7 +72,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
 
           <button
             className="custom-next group p-2 flex justify-center items-center border border-light-theme-border-active
-           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg

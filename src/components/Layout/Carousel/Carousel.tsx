@@ -1,4 +1,5 @@
 'use client';
+// #region Imports
 
 import { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,10 +8,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { slides } from './slidesData';
-import SlideLeft from './SlideLeft';
-import SlideRight from './SlideRight';
+import { slides } from '@/components/Layout/Carousel/slidesData';
+import SlideLeft from '@/components/Layout/Carousel/SlideLeft';
+import SlideRight from '@/components/Layout/Carousel/SlideRight';
 
+// #endregion
 const buttonClass = `
   hidden sm:flex items-center justify-center
   sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
