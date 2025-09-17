@@ -52,7 +52,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
         </h3>
 
         {/* Price */}
-        <div className="my-2 sm:pt-[21px]">
+        <div className="my-2 pt-[21px]">
           <div className="flex gap-[8px]">
             <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
               ${product?.price}
