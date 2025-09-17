@@ -1,5 +1,5 @@
 import React from 'react';
-import accessries from '../../../public/api/accessories.json';
+import accessries from '../../../../public/api/accessories.json';
 
 const CheckoutSummary = () => {
   return (

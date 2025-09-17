@@ -3,8 +3,8 @@
 
 import React from 'react';
 import ShoppingCartItem from './ShoppingCartItem';
-import accessries from '../../../public/api/accessories.json';
-import ArrowLeftComponent from '../UI/ShoppingCart/ArrowLeftComponent';
+import accessries from '../../../../public/api/accessories.json';
+import ArrowLeftComponent from '../../UI/ShoppingCart/ArrowLeftComponent';
 import CheckoutSummary from './CheckoutSummary';
 import { useRouter } from 'next/navigation';
 

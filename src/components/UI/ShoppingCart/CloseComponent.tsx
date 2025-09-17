@@ -1,8 +1,8 @@
 // #region Imports
 import Image from 'next/image';
 import React from 'react';
-import CloseGreyBlack from '@/img/Close(GreyBlack).svg';
-import CloseGreyWhite from '@/img/Close(GreyWhite).svg';
+import CloseGreyBlack from '@/components/UI/icons/Close(GreyBlack).svg';
+import CloseGreyWhite from '@/components/UI/icons/Close(GreyWhite).svg';
 // #endregion
 
 type Props = {

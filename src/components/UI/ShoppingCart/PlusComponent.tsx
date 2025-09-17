@@ -1,8 +1,8 @@
 // #region Imports
 import Image from 'next/image';
 import React from 'react';
-import PlusGreyBlack from '@/img/Plus(GreyBlack).svg';
-import PlusGreyWhite from '@/img/Plus(GreyWhite).svg';
+import PlusGreyBlack from '@/components/UI/icons/Plus(GreyBlack).svg';
+import PlusGreyWhite from '@/components/UI/icons/Plus(GreyWhite).svg';
 // #endregion
 
 type Props = {

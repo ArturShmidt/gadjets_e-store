@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import CartBlack from '@/img/Cart(Black).svg';
-import CartWhite from '@/img/Cart(White).svg';
+import CartBlack from '@/components/UI/icons/Cart(Black).svg';
+import CartWhite from '@/components/UI/icons/Cart(White).svg';
 
 // #endregion
 interface Props {

@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-import MinusGreyBlack from '@/img/Minus(GreyBlack).svg';
-import MinusGreyWhite from '@/img/Minus(GreyWhite).svg';
+import MinusGreyBlack from '@/components/UI/icons/Minus(GreyBlack).svg';
+import MinusGreyWhite from '@/components/UI/icons/Minus(GreyWhite).svg';
 // #endregion
 
 type Props = {

@@ -1,7 +1,7 @@
 // #region Imports
 
-import ArrowLeftBlack from '@/img/ArrowLeft(Black).svg';
-import ArrowLeftWhite from '@/img/ArrowLeft(White).svg';
+import ArrowLeftBlack from '@/components/UI/icons/ArrowLeft(Black).svg';
+import ArrowLeftWhite from '@/components/UI/icons/ArrowLeft(White).svg';
 import Image from 'next/image';
 import React from 'react';
 // #endregion

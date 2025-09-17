@@ -1,6 +1,6 @@
 import Catalog from '@/components/Products/Catalog';
 import { getValidCategories } from '@/lib/categories';
-import ShoppingCart from '@/components/ShoppingCart/ShoppingCart';
+import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;

@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import LogoPinkDesktop from '@/img/Logo(Pink)-desktop.svg';
-import LogoWhiteDesktop from '@/img/Logo(White)-desktop.svg';
+import LogoPinkDesktop from '@/components/UI/icons/Logo(Pink)-desktop.svg';
+import LogoWhiteDesktop from '@/components/UI/icons/Logo(White)-desktop.svg';
 
 // #endregion
 interface LogoProps {

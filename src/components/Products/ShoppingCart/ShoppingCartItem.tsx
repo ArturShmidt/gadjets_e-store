@@ -5,9 +5,9 @@
 import { ProductType } from '@/types/ProductType';
 import Image from 'next/image';
 import React from 'react';
-import MinusComponent from '../UI/ShoppingCart/MinusComponent';
-import PlusComponent from '../UI/ShoppingCart/PlusComponent';
-import CloseComponent from '../UI/ShoppingCart/CloseComponent';
+import MinusComponent from '../../UI/ShoppingCart/MinusComponent';
+import PlusComponent from '../../UI/ShoppingCart/PlusComponent';
+import CloseComponent from '../../UI/ShoppingCart/CloseComponent';
 import { useState } from 'react';
 import Link from 'next/link';
 

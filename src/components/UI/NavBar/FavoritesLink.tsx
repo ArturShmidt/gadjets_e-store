@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import FavoritesBlack from '@/img/Favorites(Black).svg';
-import FavoritesWhite from '@/img/Favorites(White).svg';
+import FavoritesBlack from '@/components/UI/icons/Favorites(Black).svg';
+import FavoritesWhite from '@/components/UI/icons/Favorites(White).svg';
 
 // #endregion
 
