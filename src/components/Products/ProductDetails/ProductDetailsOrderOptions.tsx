@@ -91,10 +91,10 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
 
       <div className="flex gap-2">
         <button
-          className="flex-grow
-         dark:bg-dark-theme-btn-primary
-          dark:hover:bg-dark-theme-btn-hover
-          text-light-theme-text dark:text-dark-theme-text font-bold py-3 rounded-md transition-colors"
+          className="flex-grow hover:cursor-pointer bg-light-theme-btn-product-bg text-white
+                  dark:bg-product-add-btn dark:text-text-light dark:hover:bg-dark-theme-btn-hover
+                    font-bold py-3 rounded-md transition-shadow duration-200
+                    hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]"
         >
           Add to cart
         </button>

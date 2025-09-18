@@ -2,20 +2,32 @@ import Image from 'next/image';
 import React from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface ProductCartProps {
   product: Product;
+  index?: number;
 }
 
-const ProductCart = ({ product }: ProductCartProps) => {
+const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
   const imgSrc = `/${product.image}`;
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.42, 0, 0.58, 1],
+        delay: index * 0.15,
+      }}
+      viewport={{ once: true }}
       className="
         border border-light-theme-border-color
         rounded-2xl
         dark:bg-item-bg dark:border-dark-theme-border-color
+        transition-shadow duration-700
+        hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
       "
     >
       <div className="p-8">
@@ -33,15 +45,15 @@ const ProductCart = ({ product }: ProductCartProps) => {
             width={208}
             height={196}
             alt={product.name}
-            className="transition-transform duration-300 ease-in-out hover:scale-110"
+            className="transition-transform duration-800 ease-in-out hover:scale-105"
           />
         </Link>
 
         {/* Product Name */}
-        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover">
+        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] dark:hover:text-dark-theme-btn-hover">
           <Link
             href={`/products/${product.itemId}`}
-            className="hover:underline"
+            className="hover:underline hover:text-light-theme-btn-product-bg"
           >
             {product.name}
           </Link>
@@ -113,6 +125,8 @@ const ProductCart = ({ product }: ProductCartProps) => {
               border border-light-theme-border-active
               hover:border-light-theme-text hover:cursor-pointer
               dark:hover:bg-dark-theme-border-hover dark:hover:border-dark-theme-border-color
+              transition-shadow duration-200
+              hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
             "
           >
             <svg
@@ -132,7 +146,7 @@ const ProductCart = ({ product }: ProductCartProps) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
