@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { Product as ProductSummary } from '@/types/product';
 import { ProductType as ProductDetails } from '@/types/CategoryType';
+import { CategoryName } from '@/types/CategoryName';
 
 async function readJsonFile<T>(filename: string): Promise<T> {
   const jsonDirectory = path.join(process.cwd(), 'data');
@@ -41,7 +42,7 @@ export async function getProductsByCategory(
   category: string,
   options: { sort?: string; order?: 'asc' | 'desc' } = {},
 ): Promise<ProductSummary[]> {
-  if (category === 'shoppingcart') {
+  if (category === CategoryName.Cart) {
     return [];
   }
 

@@ -33,16 +33,20 @@ export default function RootLayout({
         min-h-screen flex flex-col `}
       >
         <StoreProvider>
-          <div className="sticky top-0 z-50 border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg w-full">
-            <div className="max-w-[1920px] mx-auto">
+          <div
+            className="sticky top-0 z-50 w-full 
+          border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg "
+          >
+            <div className="max-w-480 mx-auto">
               <NavBar />
             </div>
           </div>
-          <main className="flex-grow max-w-[1920px] mx-auto w-full">
-            {children}
-          </main>
-          <div className="border-t border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg w-full">
-            <div className="max-w-[1920px] mx-auto">
+          <main className="flex-grow max-w-480 mx-auto w-full">{children}</main>
+          <div
+            className="w-full
+          border-t border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg"
+          >
+            <div className="max-w-480 mx-auto">
               <Footer />
             </div>
           </div>

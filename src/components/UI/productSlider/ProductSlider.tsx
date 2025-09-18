@@ -70,7 +70,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           <button
             ref={prevRef}
             className="group p-2 flex justify-center items-center border border-light-theme-border-active
-            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
@@ -92,7 +92,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           <button
             ref={nextRef}
             className="group p-2 flex justify-center items-center border border-light-theme-border-active
-            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
@@ -134,7 +134,7 @@ export default function ProductSlider({ title }: ProductSliderProps) {
             500: { slidesPerView: 2.3 },
             640: { slidesPerView: 2.5 },
             900: { slidesPerView: 3.5 },
-            1920: { slidesPerView: 4 },
+            1200: { slidesPerView: 4 },
           }}
           className="multiple-slide-carousel"
         >

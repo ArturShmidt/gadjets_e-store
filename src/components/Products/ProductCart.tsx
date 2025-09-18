@@ -36,7 +36,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
           href={`/products/${product.itemId}`}
           className="
             relative flex justify-center
-            h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
+            h-[130px] sm:h-49 md:h-49 lg:h-49
           "
         >
           <Image
@@ -104,7 +104,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         <div className="flex items-center gap-2 mt-4">
           <button
             className="
-              h-[40px] flex-grow
+              h-10 flex-grow
               bg-light-theme-btn-product-bg text-white
               dark:bg-product-add-btn dark:text-text-light
               text-sm leading-[21px]
