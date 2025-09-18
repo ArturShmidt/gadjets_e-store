@@ -12,7 +12,9 @@ import { slides } from '@/components/Layout/Carousel/slidesData';
 import SlideLeft from '@/components/Layout/Carousel/SlideLeft';
 import SlideRight from '@/components/Layout/Carousel/SlideRight';
 
+import { motion } from 'framer-motion';
 // #endregion
+
 const buttonClass = `
   hidden sm:flex items-center justify-center
   sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
@@ -30,20 +32,29 @@ const Carousel = () => {
 
   return (
     <div className="w-full">
-      {/* Заголовок */}
-      <div className="dark:bg-dark-theme-bg px-6 py-6 sm:px-8 sm:py-12">
+      <motion.div
+        className="dark:bg-dark-theme-bg px-6 py-6 sm:px-8 sm:py-12"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         <h1
-          className=" font-[Mont] font-[800] 
-                        text-3xl sm:text-5xl 
-                        tracking-[-0.01em] 
-                        text-black dark:text-[#F1F2F9]"
+          className="font-[Mont] font-extrabold 
+           text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+           tracking-tight 
+           text-black dark:text-white
+           text-center"
         >
           Welcome to Nice Gadgets store!
         </h1>
-      </div>
+      </motion.div>
 
-      {/* Swiper */}
-      <div className="w-full dark:bg-dark-theme-bg flex flex-col items-center pb-[88px] sm:pb-[96px] lg:pb-[112px]">
+      <motion.div
+        className="w-full dark:bg-dark-theme-bg flex flex-col items-center pb-[88px] sm:pb-[96px] lg:pb-[112px]"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         <div className="flex items-start justify-center w-full">
           <button
             ref={prevRef}
@@ -62,7 +73,7 @@ const Carousel = () => {
                 prevEl: prevRef.current!,
                 nextEl: nextRef.current!,
               }}
-              autoplay={{ delay: 4000, disableOnInteraction: false }}
+              autoplay={{ delay: 7000, disableOnInteraction: true }}
               onBeforeInit={(swiper) => {
                 if (
                   swiper.params.navigation &&
@@ -97,9 +108,8 @@ const Carousel = () => {
           </button>
         </div>
 
-        {/* кастомна пагінація */}
         <div className="custom-pagination mt-6 flex justify-center"></div>
-      </div>
+      </motion.div>
     </div>
   );
 };

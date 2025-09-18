@@ -2,6 +2,7 @@
 
 import React, { useMemo, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -31,16 +32,9 @@ export default function ProductSlider({ title }: ProductSliderProps) {
     return validProducts.filter((product) => product.year === maxYear);
   }, [validProducts]);
 
-  const getTopDiscounts = (category: Product['category'], count: number) => {
-    return validProducts
-      .filter((p) => p.category === category)
-      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-      .slice(0, count);
-  };
-
   const visibleHot = useMemo(() => {
     const getTopDiscounts = (category: Product['category'], count: number) => {
-      return validProducts // ✅ ВИПРАВЛЕНО: використовуємо validProducts
+      return validProducts
         .filter((p) => p.category === category)
         .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
         .slice(0, count);
@@ -63,9 +57,15 @@ export default function ProductSlider({ title }: ProductSliderProps) {
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
       <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
-        <h2 className="font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal">
+        <motion.h2
+          className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+        >
           {title}
-        </h2>
+        </motion.h2>
         <div className="flex flex-row gap-4">
           <button
             ref={prevRef}
@@ -138,9 +138,12 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           }}
           className="multiple-slide-carousel"
         >
-          {visibleProducts.map((product) => (
+          {visibleProducts.map((product, idx) => (
             <SwiperSlide key={product.id}>
-              <ProductCart product={product} />
+              <ProductCart
+                product={product}
+                index={idx}
+              />
             </SwiperSlide>
           ))}
 
