@@ -21,16 +21,10 @@ export default function Home() {
         <ProductSlider title="Brand new models" />
         <ShopByCategory />
         <ProductSlider title="Hot prices" />
-        <AppleLoader className="text-white" />
         <AppleLoader
           size="lg"
           speed={2}
-          className="text-white"
-        />
-        <AppleLoader
-          size={100}
-          speed={0.8}
-          className="text-white"
+          className="text-black dark:text-white"
         />
       </div>
       {/* </main> */}
