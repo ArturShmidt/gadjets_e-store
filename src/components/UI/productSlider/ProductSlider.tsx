@@ -60,9 +60,9 @@ export default function ProductSlider({ title }: ProductSliderProps) {
         <motion.h2
           className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: [0.42, 0, 0.58, 1] }}
+          transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
         >
           {title}
         </motion.h2>
