@@ -16,4 +16,11 @@ export type ProductType = {
   color: string;
   images: string[];
   description: DescriptionItem[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera?: string;
+  zoom?: string;
+  cell: string[];
 };

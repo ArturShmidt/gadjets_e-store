@@ -1,34 +1,51 @@
 'use client';
 
+import { useGetProductsQuery } from '@/lib/features/api/apiSlice';
+import { Product as ProductSummary } from '@/types/product';
+
 import ProductList from './ProductList';
-import products from '@public/api/products.json';
-import CategoryHeading from '@/components/UI/CategoriesHeading';
 import { CategoryName } from '@/types/CategoryName';
 
-// Smart-компонент, компонент для сортування і іншої роботи з данними.
-type CatalogProps = {
+import CategoriesHeading from '@/components/UI/CategoriesHeading';
+
+export default function Catalog({
+  categoryName,
+  initialProducts,
+}: {
   categoryName: CategoryName;
-};
+  initialProducts: ProductSummary[];
+}) {
+  // 1. Використовуємо RTK Query для керування даними на клієнті.
+  //    - `initialProducts` використовуються для миттєвого відображення.
+  //    - `useGetProductsQuery` "підхоплює" ці дані для кешування та оновлень.
+  const {
+    data: products = initialProducts, // <-- Отримуємо дані
+    isLoading,
+    isError,
+  } = useGetProductsQuery(categoryName);
 
-const Catalog: React.FC<CatalogProps> = ({ categoryName }) => {
-  const visibleProducts = products.filter(
-    (product) => product.category === categoryName,
-  );
+  // 2. Обробляємо стани завантаження та помилки.
+  // if (isLoading) {
+  //   return <div>Завантаження...</div>;
+  // }
+  if (isError) {
+    return <div>Сталася помилка.</div>;
+  }
 
-  const total = visibleProducts.length;
+  // 3. Фільтрувати вручну більше не потрібно.
+  //    Дані, що приходять, ВЖЕ відфільтровані на сервері.
+  const total = products.length;
 
   return (
     <>
-      <CategoryHeading
+      <CategoriesHeading
         categoryName={categoryName}
         total={total}
       />
       <ProductList
-        productlist={visibleProducts}
+        productlist={products}
         total={total}
       />
     </>
   );
-};
-
-export default Catalog;
+}

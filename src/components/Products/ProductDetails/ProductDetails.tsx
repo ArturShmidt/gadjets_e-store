@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import phoneData from '@public/api/phones.json';
 import ProductSlider from '../../UI/productSlider/ProductSlider';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
@@ -9,88 +8,67 @@ import ProductDetailsSpecs from './ProductDetailsSpecs';
 import ProductDetailsOrderOptions from './ProductDetailsOrderOptions';
 import ProductDetailsHeroSectionHeader from './ProductDetailsHeroSectionHeader';
 
-interface Props {
-  productId: string;
-}
+import { ProductType as Product } from '@/types/CategoryType';
+import { useGetProductByIdQuery } from '@/lib/features/api/apiSlice';
 
-type PhoneDescription = {
-  title: string;
-  text: string[];
-};
+const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
+  const {
+    data: product = initialProduct, // Використовуємо initialProduct як початкове значення
+    isError,
+  } = useGetProductByIdQuery(initialProduct.id);
 
-type Phone = {
-  id: string;
-  category: string;
-  namespaceId: string;
-  name: string;
-  capacityAvailable: string[];
-  capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
-  colorsAvailable: string[];
-  color: string;
-  images: string[];
-  description: PhoneDescription[];
-  screen: string;
-  resolution: string;
-  processor: string;
-  ram: string;
-  camera: string;
-  zoom: string;
-  cell: string[];
-};
+  // if (isLoading) {
+  //   // Цей стан буде видимий тільки при клієнтській навігації
+  //   return <div>Завантаження деталей товару...</div>;
+  // }
 
-const ProductDetails: React.FC<Props> = ({ productId }) => {
-  const typedPhoneData: Phone[] = phoneData;
-
-  const phoneDetails = typedPhoneData.find((el) => el.id === productId);
-
-  if (!productId || !phoneDetails) {
-    return;
+  if (isError) {
+    return <div>Помилка оновлення даних.</div>;
   }
 
-  console.log(productId);
-
-  const specsData = [
-    { label: 'Screen', value: phoneDetails.screen },
-    { label: 'Resolution', value: phoneDetails.resolution },
-    { label: 'Processor', value: phoneDetails.processor },
-    { label: 'RAM', value: phoneDetails.ram },
-    { label: 'Built in memory', value: phoneDetails.capacity },
-    { label: 'Camera', value: phoneDetails.camera },
-    { label: 'Zoom', value: phoneDetails.zoom },
-    { label: 'Cell', value: phoneDetails.cell.join(', ') },
+  const allSpecs = [
+    { label: 'Screen', value: product.screen },
+    { label: 'Resolution', value: product.resolution },
+    { label: 'Processor', value: product.processor },
+    { label: 'RAM', value: product.ram },
+    { label: 'Built in memory', value: product.capacity },
+    { label: 'Camera', value: product.camera },
+    { label: 'Zoom', value: product.zoom },
+    { label: 'Cell', value: product.cell.join(', ') },
   ];
 
-  // console.log(typedPhoneData);
+  const specsData = allSpecs.filter(
+    (spec): spec is { label: string; value: string } =>
+      spec.value !== undefined,
+  );
 
   return (
     <div className="flex flex-col sm:flex-row sm:flex-wrap dark:bg-dark-theme-bg ">
       <ProductDetailsHeroSectionHeader
-        name={phoneDetails.name}
-        category={phoneDetails.category}
+        name={product.name}
+        category={product.category}
       />
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsHeroSection
-          category={phoneDetails.category}
-          name={phoneDetails.name}
-          images={phoneDetails.images}
+          category={product.category}
+          name={product.name}
+          images={product.images}
         />
       </div>
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsOrderOptions
-          namespaceId={phoneDetails.namespaceId}
-          colorsAvailable={phoneDetails.colorsAvailable}
-          color={phoneDetails.color}
-          capacityAvailable={phoneDetails.capacityAvailable}
-          capacity={phoneDetails.capacity}
-          priceDiscount={phoneDetails.priceDiscount}
-          priceRegular={phoneDetails.priceRegular}
+          namespaceId={product.namespaceId}
+          colorsAvailable={product.colorsAvailable}
+          color={product.color}
+          capacityAvailable={product.capacityAvailable}
+          capacity={product.capacity}
+          priceDiscount={product.priceDiscount}
+          priceRegular={product.priceRegular}
         />
       </div>
       <div className="w-full lg:flex lg:gap-8 mt-8">
         <div className="w-full sm:px-4 mt-8">
-          <ProductDetailsAbout description={phoneDetails.description} />
+          <ProductDetailsAbout description={product.description} />
         </div>
         <div className="w-full sm:px-4 mt-8">
           <ProductDetailsSpecs specsData={specsData} />

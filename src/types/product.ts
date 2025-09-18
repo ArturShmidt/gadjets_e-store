@@ -1,6 +1,10 @@
+export const VALID_CATEGORIES = ['phones', 'accessories', 'tablets'] as const;
+
+type Category = (typeof VALID_CATEGORIES)[number];
+
 export interface Product {
   id: number;
-  category: string;
+  category: Category;
   itemId: string;
   name: string;
   fullPrice: number;
@@ -11,4 +15,15 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
+}
+
+export function isProduct(item: unknown): item is Product {
+  if (item === null || typeof item !== 'object') {
+    return false;
+  }
+  const product = item as Record<string, unknown>;
+  return (
+    typeof product.category === 'string' &&
+    (VALID_CATEGORIES as readonly string[]).includes(product.category)
+  );
 }

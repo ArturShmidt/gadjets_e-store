@@ -1,57 +1,76 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCart from '@/components/Products/ProductCart';
 import products from '@public/api/products.json';
+import { Product, isProduct } from '@/types/product';
 
 interface ProductSliderProps {
   title: string;
 }
 
-export default function ProductSlider({ title }: ProductSliderProps) {
-  useEffect(() => {
-    // Swiper's navigation module is already loaded via `modules: [Navigation]`
-  }, []);
+// TODO перевірити чи можна оптимізувати
 
-  const visiblePhones = products.filter(
-    (product) => product.year === Math.max(...products.map((p) => p.year)),
+export default function ProductSlider({ title }: ProductSliderProps) {
+  // Використовуємо useRef для кнопок
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
+  //
+  const validProducts: Product[] = useMemo(
+    () => products.filter(isProduct),
+    [],
   );
 
-  const getTopDiscounts = (category: string, count: number) => {
-    return products
+  const visiblePhones = useMemo(() => {
+    const maxYear = Math.max(...validProducts.map((p) => p.year));
+    return validProducts.filter((product) => product.year === maxYear);
+  }, [validProducts]);
+
+  const getTopDiscounts = (category: Product['category'], count: number) => {
+    return validProducts
       .filter((p) => p.category === category)
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
       .slice(0, count);
   };
 
-  const visibleHot = [
-    ...getTopDiscounts('phones', 4),
-    ...getTopDiscounts('tablets', 3),
-    ...getTopDiscounts('accessories', 3),
-  ];
+  const visibleHot = useMemo(() => {
+    const getTopDiscounts = (category: Product['category'], count: number) => {
+      return validProducts // ✅ ВИПРАВЛЕНО: використовуємо validProducts
+        .filter((p) => p.category === category)
+        .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+        .slice(0, count);
+    };
+    return [
+      ...getTopDiscounts('phones', 4),
+      ...getTopDiscounts('tablets', 3),
+      ...getTopDiscounts('accessories', 3),
+    ];
+  }, [validProducts]);
 
-  const visibleProducts =
-    title === 'Brand new models' ? visiblePhones
-    : title === 'Hot prices' ? visibleHot
-    : [];
+  const visibleProducts = useMemo(
+    () =>
+      title === 'Brand new models' ? visiblePhones
+      : title === 'Hot prices' ? visibleHot
+      : [],
+    [title, visiblePhones, visibleHot],
+  );
 
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
       <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
-        <h2
-          className="font-[Mont] font-extrabold text-[22px] sm:text-[32px]
-      sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
-        >
+        <h2 className="font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal">
           {title}
         </h2>
         <div className="flex flex-row gap-4">
           <button
-            className="custom-prev group p-2 flex justify-center items-center border border-light-theme-border-active
-            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+            ref={prevRef}
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
+           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
@@ -71,8 +90,9 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           </button>
 
           <button
-            className="custom-next group p-2 flex justify-center items-center border border-light-theme-border-active
-            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
+            ref={nextRef}
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
+           dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
             <svg
@@ -98,8 +118,16 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           spaceBetween={30}
           loop={true}
           navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
+            nextEl: nextRef.current,
+            prevEl: prevRef.current,
+          }}
+          onInit={(swiper) => {
+            // @ts-expect-error: Swiper types don't know about refs
+            swiper.params.navigation.prevEl = prevRef.current;
+            // @ts-expect-error: Swiper types don't know about refs
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
           }}
           breakpoints={{
             0: { slidesPerView: 1.4 },
@@ -113,11 +141,6 @@ export default function ProductSlider({ title }: ProductSliderProps) {
           {visibleProducts.map((product) => (
             <SwiperSlide key={product.id}>
               <ProductCart product={product} />
-              {/* <div className="bg-indigo-50 rounded-2xl h-96 flex justify-center items-center">
-                <span className="text-2xl font-semibold text-indigo-600">
-                  {text}
-                </span>
-              </div> */}
             </SwiperSlide>
           ))}
 
