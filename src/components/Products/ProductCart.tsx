@@ -15,10 +15,6 @@ const ProductCart = ({ product }: ProductCartProps) => {
       className="
         border border-light-theme-border-color
         rounded-2xl
-        w-[287px] h-[440px]
-        sm:w-[288px] sm:h-[506px]
-        md:w-[229px] md:h-[506px]
-        lg:w-[272px] lg:h-[506px]
         dark:bg-item-bg dark:border-dark-theme-border-color
       "
     >
