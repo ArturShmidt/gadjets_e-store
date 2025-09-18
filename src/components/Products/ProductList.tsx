@@ -55,7 +55,12 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
   return (
     <>
       {!isFavoritesPage && (
-        <div className="flex gap-4 pt-8 pb-6">
+        <div
+          className="flex gap-4 pt-8 pb-6 
+        px-4 sm:px-6 lg:px-0
+    mx-auto
+    max-w-[320px] sm:max-w-[640px] lg:max-w-[1200px]"
+        >
           <div className="flex flex-col gap-1">
             <label
               htmlFor="sort"
@@ -126,14 +131,16 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
 
       <div
         ref={listRef}
-        className="grid 
-          grid-cols-1
-          sm:grid-cols-2 
-          md:grid-cols-3 
-          lg-max:grid-cols-4 
-          gap-x-4 
-          gap-y-10 
-          justify-items-center"
+        className="
+    grid
+    grid-cols-[repeat(1,287px)]
+    sm:grid-cols-[repeat(2,288px)]
+    lg:grid-cols-[repeat(4,272px)]
+    gap-y-[40px]
+    gap-x-[16px] 
+    max-w-[1200px]
+    justify-center
+  "
       >
         {/* .map по списку, видаючи ліст з ProductCart */}
         {/* просто створення масиву від 0 до 4, і мапінг товарів для прикладу */}

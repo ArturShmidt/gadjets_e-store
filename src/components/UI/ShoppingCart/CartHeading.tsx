@@ -14,7 +14,12 @@ const CartHeading: React.FC = () => {
   };
 
   return (
-    <nav className="mt-6 sm:mt-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-80 sm:max-w-160 lg:max-w-300">
+    <nav
+      className="mt-6 sm:mt-10 
+    px-4 sm:px-6 lg:px-8
+    mx-auto
+    max-w-[320px] sm:max-w-[640px] lg:max-w-[1200px]"
+    >
       <Link
         href="/"
         onClick={handleBack}

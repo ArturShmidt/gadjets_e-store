@@ -37,16 +37,18 @@ export default function RootLayout({
             className="sticky top-0 z-50 w-full 
           border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg "
           >
-            <div className="max-w-480 mx-auto">
+            <div className="max-w-[1200px] mx-auto">
               <NavBar />
             </div>
           </div>
-          <main className="flex-grow max-w-480 mx-auto w-full">{children}</main>
+          <main className="flex-grow max-w-[1200px] mx-auto w-full">
+            {children}
+          </main>
           <div
             className="w-full
           border-t border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg"
           >
-            <div className="max-w-480 mx-auto">
+            <div className="max-w-[1200px] mx-auto">
               <Footer />
             </div>
           </div>

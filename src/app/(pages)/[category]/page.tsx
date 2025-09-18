@@ -21,7 +21,15 @@ function ComponentWTF({ categoryName }: { categoryName: CategoryName }) {
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
   return (
     <>
-      <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
+      <nav
+        className="
+    flex items-center text-sm mb-4 sm:pb-6
+    dark:text-dark-theme-text text-light-theme-text
+    px-4 sm:px-6 lg:px-0
+    mx-auto
+    max-w-[320px] sm:max-w-[640px] lg:max-w-[1200px]
+  "
+      >
         <Link
           href="/"
           className="transition-transform duration-300 hover:scale-[1.4] cursor-pointer"
