@@ -59,7 +59,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
           <div className="flex flex-col gap-1">
             <label
               htmlFor="sort"
-              className="font-[Mont] font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
+              className="font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
             >
               Sort by
             </label>
@@ -70,7 +70,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
               onChange={(e) => setSortBy(e.target.value as SortOption)}
               className="w-34 sm:w-47 lg:w-44 bg-light-theme-bg-dark
                   dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
-                  font-[Mont] font-[600] text-[14px] leading-[21px]
+                  font-[600] text-[14px] leading-[21px]
                   text-light-theme-text dark:text-text-light border
                   border-light-theme-border-active
                   focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
@@ -91,7 +91,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
           <div className="flex flex-col gap-1">
             <label
               htmlFor="items"
-              className="font-[Mont] font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
+              className="font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
             >
               Items on page
             </label>
@@ -102,7 +102,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
               onChange={(e) => setPerPage(Number(e.target.value))}
               className="w-34 lg:w-32 bg-light-theme-bg-dark
                 dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
-                font-[Mont] font-[600] text-[14px] leading-[21px]
+                font-[600] text-[14px] leading-[21px]
                 text-light-theme-text dark:text-text-light border
                 border-light-theme-border-active
                 focus:outline-none focus:ring-2 focus:ring-light-theme-border-active

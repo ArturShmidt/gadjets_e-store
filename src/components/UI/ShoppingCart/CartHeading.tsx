@@ -14,11 +14,11 @@ const CartHeading: React.FC = () => {
   };
 
   return (
-    <nav className="lg:flex lg:justify-start lg:items-start lg:flex-col">
+    <nav className="mt-6 sm:mt-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-80 sm:max-w-160 lg:max-w-300">
       <Link
         href="/"
         onClick={handleBack}
-        className="flex mb-6 sm:mb-4 w-13 cursor-pointer"
+        className="flex mb-6 sm:mb-4  w-13 cursor-pointer"
       >
         <div className="mr-1 text-light-theme-text dark:text-dark-theme-text">
           <ArrowLeftComponent />

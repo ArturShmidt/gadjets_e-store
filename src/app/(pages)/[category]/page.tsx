@@ -8,40 +8,33 @@ import Link from 'next/link';
 import Catalog from '@/components/Products/Catalog';
 import HomeIconComponent from '@/components/UI/HomeIconComponent';
 import ArrowRightCategoryComponent from '@/components/UI/ArrowRightCategoryComponent';
-import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
-import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
 
 import { CategoryName } from '@/types/CategoryName';
 
 import { getValidCategories } from '@/lib/categories';
-import { isShoppingCartPage } from '@/lib/utils';
 import { getProductsByCategory } from '@/lib/services/product.service';
 
 // #endregion
 
 function ComponentWTF({ categoryName }: { categoryName: CategoryName }) {
-  const IsShoppingCartPage = isShoppingCartPage(`/${categoryName}`);
   const formattedCategory =
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
   return (
     <>
-      {IsShoppingCartPage ?
-        <CartHeading />
-      : <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
-          <Link
-            href="/"
-            className="transition-transform duration-300 hover:scale-[1.4] cursor-pointer"
-          >
-            <HomeIconComponent />
-          </Link>
-          <div className="px-2">
-            <ArrowRightCategoryComponent />
-          </div>
-          <span className="dark:text-text-gray text-light-theme-text-menu ">
-            {formattedCategory}
-          </span>
-        </nav>
-      }
+      <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
+        <Link
+          href="/"
+          className="transition-transform duration-300 hover:scale-[1.4] cursor-pointer"
+        >
+          <HomeIconComponent />
+        </Link>
+        <div className="px-2">
+          <ArrowRightCategoryComponent />
+        </div>
+        <span className="dark:text-text-gray text-light-theme-text-menu ">
+          {formattedCategory}
+        </span>
+      </nav>
     </>
   );
 }
@@ -78,13 +71,10 @@ export default async function CategoryPage({
 
       {/* 3. Відображаємо список товарів */}
       {/* <ProductList products={products} /> */}
-      {isShoppingCartPage(`/${category}`) ?
-        <ShoppingCart />
-      : <Catalog
-          categoryName={category}
-          initialProducts={initialProducts}
-        />
-      }
+      <Catalog
+        categoryName={category}
+        initialProducts={initialProducts}
+      />
     </div>
   );
 }

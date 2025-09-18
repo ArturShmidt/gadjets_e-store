@@ -17,6 +17,7 @@ const CheckoutSummary = () => {
           className="flex items-center justify-center 
           font-bold text-[32px] leading-[41px]"
         >
+          $
           {accessries
             // TODO need create separate func
             .map((accessorie) => accessorie.priceDiscount)

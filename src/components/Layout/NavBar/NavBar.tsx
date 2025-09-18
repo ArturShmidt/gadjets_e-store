@@ -13,7 +13,7 @@ import { NavBarRightComponents } from '@/types/NavBarRightComponents';
 
 // #endregion
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="h-12 flex justify-between pl-4 border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg sm:hidden">
+      <nav className="h-12 flex justify-between pl-4 sm:hidden">
         <Logo placement="navbar" />
         <div
           className="relative w-8 content-center mx-4 pl-4 h-full border-l border-light-theme-border-color dark:border-dark-theme-border-color
@@ -46,9 +46,9 @@ const NavBar = () => {
           />
         </div>
         {opened && <MenuHamburger onClose={() => setOpened(false)} />}
-      </div>
+      </nav>
 
-      <div className="h-12 lg:h-16 hidden sm:flex flex-row items-center pl-4 lg:pl-6  border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg ">
+      <nav className="h-12 lg:h-16 hidden sm:flex flex-row items-center pl-4 lg:pl-6 dark:bg-dark-theme-bg ">
         <Logo placement="navbar" />
         <div className="dark:bg-dark-theme-bg">
           <CategoriesMenu direction="row" />
@@ -76,7 +76,7 @@ const NavBar = () => {
             );
           })}
         </div>
-      </div>
+      </nav>
     </>
   );
 };

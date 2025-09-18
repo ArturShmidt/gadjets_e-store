@@ -8,5 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 
 // перевіряє чи ми зараз на сторінці корзини
 export function isShoppingCartPage(pathname: string) {
-  return pathname === CategoryName.Cart;
+  return pathname === `/${CategoryName.Cart}`;
 }

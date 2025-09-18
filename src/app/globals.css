@@ -34,6 +34,7 @@
   --color-dark-theme-btn-selected: #323542;
 
   --breakpoint-lg-max: 75rem;
+  --breakpoint-lg: 75rem;
 }
 
 @theme inline {
