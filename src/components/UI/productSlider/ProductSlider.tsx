@@ -1,43 +1,64 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCart from '@/components/Products/ProductCart';
 import products from '@public/api/products.json';
+import { Product, isProduct } from '@/types/product';
 
 interface ProductSliderProps {
   title: string;
 }
+
+// TODO перевірити чи можна оптимізувати
 
 export default function ProductSlider({ title }: ProductSliderProps) {
   // Використовуємо useRef для кнопок
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
 
-  const visiblePhones = products.filter(
-    (product) => product.year === Math.max(...products.map((p) => p.year)),
+  //
+  const validProducts: Product[] = useMemo(
+    () => products.filter(isProduct),
+    [],
   );
 
-  const getTopDiscounts = (category: string, count: number) => {
-    return products
+  const visiblePhones = useMemo(() => {
+    const maxYear = Math.max(...validProducts.map((p) => p.year));
+    return validProducts.filter((product) => product.year === maxYear);
+  }, [validProducts]);
+
+  const getTopDiscounts = (category: Product['category'], count: number) => {
+    return validProducts
       .filter((p) => p.category === category)
       .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
       .slice(0, count);
   };
 
-  const visibleHot = [
-    ...getTopDiscounts('phones', 4),
-    ...getTopDiscounts('tablets', 3),
-    ...getTopDiscounts('accessories', 3),
-  ];
+  const visibleHot = useMemo(() => {
+    const getTopDiscounts = (category: Product['category'], count: number) => {
+      return validProducts // ✅ ВИПРАВЛЕНО: використовуємо validProducts
+        .filter((p) => p.category === category)
+        .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+        .slice(0, count);
+    };
+    return [
+      ...getTopDiscounts('phones', 4),
+      ...getTopDiscounts('tablets', 3),
+      ...getTopDiscounts('accessories', 3),
+    ];
+  }, [validProducts]);
 
-  const visibleProducts =
-    title === 'Brand new models' ? visiblePhones
-    : title === 'Hot prices' ? visibleHot
-    : [];
+  const visibleProducts = useMemo(
+    () =>
+      title === 'Brand new models' ? visiblePhones
+      : title === 'Hot prices' ? visibleHot
+      : [],
+    [title, visiblePhones, visibleHot],
+  );
 
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
