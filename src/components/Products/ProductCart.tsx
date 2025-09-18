@@ -19,9 +19,9 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
       transition={{
         duration: 0.6,
         ease: [0.42, 0, 0.58, 1],
-        delay: index * 0.15,
+        delay: index < 4 ? index * 0.15 : 0,
       }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.3 }}
       className="
         border border-light-theme-border-color
         rounded-2xl
