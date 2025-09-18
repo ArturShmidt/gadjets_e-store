@@ -1,13 +1,19 @@
 'use client';
+// #region Imports
 
+import React from 'react';
 import Link from 'next/link';
-import Logo from '../../UI/NavBar/Logo';
+
+import Logo from '@/components/UI/NavBar/Logo';
 import { FooterCategories } from '@/types/FooterCategories';
-import ArrowUpComponent from '../../UI/Footer/ArrowUpComponent';
-const Footer = () => {
+import ArrowUpComponent from '@/components/UI/Footer/ArrowUpComponent';
+
+// #endregion
+const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   return (
     <footer className="border-light-theme-border-color dark:bg-dark-theme-bg dark:border-dark-theme-border-color w-full border-t">
       <div className="flex flex-col gap-8 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">

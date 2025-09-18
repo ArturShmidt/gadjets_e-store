@@ -1,42 +1,32 @@
-import {
-  getValidCategories,
-  getProductsByCategory,
-} from '@/lib/services/product.service';
-import Catalog from '@/components/Products/Catalog';
-import { notFound } from 'next/navigation';
+// #region Imports
+
 import { Product as ProductSummary } from '@/types/product';
 
 // for component WTF
 import Link from 'next/link';
+
+import Catalog from '@/components/Products/Catalog';
 import HomeIconComponent from '@/components/UI/HomeIconComponent';
 import ArrowRightCategoryComponent from '@/components/UI/ArrowRightCategoryComponent';
-import ArrowLeftComponent from '@/components/UI/ShoppingCart/ArrowLeftComponent';
-import { isShoppingCartPage } from '@/lib/utils';
 import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
+import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
 
-function ComponentWTF({ categoryName }: { categoryName: string }) {
+import { CategoryName } from '@/types/CategoryName';
+
+import { getValidCategories } from '@/lib/categories';
+import { isShoppingCartPage } from '@/lib/utils';
+import { getProductsByCategory } from '@/lib/services/product.service';
+
+// #endregion
+
+function ComponentWTF({ categoryName }: { categoryName: CategoryName }) {
   const IsShoppingCartPage = isShoppingCartPage(`/${categoryName}`);
   const formattedCategory =
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
   return (
     <>
       {IsShoppingCartPage ?
-        <nav className="lg:flex lg:justify-start lg:items-start lg:flex-col">
-          <button className="flex mb-6 sm:mb-4 w-13 cursor-pointer">
-            <div
-              className="mr-1 
-          text-light-theme-text dark:text-dark-theme-text "
-            >
-              <ArrowLeftComponent />
-            </div>
-            <span className="text-light-theme-text-menu dark:text-dark-theme-text font-bold text-[12px] ">
-              Back
-            </span>
-          </button>
-          <h2 className="font-bold text-[32px] sm:text-[48px] leading-[41px] sm:leading-[56px] text-light-theme-text dark:text-dark-theme-text">
-            Cart
-          </h2>
-        </nav>
+        <CartHeading />
       : <nav className="flex items-center text-sm mb-4 sm:pb-6 dark:text-dark-theme-text text-light-theme-text">
           <Link
             href="/"
@@ -73,7 +63,7 @@ export const dynamicParams = false;
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: { category: CategoryName };
 }) {
   const { category } = params;
 

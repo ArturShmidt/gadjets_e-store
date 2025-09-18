@@ -1,5 +1,8 @@
+// #region Imports
+
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { motion } from 'framer-motion';
 import PhonesCatPhoto from '@public/img/category-phones.png';
 import TabletsCatPhoto from '@public/img/category-tablets.png';

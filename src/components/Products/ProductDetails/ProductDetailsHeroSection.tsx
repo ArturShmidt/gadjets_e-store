@@ -1,8 +1,5 @@
-import Link from 'next/link';
 import React from 'react';
 import ProductDetailsHeroSectionSlider from './ProductDetailsHeroSectionSlider';
-import ProductDetailsHeroSectionNavBar from './ProductDetailsHeroSectionNavBar';
-import ProductDetailsHeroSectionHeader from './ProductDetailsHeroSectionHeader';
 
 interface Props {
   category: string;

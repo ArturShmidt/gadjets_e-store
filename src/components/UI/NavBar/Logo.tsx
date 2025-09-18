@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import LogoPinkDesktop from '@/components/UI/icons/Logo(Pink)-desktop.svg';
 import LogoWhiteDesktop from '@/components/UI/icons/Logo(White)-desktop.svg';
+import { CategoryName } from '@/types/CategoryName';
 
 // #endregion
 interface LogoProps {
@@ -24,7 +25,7 @@ const Logo = ({ placement = 'navbar' }: LogoProps) => {
   const { width, height, tailwind } = sizes[placement];
 
   return (
-    <Link href="/">
+    <Link href={`${CategoryName.Home && '/'}`}>
       <Image
         src={LogoWhiteDesktop}
         alt="logo"

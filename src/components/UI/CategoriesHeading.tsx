@@ -1,7 +1,8 @@
 import { useIsFavoritesPage } from '@/hooks/useIsFavoritesPage';
+import { CategoryName } from '@/types/CategoryName';
 import React from 'react';
 type CatalogProps = {
-  categoryName: string;
+  categoryName: CategoryName;
   total: number;
 };
 
@@ -11,14 +12,14 @@ const CategoryHeading: React.FC<CatalogProps> = ({ categoryName, total }) => {
   // опрацьовуємо список
   const formattedCategory =
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-
+  console.log(formattedCategory);
   return (
-    <div>
+    <>
       <h2
         className=" font-bold text-[32px] leading-[41px] sm:text-[48px] sm:leading-[56px]
         tracking-[-0.01em] text-light-theme-text dark:text-dark-theme-text pb-2"
       >
-        {categoryName === 'phones' ?
+        {categoryName === CategoryName.Phones ?
           `Mobile ${categoryName.toLowerCase()}`
         : formattedCategory}
       </h2>
@@ -28,7 +29,7 @@ const CategoryHeading: React.FC<CatalogProps> = ({ categoryName, total }) => {
       >
         {total} {!isFavoritesPage ? 'models' : 'items'}
       </p>
-    </div>
+    </>
   );
 };
 

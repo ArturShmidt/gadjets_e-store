@@ -2,14 +2,14 @@
 
 // #region Imports
 
-import { ProductType } from '@/types/CategoryType';
 import Image from 'next/image';
-import React from 'react';
-import MinusComponent from '../../UI/ShoppingCart/MinusComponent';
-import PlusComponent from '../../UI/ShoppingCart/PlusComponent';
-import CloseComponent from '../../UI/ShoppingCart/CloseComponent';
-import { useState } from 'react';
 import Link from 'next/link';
+import React, { useState } from 'react';
+
+import { ProductType } from '@/types/CategoryType';
+import MinusComponent from '@/components/UI/ShoppingCart/MinusComponent';
+import PlusComponent from '@/components/UI/ShoppingCart/PlusComponent';
+import CloseComponent from '@/components/UI/ShoppingCart/CloseComponent';
 
 // #endregion
 
@@ -44,6 +44,7 @@ const ShoppingCartItem: React.FC<Props> = ({ product }) => {
             />
           </div>
           <Link
+            // TODO need to be refactored in future
             href={`/products/${product.id}`}
             className="text-[14px] flex items-center w-32 sm:w-44 "
           >

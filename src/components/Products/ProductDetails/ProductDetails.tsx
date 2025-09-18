@@ -14,7 +14,6 @@ import { useGetProductByIdQuery } from '@/lib/features/api/apiSlice';
 const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
   const {
     data: product = initialProduct, // Використовуємо initialProduct як початкове значення
-    isLoading,
     isError,
   } = useGetProductByIdQuery(initialProduct.id);
 

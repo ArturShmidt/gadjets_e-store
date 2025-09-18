@@ -1,7 +1,11 @@
+// #region Imports
+
 import React from 'react';
 import Image from 'next/image';
 
-interface SlideProps {
+// #endregion
+
+export interface SlideProps {
   slide: {
     product: string;
     productSlogan: string;
