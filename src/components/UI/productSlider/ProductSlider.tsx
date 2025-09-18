@@ -2,7 +2,7 @@
 
 import React, { useMemo, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,38 +15,6 @@ interface ProductSliderProps {
 }
 
 // TODO перевірити чи можна оптимізувати
-
-interface AnimatedOnViewOnceProps {
-  children: React.ReactNode;
-  delay?: number;
-  duration?: number;
-  y?: number;
-}
-
-function AnimatedOnViewOnce({
-  children,
-  delay = 0,
-  duration = 0.5,
-  y = 20,
-}: AnimatedOnViewOnceProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.4 });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration,
-        delay,
-        ease: [0.42, 0, 0.58, 1],
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 export default function ProductSlider({ title }: ProductSliderProps) {
   // Використовуємо useRef для кнопок
@@ -89,7 +57,15 @@ export default function ProductSlider({ title }: ProductSliderProps) {
   return (
     <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
       <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
-        <AnimatedOnViewOnce>{title}</AnimatedOnViewOnce>
+        <motion.h2
+          className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
+        >
+          {title}
+        </motion.h2>
         <div className="flex flex-row gap-4">
           <button
             ref={prevRef}
