@@ -24,7 +24,7 @@ export default function AppleLoader({
   const style: React.CSSProperties = {
     width: `${px}px`,
     height: `${px}px`,
-    animation: `spin ${speed}s linear infinite`,
+    animation: `spinScale ${speed}s linear infinite`,
   };
 
   return (
@@ -51,12 +51,15 @@ export default function AppleLoader({
 
       {/* Локальні keyframes */}
       <style jsx>{`
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
+        @keyframes spinScale {
+          0% {
+            transform: rotate(0deg) scale(1);
           }
-          to {
-            transform: rotate(360deg);
+          50% {
+            transform: rotate(180deg) scale(1.2);
+          }
+          100% {
+            transform: rotate(360deg) scale(1);
           }
         }
       `}</style>
