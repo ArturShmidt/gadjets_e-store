@@ -27,7 +27,7 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
     return <div>Помилка оновлення даних.</div>;
   }
 
-  const specsData = [
+  const allSpecs = [
     { label: 'Screen', value: product.screen },
     { label: 'Resolution', value: product.resolution },
     { label: 'Processor', value: product.processor },
@@ -37,6 +37,11 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
     { label: 'Zoom', value: product.zoom },
     { label: 'Cell', value: product.cell.join(', ') },
   ];
+
+  const specsData = allSpecs.filter(
+    (spec): spec is { label: string; value: string } =>
+      spec.value !== undefined,
+  );
 
   return (
     <div className="flex flex-col sm:flex-row sm:flex-wrap dark:bg-dark-theme-bg ">
