@@ -31,16 +31,9 @@ export default function ProductSlider({ title }: ProductSliderProps) {
     return validProducts.filter((product) => product.year === maxYear);
   }, [validProducts]);
 
-  const getTopDiscounts = (category: Product['category'], count: number) => {
-    return validProducts
-      .filter((p) => p.category === category)
-      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-      .slice(0, count);
-  };
-
   const visibleHot = useMemo(() => {
     const getTopDiscounts = (category: Product['category'], count: number) => {
-      return validProducts // ✅ ВИПРАВЛЕНО: використовуємо validProducts
+      return validProducts
         .filter((p) => p.category === category)
         .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
         .slice(0, count);
