@@ -13,10 +13,7 @@ const ShoppingCart: React.FC = () => {
   return (
     <>
       <CartHeading />
-      <div
-        className=" px-4 lg:px-8 lg:flex lg:flex-col
-      text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg mb-14 sm:mb-16 lg:mb-20"
-      >
+      <div className=" px-4 lg:px-8 lg:flex lg:flex-col text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg mb-14 sm:mb-16 lg:mb-20">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
           <div className="flex items-center  flex-col gap-4 pb-8 lg:py-0">
             {accessries.slice(0, 4).map((accessorie) => {
