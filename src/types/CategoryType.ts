@@ -1,3 +1,9 @@
+export type CategoryWithCount = {
+  id: string;
+  name: string;
+  count: number;
+};
+
 export type DescriptionItem = {
   title: string;
   text: string[];
