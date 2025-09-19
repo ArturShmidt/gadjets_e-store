@@ -6,52 +6,48 @@ import favoritesReducer from '@/lib/features/favorites/favoritesSlice';
 import cartReducer from '@/lib/features/cart/cartSlice';
 
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // Використовує localStorage за замовчуванням
+import storage from 'redux-persist/lib/storage';
 
-// 1. Об'єднуємо редюсери, які ми хочемо зберігати (favorites та cart)
 const persistedReducers = combineReducers({
   favorites: favoritesReducer,
   cart: cartReducer,
 });
 
-// 2. Створюємо конфігурацію для persist
 const persistConfig = {
-  key: 'root', // Ключ для localStorage
+  key: 'root',
   storage,
-  whitelist: ['favorites', 'cart'], // Вказуємо, які саме слайси зберігати
+  whitelist: ['favorites', 'cart'],
 };
 
-// 3. "Огортаємо" наші редюсери в persistReducer
 const persistedReducer = persistReducer(persistConfig, persistedReducers);
 
-// 4. Створюємо стор
 export const makeStore = () => {
-  return configureStore({
+  const store = configureStore({
     reducer: {
-      // API slice не потрібно зберігати, він керує кешем
       [apiSlice.reducerPath]: apiSlice.reducer,
-      // Тут будуть знаходитись наші збережені дані
       persisted: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
-        // redux-persist вимагає ігнорувати деякі екшени для серіалізації
         serializableCheck: {
           ignoredActions: [
             'persist/PERSIST',
-            'persist/REHYDRATE',
-            'FLUSH',
             'REHYDRATE',
+            'FLUSH',
             'PAUSE',
-            'PERSIST',
             'PURGE',
             'REGISTER',
           ],
         },
       }).concat(apiSlice.middleware),
   });
+
+  // Створюємо persistor тут і повертаємо його разом зі стором
+  const persistor = persistStore(store);
+  return { store, persistor };
 };
 
-export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
+// Оновлюємо типи
+type AppStoreType = ReturnType<typeof makeStore>['store'];
+export type RootState = ReturnType<AppStoreType['getState']>;
+export type AppDispatch = AppStoreType['dispatch'];
