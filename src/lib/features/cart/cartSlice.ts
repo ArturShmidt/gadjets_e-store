@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    // ✅ addItem тепер приймає короткий тип Product
+    // addItem тепер приймає короткий тип Product
     addItem: (state, action: PayloadAction<Product>) => {
       // Використовуємо `itemId` з короткого типу
       const existingItem = state.items.find(
@@ -28,7 +28,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity++;
       } else {
-        // ✅ В стан зберігаємо лише ID та кількість
+        // В стан зберігаємо лише ID та кількість
         state.items.push({ productId: action.payload.itemId, quantity: 1 });
       }
     },

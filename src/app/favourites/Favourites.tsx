@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 // Need to check in future Mykytoss
 const Favourites: React.FC = () => {
   const cartItems = useSelector(
-    (state: RootState) => state.persisted.favorites.items,
+    (state: RootState) => state.persisted.favourites.items,
   );
 
   return (
