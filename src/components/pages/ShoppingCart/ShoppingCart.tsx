@@ -3,9 +3,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
-import ShoppingCartItem from '@/components/Products/ShoppingCart/ShoppingCartItem';
-import CheckoutSummary from '@/components/Products/ShoppingCart/CheckoutSummary';
-import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
+import ShoppingCartItem from './ShoppingCartItem';
+import CheckoutSummary from './CheckoutSummary';
+import CartHeading from '@/components/UI/ShoppingCartIcons/CartHeading';
 import Link from 'next/link';
 import { useGetProductsQuery } from '@/lib/features/api/apiSlice';
 import { Product } from '@/types/product';

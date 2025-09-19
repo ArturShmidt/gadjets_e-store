@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import Carousel from '@/components/Layout/Carousel/Carousel';
+import Carousel from '@/components/home/Carousel/Carousel';
 import ProductSlider from '@/components/UI/productSlider/ProductSlider';
-import ShopByCategory from '@/components/Layout/shopByCategory/ShopByCategory';
+import ShopByCategory from '@/components/home/shopByCategory/ShopByCategory';
 import { Product } from '@/types/product';
 
 interface Props {

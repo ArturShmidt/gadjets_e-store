@@ -8,9 +8,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { slides } from '@/components/Layout/Carousel/slidesData';
-import SlideLeft from '@/components/Layout/Carousel/SlideLeft';
-import SlideRight from '@/components/Layout/Carousel/SlideRight';
+import { slides } from './slidesData';
+import SlideLeft from './SlideLeft';
+import SlideRight from './SlideRight';
 
 import { motion } from 'framer-motion';
 // #endregion
