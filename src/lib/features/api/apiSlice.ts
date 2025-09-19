@@ -1,6 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Product as ProductSummary } from '@/types/product';
-import { ProductType as ProductDetails } from '@/types/CategoryType';
+import {
+  CategoryWithCount,
+  ProductType as ProductDetails,
+} from '@/types/CategoryType';
+import { getBestsellers } from '@/lib/services/product.service';
+import build from 'next/dist/build';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -22,7 +27,23 @@ export const apiSlice = createApi({
     getProductById: builder.query<ProductDetails, string>({
       query: (itemId) => `/products/${itemId}`,
     }),
+    // отримати список рекомендований продуктів до IDпродукта
+    getRelatedProducts: builder.query<ProductSummary[], string>({
+      query: (productId) => `/products/${productId}/related`,
+    }),
+    // витягнути категорії з кількістю моделей по кожній
+    getCategories: builder.query<CategoryWithCount[], void>({
+      query: () => '/categories',
+    }),
+    // товари з найбільшою різницею ціни\скидки
+    getBestsellers: builder.query<ProductSummary[], void>({
+      query: () => '/products/bestsellers',
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductByIdQuery } = apiSlice;
+export const {
+  useGetProductsQuery,
+  useGetProductByIdQuery,
+  useGetRelatedProductsQuery,
+} = apiSlice;
