@@ -1,5 +1,5 @@
-import Contacts from './Contacts';
+import Contacts from '@/pages/Contacts';
 
-export default function RightsPage() {
+export default function ContactsWrapper() {
   return <Contacts />;
 }

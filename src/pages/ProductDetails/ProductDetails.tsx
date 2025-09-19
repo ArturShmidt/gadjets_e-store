@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import ProductSlider from '../../UI/productSlider/ProductSlider';
+import ProductSlider from '../../components/UI/productSlider/ProductSlider';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
 import ProductDetailsSpecs from './ProductDetailsSpecs';

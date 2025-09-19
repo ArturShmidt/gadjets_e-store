@@ -1,4 +1,4 @@
-import HomePage from '@/components/pages/HomePage';
+import HomePage from '@/pages/HomePage';
 import { getProducts } from '@/lib/services/product.service';
 import { Product } from '@/types/product';
 

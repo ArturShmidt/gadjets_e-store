@@ -1,5 +1,5 @@
 import { getProducts, getProductById } from '@/lib/services/product.service';
-import ProductDetails from '@/components/Products/ProductDetails/ProductDetails';
+import ProductDetails from '@/pages/ProductDetails/ProductDetails';
 import { notFound } from 'next/navigation';
 
 /**
