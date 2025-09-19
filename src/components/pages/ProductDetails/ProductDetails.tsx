@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import ProductSlider from '../../components/UI/productSlider/ProductSlider';
+import ProductSlider from '../../UI/productSlider/ProductSlider';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
 import ProductDetailsSpecs from './ProductDetailsSpecs';
@@ -10,7 +10,6 @@ import ProductDetailsHeroSectionHeader from './ProductDetailsHeroSectionHeader';
 
 import { ProductType as Product } from '@/types/CategoryType';
 import { useGetProductByIdQuery } from '@/lib/features/api/apiSlice';
-import { notFound } from 'next/navigation';
 
 const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
   const {
@@ -25,10 +24,6 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
 
   if (isError) {
     return <div>Помилка оновлення даних.</div>;
-  }
-
-  if (!initialProduct) {
-    notFound();
   }
 
   const allSpecs = [

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import ShoppingCart from '@/pages/ShoppingCart/ShoppingCart';
+import ShoppingCart from '@/components/pages/ShoppingCart/ShoppingCart';
 
 const page: React.FC = () => {
   return <ShoppingCart />;
