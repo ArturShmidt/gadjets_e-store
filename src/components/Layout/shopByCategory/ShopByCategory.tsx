@@ -64,7 +64,7 @@ const ShopByCategory = () => {
       </motion.h2>
 
       <motion.div
-        className="flex flex-col gap-8 sm:flex-row sm:gap-4"
+        className="flex flex-col gap-8 sm:flex-row sm:gap-4 md:gap-6 lg:gap-4 justify-center items-center"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -83,14 +83,21 @@ const ShopByCategory = () => {
               href={category.href}
               className="group"
             >
-              <motion.div className="overflow-hidden rounded-lg relative w-[288px] sm:w-[188px] lg:w-[368px] h-[288px] sm:h-[188px] lg:h-[368px] transition-shadow duration-700 hover:shadow-[0_6px_20px_0_rgba(23,32,49,0.6)]">
+              <motion.div
+                className="
+                overflow-hidden rounded-lg relative 
+                w-[288px] sm:w-[188px] md:w-[238px] lg:w-[328px] xl:w-[368px]
+                h-[288px] sm:h-[188px] md:h-[238px] lg:h-[328px] xl:h-[368px]
+                transition-shadow duration-700 
+                hover:shadow-[0_6px_20px_0_rgba(23,32,49,0.6)]"
+              >
                 <div
                   className="absolute inset-0 z-0"
                   style={{ backgroundColor: category.bgColor }}
                 ></div>
 
                 <motion.div
-                  className="absolute -bottom-18 -right-18 w-[300px] h-[300px] sm:w-[220px] sm:h-[200px] lg:w-[350px] lg:h-[350px]"
+                  className="absolute -bottom-18 -right-18 w-[300px] h-[300px] sm:w-[220px] sm:h-[200px] md:w-[250px] md:h-[250px] lg:w-[350px] lg:h-[350px]"
                   initial={{ x: 50, opacity: 0, scale: 0.8 }}
                   animate={{
                     x: 0,

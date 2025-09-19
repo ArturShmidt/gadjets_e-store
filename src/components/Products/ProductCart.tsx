@@ -31,7 +31,6 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
       "
     >
       <div className="p-8">
-        {/* Image */}
         <Link
           href={`/products/${product.itemId}`}
           className="
@@ -49,7 +48,6 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
           />
         </Link>
 
-        {/* Product Name */}
         <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] dark:hover:text-dark-theme-btn-hover">
           <Link
             href={`/products/${product.itemId}`}
@@ -59,7 +57,6 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
           </Link>
         </h3>
 
-        {/* Price */}
         <div className="my-2 pt-[21px]">
           <div className="flex gap-[8px]">
             <p className="font-extrabold text-[22px] leading-snug text-light-theme-text dark:text-text-light">
@@ -72,7 +69,6 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
           <div className="border-b border-zinc-700 mt-2"></div>
         </div>
 
-        {/* Specs */}
         <div className="space-y-2 text-sm text-gray-400">
           <div className="flex justify-between items-center">
             <span className="text-light-theme-text-menu dark:text-text-gray">
@@ -100,7 +96,6 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
           </div>
         </div>
 
-        {/* Buttons */}
         <div className="flex items-center gap-2 mt-4">
           <button
             className="
