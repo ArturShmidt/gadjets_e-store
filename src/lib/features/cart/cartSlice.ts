@@ -1,8 +1,8 @@
-import { ProductType as Product } from '@/types/CategoryType';
+import { Product } from '@/types/product';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CartItem {
-  product: Product;
+  productId: string;
   quantity: number;
 }
 
@@ -18,41 +18,37 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    // ✅ addItem тепер приймає короткий тип Product
     addItem: (state, action: PayloadAction<Product>) => {
+      // Використовуємо `itemId` з короткого типу
       const existingItem = state.items.find(
-        (item) => item.product.id === action.payload.id,
+        (item) => item.productId === action.payload.itemId,
       );
+
       if (existingItem) {
-        // Якщо товар вже в кошику, збільшуємо кількість
         existingItem.quantity++;
       } else {
-        // Якщо ні, додаємо новий товар з кількістю 1
-        state.items.push({ product: action.payload, quantity: 1 });
+        // ✅ В стан зберігаємо лише ID та кількість
+        state.items.push({ productId: action.payload.itemId, quantity: 1 });
       }
     },
+    // Переконайтесь, що інші редюсери також працюють з `productId` типу string
     removeItem: (state, action: PayloadAction<string>) => {
-      // ID товару для видалення
       state.items = state.items.filter(
-        (item) => item.product.id !== action.payload,
+        (item) => item.productId !== action.payload,
       );
     },
     incrementQuantity: (state, action: PayloadAction<string>) => {
-      // ID товару
       const item = state.items.find(
-        (item) => item.product.id === action.payload,
+        (item) => item.productId === action.payload,
       );
-      if (item) {
-        item.quantity++;
-      }
+      if (item) item.quantity++;
     },
     decrementQuantity: (state, action: PayloadAction<string>) => {
-      // ID товару
       const item = state.items.find(
-        (item) => item.product.id === action.payload,
+        (item) => item.productId === action.payload,
       );
-      if (item && item.quantity > 1) {
-        item.quantity--;
-      }
+      if (item && item.quantity > 1) item.quantity--;
     },
   },
 });
