@@ -11,9 +11,9 @@ import {
 } from '@/lib/features/cart/cartSlice';
 
 import { Product } from '@/types/product';
-import MinusComponent from '@/components/UI/ShoppingCart/MinusComponent';
-import PlusComponent from '@/components/UI/ShoppingCart/PlusComponent';
-import CloseComponent from '@/components/UI/ShoppingCart/CloseComponent';
+import MinusComponent from '@/components/UI/ShoppingCartIcons/MinusComponent';
+import PlusComponent from '@/components/UI/ShoppingCartIcons/PlusComponent';
+import CloseComponent from '@/components/UI/ShoppingCartIcons/CloseComponent';
 
 // 1. Оновлюємо пропси: компонент тепер приймає об'єкт CartItem
 interface CartItem {
