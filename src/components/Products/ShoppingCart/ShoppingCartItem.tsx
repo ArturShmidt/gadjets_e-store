@@ -10,7 +10,7 @@ import {
   removeItem,
 } from '@/lib/features/cart/cartSlice';
 
-import { ProductType as Product } from '@/types/CategoryType';
+import { Product } from '@/types/product';
 import MinusComponent from '@/components/UI/ShoppingCart/MinusComponent';
 import PlusComponent from '@/components/UI/ShoppingCart/PlusComponent';
 import CloseComponent from '@/components/UI/ShoppingCart/CloseComponent';
@@ -40,14 +40,14 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
       <div className="flex justify-between gap-4 sm:gap-6">
         {/* 4. Кнопка видалення тепер відправляє action `removeItem` */}
         <button
-          onClick={() => dispatch(removeItem(product.id))}
+          onClick={() => dispatch(removeItem(product.itemId))}
           className="w-4 h-4 flex items-center justify-center m-auto cursor-pointer"
         >
           <CloseComponent placement="grey" />
         </button>
         <div className="w-[80px] h-[80px] flex items-center justify-center">
           <Image
-            src={`/${product.images[0]}`}
+            src={`/${product.image}`}
             alt={product.name}
             width={66}
             height={66}
@@ -74,7 +74,7 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
                 border rounded-[48px] border-light-theme-border-color dark:border-dark-theme-border-color 
                 text-light-theme-border-active dark:text-dark-theme-border-hover
                 ${quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-              onClick={() => dispatch(decrementQuantity(product.id))}
+              onClick={() => dispatch(decrementQuantity(product.itemId))}
               disabled={quantity === 1}
             >
               {quantity === 1 ?
@@ -91,7 +91,7 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
                 text-black dark:text-dark-theme-text 
                 bg-white dark:bg-dark-theme-btn-selected 
                 cursor-pointer"
-              onClick={() => dispatch(incrementQuantity(product.id))}
+              onClick={() => dispatch(incrementQuantity(product.itemId))}
             >
               <PlusComponent />
             </button>
@@ -101,7 +101,7 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
             text-light-theme-text dark:text-dark-theme-text leading-[1.4] tracking-normal font-bold text-[22px]"
           >
             {/* 7. Розраховуємо ціну на основі кількості з Redux */}$
-            {product.priceDiscount * quantity}
+            {product.price * quantity}
           </span>
         </div>
       </div>
