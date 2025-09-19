@@ -38,7 +38,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
         <div className="flex flex-row gap-4">
           <button
             ref={prevRef}
-            className="group p-2 flex justify-center items-center border border-light-theme-border-active
+            className="cursor-pointer group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -60,7 +60,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
 
           <button
             ref={nextRef}
-            className="group p-2 flex justify-center items-center border border-light-theme-border-active
+            className="cursor-pointer group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -112,6 +112,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
               <ProductCart
                 product={product}
                 index={idx}
+                disableOnce={true}
               />
             </SwiperSlide>
           ))}
