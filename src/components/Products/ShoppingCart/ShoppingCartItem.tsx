@@ -33,7 +33,7 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
 
   return (
     <div
-      className="sm:w-148 sm:h-32 lg:w-188 p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 items-center
+      className="sm:w-148 sm:h-32 lg-max:w-188 p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 items-center
       bg-white dark:bg-item-bg 
       border rounded-[16px] border-light-theme-border-color dark:border-dark-theme-border-color"
     >

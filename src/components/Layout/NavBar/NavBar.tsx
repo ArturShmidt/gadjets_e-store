@@ -48,7 +48,7 @@ const NavBar: React.FC = () => {
         {opened && <MenuHamburger onClose={() => setOpened(false)} />}
       </nav>
 
-      <nav className="h-12 lg:h-16 hidden sm:flex flex-row items-center pl-4 lg:pl-6 dark:bg-dark-theme-bg ">
+      <nav className="h-12 lg-max:h-16 hidden sm:flex flex-row items-center pl-4 lg-max:pl-6 dark:bg-dark-theme-bg ">
         <Logo placement="navbar" />
         <div className="dark:bg-dark-theme-bg">
           <CategoriesMenu direction="row" />

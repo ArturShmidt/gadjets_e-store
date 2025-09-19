@@ -73,10 +73,10 @@ const ShoppingCart: React.FC = () => {
       <CartHeading />
 
       <div
-        className="pt-6 sm:pt-10 px-4 sm:px-6 lg:px-8 lg:flex lg:flex-col
+        className="pt-6 sm:pt-10 px-4 sm:px-6 lg-max:px-8 lg-max:flex lg:flex-col
       text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg"
       >
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
+        <div className="flex flex-col lg-max:flex-row lg-max:items-start lg-max:justify-center lg-max:gap-4 pt-8">
           <div className="flex items-center flex-col gap-4 py-8 lg:py-0">
             {detailedCartItems.map((item) => {
               return (
@@ -87,7 +87,7 @@ const ShoppingCart: React.FC = () => {
               );
             })}
           </div>
-          <div className="flex justify-center pb-14 lg:pb-0">
+          <div className="flex justify-center pb-14 lg-max:pb-0">
             <CheckoutSummary totalPrice={totalPrice} />
           </div>
         </div>

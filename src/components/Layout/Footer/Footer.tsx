@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
       <Logo placement="footer" />
       <nav
         className="flex flex-col items-start 
-        sm:flex-row gap-4 sm:gap-4 lg:gap-22"
+        sm:flex-row gap-4 sm:gap-4 lg-max:gap-22"
       >
         {FooterCategories.map((category) => {
           return (

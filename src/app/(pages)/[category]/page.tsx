@@ -12,7 +12,6 @@ import ArrowRightCategoryComponent from '@/components/UI/ArrowRightCategoryCompo
 import { CategoryName } from '@/types/CategoryName';
 
 import { getValidCategories } from '@/lib/services/product.service';
-import { isShoppingCartPage } from '@/lib/utils';
 import { getProductsByCategory } from '@/lib/services/product.service';
 
 // #endregion
@@ -26,9 +25,9 @@ function ComponentWTF({ categoryName }: { categoryName: CategoryName }) {
         className="
     flex items-center text-sm mb-4 sm:pb-6
     dark:text-dark-theme-text text-light-theme-text
-    px-4 sm:px-6 lg:px-0
+    px-4 sm:px-6 lg-max:px-0
     mx-auto
-    max-w-[320px] sm:max-w-[640px] lg:max-w-[1200px]
+    max-w-[320px] sm:max-w-[640px] lg-max:max-w-[1200px]
   "
       >
         <Link
