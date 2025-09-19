@@ -4,7 +4,7 @@ import React from 'react';
 
 import ShoppingCart from '@/components/Products/ShoppingCart/ShoppingCart';
 
-const page = () => {
+const page: React.FC = () => {
   return <ShoppingCart />;
 };
 

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
 import ShoppingCartItem from '@/components/Products/ShoppingCart/ShoppingCartItem';
 import CheckoutSummary from '@/components/Products/ShoppingCart/CheckoutSummary';
+import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
 import Link from 'next/link';
 import { useGetProductsQuery } from '@/lib/features/api/apiSlice';
 import { Product } from '@/types/product';
@@ -68,26 +69,30 @@ const ShoppingCart: React.FC = () => {
   }
 
   return (
-    <div
-      className="pt-6 sm:pt-10 px-4 sm:px-6 lg:px-8 lg:flex lg:flex-col
+    <>
+      <CartHeading />
+
+      <div
+        className="pt-6 sm:pt-10 px-4 sm:px-6 lg-max:px-8 lg-max:flex lg:flex-col
       text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg"
-    >
-      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
-        <div className="flex items-center flex-col gap-4 py-8 lg:py-0">
-          {detailedCartItems.map((item) => {
-            return (
-              <ShoppingCartItem
-                key={item.productId}
-                item={item}
-              />
-            );
-          })}
-        </div>
-        <div className="flex justify-center pb-14 lg:pb-0">
-          <CheckoutSummary totalPrice={totalPrice} />
+      >
+        <div className="flex flex-col lg-max:flex-row lg-max:items-start lg-max:justify-center lg-max:gap-4 pt-8">
+          <div className="flex items-center flex-col gap-4 py-8 lg:py-0">
+            {detailedCartItems.map((item) => {
+              return (
+                <ShoppingCartItem
+                  key={item.productId}
+                  item={item}
+                />
+              );
+            })}
+          </div>
+          <div className="flex justify-center pb-14 lg-max:pb-0">
+            <CheckoutSummary totalPrice={totalPrice} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -28,13 +28,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-dark-theme-bg`}
+        className={`${geistSans.variable} ${geistMono.variable} 
+        antialiased dark:bg-dark-theme-bg 
+        min-h-screen flex flex-col `}
       >
         <StoreProvider>
-          <NavBar />
-          <div className="max-w-[1200px] mx-auto">
+          <div
+            className="sticky top-0 z-50 w-full 
+          border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg "
+          >
+            <div className="max-w-[1920px] mx-auto">
+              <NavBar />
+            </div>
+          </div>
+          <main className="flex-grow max-w-[1200px] mx-auto w-full">
             {children}
-            <Footer />
+          </main>
+          <div
+            className="w-full
+          border-t border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg"
+          >
+            <div className="max-w-[1200px] mx-auto">
+              <Footer />
+            </div>
           </div>
         </StoreProvider>
       </body>
