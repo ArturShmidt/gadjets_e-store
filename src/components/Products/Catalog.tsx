@@ -6,8 +6,6 @@ import { Product as ProductSummary } from '@/types/product';
 import ProductList from './ProductList';
 import { CategoryName } from '@/types/CategoryName';
 
-import CategoriesHeading from '@/components/UI/CategoriesHeading';
-
 export default function Catalog({
   categoryName,
   initialProducts,
@@ -38,10 +36,6 @@ export default function Catalog({
 
   return (
     <>
-      <CategoriesHeading
-        categoryName={categoryName}
-        total={total}
-      />
       <ProductList
         productlist={products}
         total={total}

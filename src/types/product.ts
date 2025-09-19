@@ -1,4 +1,6 @@
-export const VALID_CATEGORIES = ['phones', 'accessories', 'tablets'] as const;
+import { CategoryName } from './CategoryName';
+
+export const VALID_CATEGORIES = Object.values(CategoryName).slice(1, 4);
 
 type Category = (typeof VALID_CATEGORIES)[number];
 

@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
+import Favourites from '@/app/favourites/Favourites';
 
+// Need to check in future Mykytoss
 const page = () => {
-  return <div>фєйворітас</div>;
+  <Favourites />;
 };
 
 export default page;

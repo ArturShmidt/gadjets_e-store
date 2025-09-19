@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <StoreProvider>
           <div
-            className="sticky top-0 z-50 w-full 
+            className="sticky bg-white top-0 z-50 w-full 
           border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg "
           >
             <div className="max-w-[1920px] mx-auto">

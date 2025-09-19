@@ -7,6 +7,7 @@ import cartReducer from '@/lib/features/cart/cartSlice';
 
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { CategoryName } from '@/types/CategoryName';
 
 const persistedReducers = combineReducers({
   favorites: favoritesReducer,
@@ -16,7 +17,7 @@ const persistedReducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'cart'],
+  whitelist: [CategoryName.Favourites, CategoryName.Cart],
 };
 
 const persistedReducer = persistReducer(persistConfig, persistedReducers);
