@@ -6,14 +6,14 @@ import { CategoryName } from '@/types/CategoryName';
 
 type Props = {
   isCart?: true;
-  isFavorites?: true;
+  isFavourites?: true;
 
   categoryName: CategoryName;
   total: number;
 };
 const CategoryHeader: React.FC<Props> = ({
   isCart,
-  isFavorites,
+  isFavourites,
   categoryName,
   total,
 }) => {
@@ -22,11 +22,11 @@ const CategoryHeader: React.FC<Props> = ({
       {!isCart ?
         <>
           <CategoryBreadcrumb categoryName={categoryName} />
-          {isFavorites ?
+          {isFavourites ?
             <CategoryHeading
               categoryName={categoryName}
               total={total}
-              isFavorites
+              isFavourites
             />
           : <CategoryHeading
               categoryName={categoryName}

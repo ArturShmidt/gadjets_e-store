@@ -16,7 +16,7 @@ const Favourites: React.FC = () => {
       <CategoryHeader
         categoryName={CategoryName.Favourites}
         total={cartItems.length}
-        isFavorites
+        isFavourites
       />
     </div>
   );

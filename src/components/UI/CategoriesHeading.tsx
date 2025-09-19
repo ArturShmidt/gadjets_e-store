@@ -3,13 +3,13 @@ import React from 'react';
 type CatalogProps = {
   categoryName: CategoryName;
   total: number;
-  isFavorites?: true;
+  isFavourites?: true;
 };
 
 const CategoryHeading: React.FC<CatalogProps> = ({
   categoryName,
   total,
-  isFavorites,
+  isFavourites,
 }) => {
   // опрацьовуємо список
   const formattedCategory =
@@ -29,7 +29,7 @@ const CategoryHeading: React.FC<CatalogProps> = ({
         className="font-[600] text-[14px] leading-[21px]
         text-light-theme-text-menu dark:text-text-gray"
       >
-        {total} {!isFavorites ? 'models' : 'items'}
+        {total} {!isFavourites ? 'models' : 'items'}
       </p>
     </div>
   );
