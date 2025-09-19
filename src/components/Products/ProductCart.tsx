@@ -3,6 +3,8 @@ import React from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import FavoriteButton from './FavoriteButton';
+import AddToCartButton from './AddToCartButton';
 
 interface ProductCartProps {
   product: Product;
@@ -102,7 +104,8 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <button
+          <AddToCartButton product={product} />
+          {/* <button
             className="
               h-10 flex-grow
               bg-light-theme-btn-product-bg text-white
@@ -116,9 +119,9 @@ const ProductCart = ({
             "
           >
             Add to cart
-          </button>
+          </button> */}
 
-          <button
+          {/* <button
             className="
               bg-white dark:bg-gray-700
               p-2.5 rounded-full
@@ -129,6 +132,7 @@ const ProductCart = ({
               hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
             "
           >
+            
             <svg
               className="w-5 h-5 dark:text-text-light"
               fill="none"
@@ -143,7 +147,8 @@ const ProductCart = ({
                 d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.5l1.318-1.182a4.5 4.5 0 116.364 6.364L12 21l-7.682-7.682a4.5 4.5 0 010-6.364z"
               />
             </svg>
-          </button>
+          </button> */}
+          <FavoriteButton product={product} />
         </div>
       </div>
     </motion.div>
