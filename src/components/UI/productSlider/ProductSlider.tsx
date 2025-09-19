@@ -24,8 +24,8 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
   }
 
   return (
-    <div className="w-full relative pb-14 sm:pb-16 lg:pb-20">
-      <div className="flex flex-row justify-between pb-6 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
+    <div className="w-full relative pb-10 sm:pb-12 lg:pb-16">
+      <div className="flex flex-row justify-between pb-4 text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg:px-8 gap-10">
         <motion.h2
           className="font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal"
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
         <div className="flex flex-row gap-4">
           <button
             ref={prevRef}
-            className="cursor-pointer group p-2 flex justify-center items-center border border-light-theme-border-active
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -60,7 +60,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
 
           <button
             ref={nextRef}
-            className="cursor-pointer group p-2 flex justify-center items-center border border-light-theme-border-active
+            className="group p-2 flex justify-center items-center border border-light-theme-border-active
            dark:border-product-add-btn-selected dark:bg-product-add-btn-selected dark:hover:border-dark-theme-border-hover
             dark:hover:bg-dark-theme-border-hover w-8 h-8 rounded-full hover:border-light-theme-text transition"
           >
@@ -108,11 +108,13 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
           className="multiple-slide-carousel"
         >
           {products.map((product, idx) => (
-            <SwiperSlide key={product.id}>
+            <SwiperSlide
+              key={product.id}
+              className="py-4"
+            >
               <ProductCart
                 product={product}
                 index={idx}
-                disableOnce={true}
               />
             </SwiperSlide>
           ))}
