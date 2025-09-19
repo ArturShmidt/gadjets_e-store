@@ -21,7 +21,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         ease: [0.42, 0, 0.58, 1],
         delay: index < 4 ? index * 0.15 : 0,
       }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.3 }}
       className="
         border border-light-theme-border-color
         rounded-2xl
