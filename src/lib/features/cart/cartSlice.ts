@@ -1,4 +1,4 @@
-import { Product } from '@/types/product';
+import { ProductType as Product } from '@/types/CategoryType';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CartItem {
@@ -30,13 +30,13 @@ const cartSlice = createSlice({
         state.items.push({ product: action.payload, quantity: 1 });
       }
     },
-    removeItem: (state, action: PayloadAction<number>) => {
+    removeItem: (state, action: PayloadAction<string>) => {
       // ID товару для видалення
       state.items = state.items.filter(
         (item) => item.product.id !== action.payload,
       );
     },
-    incrementQuantity: (state, action: PayloadAction<number>) => {
+    incrementQuantity: (state, action: PayloadAction<string>) => {
       // ID товару
       const item = state.items.find(
         (item) => item.product.id === action.payload,
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
         item.quantity++;
       }
     },
-    decrementQuantity: (state, action: PayloadAction<number>) => {
+    decrementQuantity: (state, action: PayloadAction<string>) => {
       // ID товару
       const item = state.items.find(
         (item) => item.product.id === action.payload,

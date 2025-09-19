@@ -13,7 +13,7 @@ import CartHeading from '@/components/UI/ShoppingCart/CartHeading';
 
 import { CategoryName } from '@/types/CategoryName';
 
-import { getValidCategories } from '@/lib/categories';
+import { getValidCategories } from '@/lib/services/product.service';
 import { isShoppingCartPage } from '@/lib/utils';
 import { getProductsByCategory } from '@/lib/services/product.service';
 
