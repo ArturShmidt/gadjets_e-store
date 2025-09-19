@@ -18,6 +18,4 @@ const ProductDetailsHeroSection: React.FC<Props> = ({ name, images }) => {
   );
 };
 
-`@\public\api\${}.json`;
-
 export default ProductDetailsHeroSection;

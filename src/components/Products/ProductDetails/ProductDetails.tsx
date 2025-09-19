@@ -74,7 +74,8 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
           <ProductDetailsSpecs specsData={specsData} />
         </div>
       </div>
-      <ProductSlider title={'You may also like'} />
+      {/* TODO add data for slider here */}
+      {/* <ProductSlider title={'You may also like'} /> */}
     </div>
   );
 };
