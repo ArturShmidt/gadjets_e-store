@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import ArrowLeftComponent from '@/components/UI/ShoppingCart/ArrowLeftComponent';
+import ArrowLeftComponent from './ArrowLeftComponent';
 import Link from 'next/link';
 
 const CartHeading: React.FC = () => {

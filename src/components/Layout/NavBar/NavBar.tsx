@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import HamburgerComponent from '@/components/UI/NavBar/HamburgerComponent';
-import MenuHamburger from '@/components/Layout/NavBar/MenuHamburger';
+import MenuHamburger from './MenuHamburger';
 import Logo from '@/components/UI/NavBar/Logo';
 import CategoriesMenu from '@/components/UI/NavBar/CategoriesMenu';
 import { NavBarRightComponents } from '@/types/NavBarRightComponents';

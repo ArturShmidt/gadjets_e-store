@@ -8,9 +8,14 @@ import ActionButton from '../UI/ActionButton';
 interface ProductCartProps {
   product: Product;
   index?: number;
+  disableOnce?: boolean;
 }
 
-const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
+const ProductCart = ({
+  product,
+  index = 0,
+  disableOnce = false,
+}: ProductCartProps) => {
   const imgSrc = `/${product.image}`;
 
   return (
@@ -22,7 +27,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         ease: [0.42, 0, 0.58, 1],
         delay: index < 4 ? index * 0.15 : 0,
       }}
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: !disableOnce, amount: 0.3 }}
       className="
         border border-light-theme-border-color
         rounded-2xl
@@ -45,14 +50,14 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
             width={208}
             height={196}
             alt={product.name}
-            className="transition-transform duration-800 ease-in-out hover:scale-105"
+            className="transition-transform duration-600 ease-in-out hover:scale-110"
           />
         </Link>
 
-        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] dark:hover:text-dark-theme-btn-hover">
+        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] ">
           <Link
             href={`/products/${product.itemId}`}
-            className="hover:underline hover:text-light-theme-btn-product-bg"
+            className="hover:underline hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover"
           >
             {product.name}
           </Link>

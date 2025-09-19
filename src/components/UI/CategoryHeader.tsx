@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryBreadcrumb from './CategoryBreadcrumb';
 import CategoryHeading from './CategoriesHeading';
-import CartHeading from './ShoppingCart/CartHeading';
+import CartHeading from '@/components/UI/ShoppingCartIcons/CartHeading';
 import { CategoryName } from '@/types/CategoryName';
 
 type Props = {

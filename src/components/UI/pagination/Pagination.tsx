@@ -52,7 +52,7 @@ export const Pagination = ({
             onClick={handlePrevClick}
             disabled={currentPage === 1}
             className={`group p-2 flex justify-center items-center border dark:border-product-add-btn-selected
-              w-8 h-8 rounded-full
+              w-8 h-8 rounded-full cursor-pointer
               ${
                 currentPage === 1 ?
                   'dark:bg-none dark:hover:bg-none dark:hover:border-product-add-btn-selected border-light-theme-border-color hover:border-light-theme-border-color'
@@ -85,7 +85,7 @@ export const Pagination = ({
           <li key={page}>
             <button
               onClick={() => handlePageClick(page)}
-              className={`px-3 py-1 border hover:border-light-theme-text dark:text-text-light rounded-full
+              className={`px-3 py-1 border hover:border-light-theme-text dark:text-text-light rounded-full cursor-pointer
                           ${
                             page === currentPage ?
                               'bg-light-theme-text text-white dark:bg-product-add-btn dark:text-white border-light-theme-text dark:border-product-add-btn'
@@ -103,7 +103,7 @@ export const Pagination = ({
             onClick={handleNextClick}
             disabled={currentPage === totalPages}
             className={`group p-2 flex justify-center items-center border dark:border-product-add-btn-selected
-              w-8 h-8 rounded-full
+              w-8 h-8 rounded-full cursor-pointer
               ${
                 currentPage === totalPages ?
                   'dark:bg-none dark:hover:bg-none dark:hover:border-product-add-btn-selected border-light-theme-border-color hover:border-light-theme-border-color'
