@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import FavoritesBlack from '@/components/UI/icons/Favorites(Black).svg';
-import FavoritesWhite from '@/components/UI/icons/Favorites(White).svg';
+import FavouritesBlack from '@/components/UI/icons/Favourites(Black).svg';
+import FavouritesWhite from '@/components/UI/icons/Favourites(White).svg';
 import { CategoryName } from '@/types/CategoryName';
 
 // #endregion
@@ -14,7 +14,7 @@ type Props = {
   isBurger?: boolean;
 };
 
-const FavoritesLink: React.FC<Props> = ({ onClose, isBurger = false }) => {
+const FavouritesLink: React.FC<Props> = ({ onClose, isBurger = false }) => {
   const baseClasses =
     isBurger ?
       `w-full h-16 flex justify-center relative
@@ -30,18 +30,18 @@ const FavoritesLink: React.FC<Props> = ({ onClose, isBurger = false }) => {
       onClick={onClose}
     >
       <Image
-        src={FavoritesBlack}
-        alt="FavoritesBlack"
+        src={FavouritesBlack}
+        alt="FavouritesBlack"
         className="dark:hidden"
       />
 
       <Image
-        src={FavoritesWhite}
-        alt="FavoritesWhite"
+        src={FavouritesWhite}
+        alt="FavouritesWhite"
         className="hidden dark:block"
       />
     </Link>
   );
 };
 
-export default FavoritesLink;
+export default FavouritesLink;

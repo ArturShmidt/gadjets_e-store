@@ -1,13 +1,15 @@
 import React from 'react';
 import { SortOption } from '@/types/SortOption';
 import { ItemsPerPageOption } from '@/types/ItemsPerPageOption';
+
 type Props = {
   perPage: ItemsPerPageOption;
   setPerPage: (value: ItemsPerPageOption) => void;
   sortBy: SortOption;
   setSortBy: (value: SortOption) => void;
 };
-const TableControls: React.FC<Props> = ({
+
+const CategorySortSelectors: React.FC<Props> = ({
   perPage,
   setPerPage,
   sortBy,
@@ -50,7 +52,7 @@ const TableControls: React.FC<Props> = ({
       <div className="flex flex-col gap-1">
         <label
           htmlFor="items"
-          className="font-[Mont] font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
+          className="font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
         >
           Items on page
         </label>
@@ -61,7 +63,7 @@ const TableControls: React.FC<Props> = ({
           onChange={(e) => setPerPage(Number(e.target.value))}
           className="w-34 lg:w-32 bg-light-theme-bg-dark
                 dark:bg-dark-theme-btn-selected px-4 py-2 pr-10
-                font-[Mont] font-[600] text-[14px] leading-[21px]
+                font-[600] text-[14px] leading-[21px]
                 text-light-theme-text dark:text-text-light border
                 border-light-theme-border-active
                 focus:outline-none focus:ring-2 focus:ring-light-theme-border-active
@@ -84,4 +86,4 @@ const TableControls: React.FC<Props> = ({
   );
 };
 
-export default TableControls;
+export default CategorySortSelectors;

@@ -3,15 +3,24 @@ import React from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+
 import FavoriteButton from './FavoriteButton';
 import AddToCartButton from './AddToCartButton';
+
+import ActionButton from '../UI/ActionButton';
+
 
 interface ProductCartProps {
   product: Product;
   index?: number;
+  disableOnce?: boolean;
 }
 
-const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
+const ProductCart = ({
+  product,
+  index = 0,
+  disableOnce = false,
+}: ProductCartProps) => {
   const imgSrc = `/${product.image}`;
 
   return (
@@ -23,7 +32,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         ease: [0.42, 0, 0.58, 1],
         delay: index < 4 ? index * 0.15 : 0,
       }}
-      viewport={{ once: false, amount: 0.3 }}
+      viewport={{ once: !disableOnce, amount: 0.3 }}
       className="
         border border-light-theme-border-color
         rounded-2xl
@@ -32,7 +41,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
       "
     >
-      <div className="p-8">
+      <div className="p-8 w-[287px] h-[440px sm:h-[506px] md:w-[229px] lg-max:w-[272px]">
         <Link
           href={`/products/${product.itemId}`}
           className="
@@ -46,14 +55,14 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
             width={208}
             height={196}
             alt={product.name}
-            className="transition-transform duration-800 ease-in-out hover:scale-105"
+            className="transition-transform duration-600 ease-in-out hover:scale-110"
           />
         </Link>
 
-        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] dark:hover:text-dark-theme-btn-hover">
+        <h3 className="h-[42px] font-semibold text-[14px] leading-[21px] text-light-theme-text dark:text-text-light pt-[24px] ">
           <Link
             href={`/products/${product.itemId}`}
-            className="hover:underline hover:text-light-theme-btn-product-bg"
+            className="hover:underline hover:text-light-theme-btn-product-bg dark:hover:text-dark-theme-btn-hover"
           >
             {product.name}
           </Link>
@@ -99,22 +108,7 @@ const ProductCart = ({ product, index = 0 }: ProductCartProps) => {
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <AddToCartButton product={product} />
-          {/* <button
-            className="
-              h-10 flex-grow
-              bg-light-theme-btn-product-bg text-white
-              dark:bg-product-add-btn dark:text-text-light
-              text-sm leading-[21px]
-              rounded-md
-              transition-shadow duration-200
-              hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
-              hover:cursor-pointer
-              dark:hover:bg-dark-theme-btn-hover
-            "
-          >
-            Add to cart
-          </button> */}
+          <ActionButton name="Add to cart" />
 
           {/* <button
             className="

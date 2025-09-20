@@ -25,7 +25,7 @@ type Props = {
   item: CartItem;
 };
 
-const ShoppingCartItem: React.FC<Props> = ({ item }) => {
+const CartItem: React.FC<Props> = ({ item }) => {
   const { product, quantity } = item;
   const dispatch = useDispatch(); // 2. Ініціалізуємо dispatch для відправки команд
 
@@ -109,4 +109,4 @@ const ShoppingCartItem: React.FC<Props> = ({ item }) => {
   );
 };
 
-export default ShoppingCartItem;
+export default CartItem;

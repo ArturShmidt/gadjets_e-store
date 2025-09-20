@@ -1,10 +1,11 @@
-import FavoritesLink from '@/components/UI/NavBar/FavoritesLink';
+import FavouritesLink from '@/components/UI/NavBar/FavouritesLink';
 import ShoppingCartLink from '@/components/UI/NavBar/ShoppingCartLink';
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 import React from 'react';
+import { CategoryName } from './CategoryName';
 
 export const NavBarRightComponents = [
   { id: 'theme', element: <ThemeSwitcher /> },
-  { id: 'favourites', element: <FavoritesLink /> },
-  { id: 'cart', element: <ShoppingCartLink /> },
+  { id: CategoryName.Favourites, element: <FavouritesLink /> },
+  { id: CategoryName.Cart, element: <ShoppingCartLink /> },
 ];
