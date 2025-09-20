@@ -3,14 +3,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
-import ShoppingCartItem from './ShoppingCartItem';
-import CheckoutSummary from './CheckoutSummary';
-import CartHeading from '@/components/UI/ShoppingCartIcons/CartHeading';
-import Link from 'next/link';
+import CartItem from '@/components/Products/Cart/CartItem';
+import CheckoutSummary from '@/components/Products/Cart/CheckoutSummary';
 import { useGetProductsQuery } from '@/lib/features/api/apiSlice';
 import { Product } from '@/types/product';
+import ActionButton from '@/components/UI/ActionButton';
+import CategoryHeader from '@/components/UI/CategoryHeader';
+import { CategoryName } from '@/types/CategoryName';
 
-const ShoppingCart: React.FC = () => {
+const Cart: React.FC = () => {
   // 1. Отримуємо повний список ВСІХ продуктів з кешу RTK Query
   const { data: allProducts, isLoading, isError } = useGetProductsQuery();
 
@@ -53,47 +54,51 @@ const ShoppingCart: React.FC = () => {
 
   if (detailedCartItems.length === 0) {
     return (
-      <div className="text-center py-20 dark:bg-dark-theme-bg">
-        <h1 className="text-3xl font-bold mb-4">Your cart is empty</h1>
-        <p className="text-gray-500 mb-8">
+      <div className=" mx-4 sm:mx-6 lg-max:mx-8 flex justify-center items-center flex-col py-20 dark:bg-dark-theme-bg">
+        <h1 className="text-[32px] sm:text-[48px] font-[800] text-light-theme-text dark:text-dark-theme-text mb-4">
+          Your cart is empty
+        </h1>
+        <p className="text-light-theme-text-menu dark:text-text-gray mb-8">
           Looks like you haven&apos;t added anything yet.
         </p>
-        <Link
-          href="/phones"
-          className="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800"
-        >
-          Start Shopping
-        </Link>
+        <ActionButton name="Start Shopping" />
       </div>
     );
   }
 
   return (
     <>
-      <CartHeading />
-
+      <CategoryHeader
+        isCart
+        categoryName={CategoryName.Cart}
+        total={detailedCartItems.length}
+      />
       <div
-        className="pt-6 sm:pt-10 px-4 sm:px-6 lg-max:px-8 lg-max:flex lg:flex-col
-      text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg"
+        className="pt-6 sm:pt-10 px-4 sm:px-6 lg:px-8 lg:flex lg:flex-col
+      text-light-theme-text dark:text-dark-theme-text dark:bg-dark-theme-bg "
       >
-        <div className="flex flex-col lg-max:flex-row lg-max:items-start lg-max:justify-center lg-max:gap-4 pt-8">
-          <div className="flex items-center flex-col gap-4 py-8 lg:py-0">
-            {detailedCartItems.map((item) => {
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
+          <div className="flex items-center  flex-col gap-4 py-8 lg:py-0">
+            {detailedCartItems.slice(0, 4).map((item) => {
               return (
-                <ShoppingCartItem
+                <CartItem
                   key={item.productId}
                   item={item}
                 />
               );
             })}
           </div>
-          <div className="flex justify-center pb-14 lg-max:pb-0">
-            <CheckoutSummary totalPrice={totalPrice} />
+          <div className=" flex justify-center pb-14 lg:pb-0 ">
+            <CheckoutSummary
+              totalPrice={totalPrice}
+              itemsCount={detailedCartItems.length}
+            />{' '}
           </div>
         </div>
       </div>
+      ;
     </>
   );
 };
 
-export default ShoppingCart;
+export default Cart;

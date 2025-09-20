@@ -2,21 +2,22 @@
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '@/lib/features/api/apiSlice';
-import favoritesReducer from '@/lib/features/favorites/favoritesSlice';
+import favouritesReducer from '@/lib/features/favourites/favouritesSlice';
 import cartReducer from '@/lib/features/cart/cartSlice';
 
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { CategoryName } from '@/types/CategoryName';
 
 const persistedReducers = combineReducers({
-  favorites: favoritesReducer,
+  favourites: favouritesReducer,
   cart: cartReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'cart'],
+  whitelist: [CategoryName.Favourites, CategoryName.Cart],
 };
 
 const persistedReducer = persistReducer(persistConfig, persistedReducers);

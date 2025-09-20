@@ -3,6 +3,7 @@ import React from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import ActionButton from '../UI/ActionButton';
 
 interface ProductCartProps {
   product: Product;
@@ -35,7 +36,7 @@ const ProductCart = ({
         hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
       "
     >
-      <div className="p-8">
+      <div className="p-8 w-[287px] h-[440px sm:h-[506px] md:w-[229px] lg-max:w-[272px]">
         <Link
           href={`/products/${product.itemId}`}
           className="
@@ -102,21 +103,7 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <button
-            className="
-              h-10 flex-grow
-              bg-light-theme-btn-product-bg text-white
-              dark:bg-product-add-btn dark:text-text-light
-              text-sm leading-[21px]
-              rounded-md
-              transition-shadow duration-200
-              hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
-              hover:cursor-pointer
-              dark:hover:bg-dark-theme-btn-hover
-            "
-          >
-            Add to cart
-          </button>
+          <ActionButton name="Add to cart" />
 
           <button
             className="

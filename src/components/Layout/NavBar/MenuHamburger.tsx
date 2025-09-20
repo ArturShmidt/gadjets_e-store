@@ -4,7 +4,7 @@ import React from 'react';
 
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
 import ShoppingCartLink from '@/components/UI/NavBar/ShoppingCartLink';
-import FavoritesLink from '@/components/UI/NavBar/FavoritesLink';
+import FavouritesLink from '@/components/UI/NavBar/FavouritesLink';
 import CategoriesMenu from '@/components/UI/NavBar/CategoriesMenu';
 
 // #endregion
@@ -31,7 +31,7 @@ const MenuHamburger: React.FC<Props> = ({ onClose }) => {
           <ThemeSwitcher />
         </div>
         <div className="flex h-16 items-center justify-between">
-          <FavoritesLink
+          <FavouritesLink
             isBurger
             onClose={onClose}
           />
