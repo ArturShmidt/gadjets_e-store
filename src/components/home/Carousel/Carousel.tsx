@@ -1,28 +1,26 @@
 'use client';
-// #region Imports
-
 import { useRef, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { motion } from 'framer-motion';
 
 import { slides } from './slidesData';
-import SlideLeft from './SlideLeft';
-import SlideRight from './SlideRight';
-
-import { motion } from 'framer-motion';
-// #endregion
+import SlideFirst from './SlideFirst';
+import SlideSecond from './SlideSecond';
+import SlideThird from './SlideThird';
 
 const buttonClass = `
   hidden sm:flex items-center justify-center
-  sm:w-[32px] sm:mx-[24px] sm:h-[189px] md:h-[240px] lg:h-[400px]
+  sm:w-[32px] sm:mx-[24px] sm:h-[240px] md:h-[240px] lg:h-[400px]
   bg-white text-black border border-light-theme-border-active rounded-2xl
   hover:cursor-pointer hover:border-light-theme-text
   dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-dark-theme-border-color
   dark:hover:bg-dark-theme-border-hover
 `;
+
 const Carousel = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -38,13 +36,7 @@ const Carousel = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h1
-          className="font-[Mont] font-extrabold 
-           text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-           tracking-tight 
-           text-black dark:text-white
-           text-center"
-        >
+        <h1 className="font-[Mont] font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-black dark:text-white text-center">
           Welcome to Nice Gadgets store!
         </h1>
       </motion.div>
@@ -85,18 +77,15 @@ const Carousel = () => {
               }}
               className="w-full"
             >
-              {slides.map((slide, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className="bg-black flex flex-col sm:flex-row 
-                                h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px]
-                                rounded-2xl active:cursor-grabbing"
-                  >
-                    <SlideLeft slide={slide} />
-                    <SlideRight slide={slide} />
-                  </div>
-                </SwiperSlide>
-              ))}
+              <SwiperSlide>
+                <SlideFirst slide={slides[0]} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <SlideSecond slide={slides[1]} />
+              </SwiperSlide>
+              <SwiperSlide>
+                <SlideThird slide={slides[2]} />
+              </SwiperSlide>
             </Swiper>
           )}
 
