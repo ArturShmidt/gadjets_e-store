@@ -75,7 +75,7 @@ const ProductDetailsHeroSectionSlider: React.FC<Prop> = ({ name, images }) => {
                   height={64}
                   src={`/${img}`}
                   alt={`${name} thumbnail`}
-                  className="object-cover w-full h-auto"
+                  className="object-cover w-full h-auto cursor-pointer"
                 />
               </button>
             );
