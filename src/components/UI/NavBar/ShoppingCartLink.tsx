@@ -21,14 +21,14 @@ const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
 
   return (
     <Link
-      href={`${CategoryName.Cart}`}
+      href={`/${CategoryName.Cart}`}
       onClick={onClose}
       className={`
         relative block
         ${fullWidth ? 'w-full h-16 border-t flex justify-center items-center' : 'inline-flex p-2'}
         border-light-theme-border-color dark:border-dark-theme-border-color
         after:absolute after:left-0 after:right-0 after:h-[2px] after:bg-light-theme-text-hover after:bottom-0
-        after:scale-x-0 hover:after:scale-x-100 after:origin-bottom after:transition-transform after:duration-200 dark:after:bg-dark-theme-text
+        after:scale-x-0 after:origin-bottom after:transition-transform after:duration-200 dark:after:bg-dark-theme-text
       `}
     >
       <Image
