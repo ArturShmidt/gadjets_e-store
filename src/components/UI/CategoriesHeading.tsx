@@ -14,7 +14,6 @@ const CategoryHeading: React.FC<CatalogProps> = ({
   // опрацьовуємо список
   const formattedCategory =
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
-  console.log(formattedCategory);
   return (
     <div className="w-[320px] sm:w-[640px] lg-max:w-lg-max">
       <h2

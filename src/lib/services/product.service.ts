@@ -96,17 +96,35 @@ export async function getNewProducts(
   return allProducts.filter((p) => p.year === maxYear).slice(0, limit);
 }
 
-export async function getBestsellers(
-  limit: number = 10,
-): Promise<ProductSummary[]> {
+export async function getBestsellers() {
   const allProducts = await getProducts();
 
-  return (
-    [...allProducts]
-      // sorting by biggest discount
-      .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-      .slice(0, limit)
-  );
+  const limits = {
+    phones: 4,
+    tablets: 3,
+    accessories: 3,
+  } as const;
+
+  const top: Record<keyof typeof limits, ProductSummary[]> = {
+    phones: [],
+    tablets: [],
+    accessories: [],
+  };
+
+  for (const p of allProducts) {
+    const category = p.category as keyof typeof limits;
+    if (!(category in limits)) continue;
+
+    const arr = top[category];
+    arr.push(p);
+    arr.sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
+
+    if (arr.length > limits[category]) {
+      arr.pop();
+    }
+  }
+
+  return [...top.phones, ...top.tablets, ...top.accessories];
 }
 
 export async function getCategoriesWithCount(): Promise<CategoryWithCount[]> {
@@ -131,11 +149,24 @@ export async function getRelatedProducts(
   limit: number = 10,
 ): Promise<ProductSummary[]> {
   const allProducts = await getProducts();
-
   const currentProduct = allProducts.find((p) => p.itemId === itemId);
-
   if (!currentProduct) {
     return [];
+  }
+
+  if (currentProduct.category === 'phones') {
+    const match = currentProduct.name.match(/\d{2,}/);
+    if (match) {
+      const modelNumber = match[0];
+      return allProducts
+        .filter(
+          (p) =>
+            p.category === 'phones' &&
+            p.itemId !== itemId &&
+            p.name.includes(modelNumber),
+        )
+        .slice(0, limit);
+    }
   }
 
   return allProducts

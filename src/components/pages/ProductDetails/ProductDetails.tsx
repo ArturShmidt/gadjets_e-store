@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import ProductSlider from '../../UI/productSlider/ProductSlider';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
 import ProductDetailsSpecs from './ProductDetailsSpecs';
@@ -12,6 +11,8 @@ import { ProductType as Product } from '@/types/CategoryType';
 import { useGetProductByIdQuery } from '@/lib/features/api/apiSlice';
 
 import { useEffect, useState } from 'react';
+import ProductSliderWrapper from '@/components/UI/productSlider/ProductSliderWrapper';
+import { SliderType } from '@/types/SliderType';
 
 const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
   const {
@@ -98,7 +99,10 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
         </div>
       </div>
       {/* TODO add data for slider here */}
-      {/* <ProductSlider title={'You may also like'} /> */}
+      <ProductSliderWrapper
+        type={SliderType.Related}
+        productId={product.id}
+      />
     </div>
   );
 };
