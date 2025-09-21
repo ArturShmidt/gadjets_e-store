@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/lib/store';
 import { toggleFavorite } from '@/lib/features/favourites/favouritesSlice';
 import { Product } from '@/types/product';
+import AnimatedHeartIcon from '../UI/AnimatedHeartIcon';
 
 export default function FavoriteButton({ product }: { product: Product }) {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ export default function FavoriteButton({ product }: { product: Product }) {
   };
 
   return (
-    <button onClick={handleToggleFavorite}>{isFavorite ? '❤️' : '🤍'}</button>
+    <button onClick={handleToggleFavorite}>
+      <AnimatedHeartIcon isActive={isFavorite} />
+    </button>
   );
 }
