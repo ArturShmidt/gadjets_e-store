@@ -107,7 +107,7 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <ActionButton name="Add to cart" />
+          <AddToCartButton product={product} />
           <FavoriteButton product={product} />
         </div>
       </div>
