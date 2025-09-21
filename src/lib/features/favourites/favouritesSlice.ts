@@ -3,7 +3,7 @@ import { Product } from '@/types/product';
 import { CategoryName } from '@/types/CategoryName';
 
 interface favouritesState {
-  items: Product[];
+  items: string[];
 }
 
 const initialState: favouritesState = {
@@ -14,9 +14,9 @@ const favouritesSlice = createSlice({
   name: CategoryName.Favourites,
   initialState,
   reducers: {
-    toggleFavorite: (state, action: PayloadAction<Product>) => {
+    toggleFavorite: (state, action: PayloadAction<string>) => {
       const existingIndex = state.items.findIndex(
-        (item) => item.id === action.payload.id,
+        (id) => id === action.payload,
       );
 
       if (existingIndex >= 0) {

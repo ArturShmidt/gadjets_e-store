@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { mapDetailsToSummary } from '@/lib/mappers';
 import ProductDetailsHeroSection from './ProductDetailsHeroSection';
 import ProductDetailsAbout from './ProductDetailsAbout';
 import ProductDetailsSpecs from './ProductDetailsSpecs';
@@ -22,6 +23,8 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
 
   // Стан для всіх варіантів цієї серії
   const [variants, setVariants] = useState<Product[]>([]);
+
+  const productSummary = mapDetailsToSummary(product);
 
   useEffect(() => {
     async function fetchVariants() {
@@ -80,6 +83,7 @@ const ProductDetails = ({ initialProduct }: { initialProduct: Product }) => {
       </div>
       <div className="w-full sm:w-1/2 sm:px-4">
         <ProductDetailsOrderOptions
+          product={productSummary}
           namespaceId={product.namespaceId}
           colorsAvailable={product.colorsAvailable}
           color={product.color}

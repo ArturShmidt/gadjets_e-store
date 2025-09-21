@@ -6,6 +6,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { ProductType } from '@/types/CategoryType';
+import AddToCartButton from '@/components/Products/AddToCartButton';
+import FavoriteButton from '@/components/Products/FavoriteButton';
+import { Product } from '@/types/product';
 
 interface Props {
   namespaceId: string;
@@ -16,9 +19,11 @@ interface Props {
   priceDiscount: number;
   priceRegular: number;
   variants: ProductType[];
+  product: Product;
 }
 
 const ProductDetailsOrderOptions: React.FC<Props> = ({
+  product,
   color,
   capacity,
   capacityAvailable,
@@ -129,16 +134,24 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
         </span>
       </div>
 
-      <div className="flex gap-2">
-        <button
+      <div className="flex items-center gap-2 mt-4">
+        <div className="flex-grow w-full">
+          <AddToCartButton product={product} />
+        </div>
+        <div className="pr-4">
+          <FavoriteButton product={product} />
+        </div>
+
+        {/* <button
           className="flex-grow hover:cursor-pointer bg-light-theme-btn-product-bg text-white
                   dark:bg-product-add-btn dark:text-text-light dark:hover:bg-dark-theme-btn-hover
                     font-bold py-3 rounded-md transition-shadow duration-200
                     hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]"
+                    onClick={}
         >
           Add to cart
         </button>
-        <button className="w-14 h-14 flex items-center cursor-pointer justify-center border dark:hover:border-white dark:bg-product-add-btn-selected dark:border-product-add-btn-selected border-light-theme-border-active hover:border-light-theme-text rounded-md transition-colors">
+        {/* <button className="w-14 h-14 flex items-center cursor-pointer justify-center border dark:hover:border-white dark:bg-product-add-btn-selected dark:border-product-add-btn-selected border-light-theme-border-active hover:border-light-theme-text rounded-md transition-colors">
           <svg
             width="24"
             height="24"
@@ -153,7 +166,7 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
               fill="transparent"
             />
           </svg>
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -11,5 +11,20 @@ export default function AddToCartButton({ product }: { product: Product }) {
     dispatch(addItem(product));
   };
 
-  return <button onClick={handleAddToCart}>Add to cart</button>;
+  return (
+    <div
+      className="h-10 w-[80%] flex justify-center items-center
+            bg-light-theme-btn-product-bg text-white
+            dark:bg-product-add-btn dark:text-text-light
+            text-sm leading-[21px]
+            rounded-[8px]
+            transition-transform duration-500
+            hover:shadow-[0_0_13px_0_rgba(23,32,49,0.4)]
+            hover:cursor-pointer
+            dark:hover:bg-dark-theme-btn-hover
+            hover:scale-105"
+    >
+      <button onClick={handleAddToCart}>Add to cart</button>;
+    </div>
+  );
 }
