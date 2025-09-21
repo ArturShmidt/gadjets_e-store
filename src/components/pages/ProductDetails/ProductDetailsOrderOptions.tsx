@@ -43,8 +43,9 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
     const found = variants.find(
       (v) => v.color === newColor && v.capacity === newCapacity,
     );
+    console.log(`/products/${found?.namespaceId}`);
     if (found) {
-      router.push(`/products/${found.id}`);
+      router.push(`/products/${found.namespaceId}`);
     }
   };
 

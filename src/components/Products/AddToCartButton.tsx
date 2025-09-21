@@ -13,7 +13,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
   return (
     <div
-      className="h-10 w-[80%] flex justify-center items-center
+      className="h-[35px] w-[80%] flex justify-center items-center
             bg-light-theme-btn-product-bg text-white
             dark:bg-product-add-btn dark:text-text-light
             text-sm leading-[21px]
@@ -23,8 +23,9 @@ export default function AddToCartButton({ product }: { product: Product }) {
             hover:cursor-pointer
             dark:hover:bg-dark-theme-btn-hover
             hover:scale-105"
+      onClick={handleAddToCart}
     >
-      <button onClick={handleAddToCart}>Add to cart</button>;
+      Add to cart
     </div>
   );
 }
