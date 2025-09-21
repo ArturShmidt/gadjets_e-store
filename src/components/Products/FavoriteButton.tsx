@@ -6,15 +6,19 @@ import { toggleFavorite } from '@/lib/features/favourites/favouritesSlice';
 import { Product } from '@/types/product';
 import AnimatedHeartIcon from '../UI/AnimatedHeartIcon';
 
+interface Props {
+  product: { itemId: string };
+}
+
 export default function FavoriteButton({ product }: { product: Product }) {
   const dispatch = useDispatch();
 
   const isFavorite = useSelector((state: RootState) =>
-    state.persisted.favourites.items.some((item) => item.id === product.id),
+    state.persisted.favourites.items.includes(product.itemId),
   );
 
   const handleToggle = () => {
-    dispatch(toggleFavorite(product));
+    dispatch(toggleFavorite(product.itemId));
   };
 
   return (
@@ -26,7 +30,7 @@ export default function FavoriteButton({ product }: { product: Product }) {
         border border-light-theme-border-active
         hover:border-light-theme-text hover:cursor-pointer
         dark:hover:bg-dark-theme-border-hover dark:hover:border-dark-theme-border-color
-        flex items-center justify-center // Додано для центрування
+        flex items-center justify-center
       "
     >
       <AnimatedHeartIcon isActive={isFavorite} />
