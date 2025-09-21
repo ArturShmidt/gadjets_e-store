@@ -26,6 +26,7 @@ const Footer: React.FC = () => {
         sm:flex-row gap-4 sm:gap-4 lg-max:gap-22"
       >
         {FooterCategories.map((category) => {
+          const isGithub = category.label === 'Github';
           return (
             <Link
               key={category.label}
@@ -39,7 +40,7 @@ const Footer: React.FC = () => {
     sm:after:scale-x-0 sm:hover:after:scale-x-100 sm:after:origin-top sm:after:transition-transform sm:after:duration-200
     dark:hover:text-white sm:dark:after:bg-dark-theme-text
   "
-              target="_blank"
+              {...(isGithub ? { target: '_blank' } : {})}
             >
               {category.label.toUpperCase()}
             </Link>
