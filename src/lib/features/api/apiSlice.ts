@@ -4,8 +4,6 @@ import {
   CategoryWithCount,
   ProductType as ProductDetails,
 } from '@/types/CategoryType';
-import { getBestsellers } from '@/lib/services/product.service';
-import build from 'next/dist/build';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -39,6 +37,10 @@ export const apiSlice = createApi({
     getBestsellers: builder.query<ProductSummary[], void>({
       query: () => '/products/bestsellers',
     }),
+
+    getNewProducts: builder.query<ProductSummary[], void>({
+      query: () => '/products/new',
+    }),
   }),
 });
 
@@ -46,4 +48,7 @@ export const {
   useGetProductsQuery,
   useGetProductByIdQuery,
   useGetRelatedProductsQuery,
+  useGetBestsellersQuery,
+  useGetCategoriesQuery,
+  useGetNewProductsQuery,
 } = apiSlice;

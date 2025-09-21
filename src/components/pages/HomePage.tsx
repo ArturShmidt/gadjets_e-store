@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Carousel from '@/components/home/Carousel/Carousel';
-import ProductSlider from '@/components/UI/productSlider/ProductSlider';
 import ShopByCategory from '@/components/home/shopByCategory/ShopByCategory';
 import { Product } from '@/types/product';
+import ProductSliderWrapper from '../UI/productSlider/ProductSliderWrapper';
+import { SliderType } from '@/types/SliderType';
 
 interface Props {
   allProducts: Product[];
@@ -21,15 +22,9 @@ const HomePage: React.FC<Props> = ({
     <div className="flex flex-col pb-16 pt-6 sm:pt-8 lg:pb-20 lg:pt-14 dark:bg-dark-theme-bg">
       <div>
         <Carousel />
-        <ProductSlider
-          title="Brand new models"
-          products={newModels}
-        />
+        <ProductSliderWrapper type={SliderType.New} />
         <ShopByCategory />
-        <ProductSlider
-          title="Hot prices"
-          products={hotPriceProducts}
-        />
+        <ProductSliderWrapper type={SliderType.Bestsellers} />
       </div>
     </div>
   );
