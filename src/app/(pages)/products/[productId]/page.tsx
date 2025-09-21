@@ -1,4 +1,8 @@
-import { getProducts, getProductById } from '@/lib/services/product.service';
+import {
+  getProducts,
+  getProductById,
+  getProductAndVariants,
+} from '@/lib/services/product.service';
 import ProductDetails from '@/components/pages/ProductDetails/ProductDetails';
 import { notFound } from 'next/navigation';
 
@@ -18,11 +22,17 @@ export default async function ProductPage({
 }) {
   const { productId } = params;
 
-  const initialProduct = await getProductById(productId);
+  const { product: initialProduct, variants } =
+    await getProductAndVariants(productId);
 
   if (!initialProduct) {
     notFound();
   }
 
-  return <ProductDetails initialProduct={initialProduct} />;
+  return (
+    <ProductDetails
+      initialProduct={initialProduct}
+      variants={variants}
+    />
+  );
 }
