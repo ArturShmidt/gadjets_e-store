@@ -97,6 +97,7 @@ const Cart: React.FC = () => {
             <CheckoutSummary
               totalPrice={totalPrice}
               itemsCount={totalQuantity}
+              detailedCartItems={detailedCartItems}
             />
           </div>
         </div>
