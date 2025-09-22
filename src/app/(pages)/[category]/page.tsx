@@ -19,9 +19,8 @@ import CategoryHeader from '@/components/UI/CategoryHeader';
  */
 export async function generateStaticParams() {
   const categories = await getValidCategories();
-  const allValidRoutes = [...categories, CategoryName.Cart];
 
-  return allValidRoutes.map((route) => ({
+  return categories.map((route) => ({
     category: route,
   }));
 }
@@ -35,20 +34,17 @@ export default async function CategoryPage({
 }) {
   const { category } = params;
 
-  // ✅ Викликаємо функцію з сервісу
+  // Викликаємо функцію з сервісу
   const initialProducts: ProductSummary[] =
     await getProductsByCategory(category);
 
   return (
     <div className="dark:bg-dark-theme-bg px-4 sm:px-6 lg:px-8 pt-6 pb-16 lg:pb-20">
-      {/* TODO add cart to routing */}
       <CategoryHeader
         categoryName={category}
         total={initialProducts.length}
       />
 
-      {/* 3. Відображаємо список товарів */}
-      {/* <ProductList products={products} /> */}
       <Catalog
         categoryName={category}
         initialProducts={initialProducts}
