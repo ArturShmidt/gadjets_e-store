@@ -16,7 +16,7 @@ const Favourites: React.FC = () => {
   );
 
   if (isLoading) {
-    return <div>Завантаження кошика...</div>;
+    return <div>Loading favourites...</div>;
   }
 
   const detailedFavouritesItems = favouritesItems
