@@ -44,7 +44,7 @@ const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
       {itemCount > 0 && (
         <span
           className="absolute top-0 right-0 bg-red-500 text-white text-xs 
-                     rounded-full h-4 w-4 flex items-center justify-center"
+            rounded-full h-4 w-4 flex items-center justify-center"
         >
           {itemCount > 9 ? '9+' : itemCount}
         </span>

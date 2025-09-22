@@ -1,4 +1,4 @@
-import Cart from '@/components/Products/Cart/Cart';
+import Cart from '@/components/pages/Cart/Cart';
 
 export default async function CartPage() {
   return <Cart />;

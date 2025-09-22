@@ -3,8 +3,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
-import CartItem from '@/components/Products/Cart/CartItem';
-import CheckoutSummary from '@/components/Products/Cart/CheckoutSummary';
+import CartItem from '@/components/pages/Cart/CartItem';
+import CheckoutSummary from '@/components/pages/Cart/CheckoutSummary';
 import { useGetProductsQuery } from '@/lib/features/api/apiSlice';
 import { Product } from '@/types/product';
 import ActionButton from '@/components/UI/ActionButton';
@@ -52,6 +52,11 @@ const Cart: React.FC = () => {
     0,
   );
 
+  const totalQuantity = detailedCartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
+
   if (detailedCartItems.length === 0) {
     return (
       <div className=" mx-4 sm:mx-6 lg-max:mx-8 flex justify-center items-center flex-col py-20 dark:bg-dark-theme-bg">
@@ -79,7 +84,7 @@ const Cart: React.FC = () => {
       >
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center lg:gap-4 pt-8">
           <div className="flex items-center  flex-col gap-4 py-8 lg:py-0">
-            {detailedCartItems.slice(0, 4).map((item) => {
+            {detailedCartItems.map((item) => {
               return (
                 <CartItem
                   key={item.productId}
@@ -91,12 +96,11 @@ const Cart: React.FC = () => {
           <div className=" flex justify-center pb-14 lg:pb-0 ">
             <CheckoutSummary
               totalPrice={totalPrice}
-              itemsCount={detailedCartItems.length}
-            />{' '}
+              itemsCount={totalQuantity}
+            />
           </div>
         </div>
       </div>
-      ;
     </>
   );
 };
