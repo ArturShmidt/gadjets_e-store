@@ -6,8 +6,7 @@ export const slides = [
     slogan: 'Be the first!',
     product: 'iPhone 14 Pro',
     productSlogan: 'Pro. Beyond.',
-    image: '/img/Carousel/category-phones.png',
-    modelUrl: '/models/iPhone14Pro.glb',
+    image: '/img/Carousel/iphone.png',
   },
   {
     itemId: 'apple-ipad-pro-11-2021-2tb-spacegray',
