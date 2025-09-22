@@ -3,12 +3,23 @@
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/lib/features/cart/cartSlice';
 import { Product } from '@/types/product';
+import { toast } from 'sonner';
 
-export default function AddToCartButton({ product }: { product: Product }) {
+interface AddToCartButtonProps {
+  product: Product;
+  onClick?: () => void;
+}
+
+export default function AddToCartButton({
+  product,
+  onClick,
+}: AddToCartButtonProps) {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     dispatch(addItem(product));
+
+    if (onClick) onClick();
   };
 
   return (
