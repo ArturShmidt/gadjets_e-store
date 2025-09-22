@@ -1,10 +1,5 @@
-'use client';
-
-import React from 'react';
 import Cart from '@/components/Products/Cart/Cart';
 
-const page: React.FC = () => {
+export default async function CartPage() {
   return <Cart />;
-};
-
-export default page;
+}
