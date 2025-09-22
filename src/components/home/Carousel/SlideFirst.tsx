@@ -40,7 +40,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
   return (
     <div
       ref={ref}
-      className="relative flex flex-col sm:flex-row h-[220px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
+      className="relative flex flex-col sm:flex-row h-[320px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
     >
       <div className="w-full sm:w-1/2 flex flex-col justify-center px-6 py-6 z-20 relative">
         <motion.h2
