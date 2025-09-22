@@ -1,6 +1,6 @@
 export const slides = [
   {
-    itemId: 'apple-iphone-14-512gb-midnight',
+    itemId: 'apple-iphone-14-pro-512gb-spaceblack',
     text: 'Now available',
     subText: 'in our store!',
     slogan: 'Be the first!',

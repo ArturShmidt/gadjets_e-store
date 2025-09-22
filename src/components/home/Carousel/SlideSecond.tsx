@@ -117,7 +117,7 @@ const SlideSecond: React.FC<SlideProps> = ({ slide }) => {
               alt={slide.product}
               width={574}
               height={341}
-              className="w-[220px] sm:w-[200px] md:w-[250px] lg:w-[350px] object-cover rounded-xl"
+              className="w-[220px] sm:w-[200px] md:w-[250px] lg:w-[300px] object-cover rounded-xl"
             />
           </motion.div>
         </Tilt>
