@@ -9,6 +9,8 @@ import AddToCartButton from './AddToCartButton';
 
 import ActionButton from '../UI/ActionButton';
 import { toast } from 'sonner';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/lib/store';
 
 interface ProductCartProps {
   product: Product;
@@ -22,6 +24,12 @@ const ProductCart = ({
   disableOnce = false,
 }: ProductCartProps) => {
   const imgSrc = `/${product.image}`;
+
+  const isInCart = useSelector((state: RootState) =>
+    state.persisted.cart.items.some(
+      (item) => item.productId === product.itemId,
+    ),
+  );
 
   return (
     <motion.div
@@ -108,10 +116,29 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <AddToCartButton
-            product={product}
-            onClick={() => toast.success(`${product.name} add to cart!`)}
-          />
+          {isInCart ?
+            <Link
+              href="/cart"
+              className="
+                h-[35px] w-[80%] flex justify-center items-center
+              bg-white text-[#333] border border-light-theme-border-color hover:border-light-theme-border-active
+              dark:bg-gray-700 dark:text-text-light dark:border-none
+                text-sm leading-[21px]
+                rounded-[8px]
+                transition-transform duration-500
+                hover:shadow-[0_0_13px_0_rgba(23,32,49,0.4)]
+                hover:cursor-pointer
+              dark:hover:bg-dark-theme-border-hover
+                hover:scale-105
+              "
+            >
+              Already in cart
+            </Link>
+          : <AddToCartButton
+              product={product}
+              onClick={() => toast.success(`${product.name} add to cart!`)}
+            />
+          }
           <FavoriteButton product={product} />
         </div>
       </div>
