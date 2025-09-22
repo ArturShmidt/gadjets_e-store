@@ -4,6 +4,7 @@ import './globals.css';
 import NavBar from '@/components/Layout/NavBar/NavBar';
 import Footer from '@/components/Layout/Footer/Footer';
 import StoreProvider from '@/lib/StoreProvider';
+import { Toaster } from 'sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,6 +34,23 @@ export default function RootLayout({
         min-h-screen flex flex-col `}
       >
         <StoreProvider>
+          <Toaster
+            richColors
+            position="top-center"
+            duration={4000}
+            toastOptions={{
+              style: {
+                background: 'var(--color-light-theme-btn-product-bg)',
+                border: 'var(--color-light-theme-border-color)',
+                color: '#fff',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                borderRadius: '12px',
+                padding: '12px 24px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              },
+            }}
+          />
           <div
             className="sticky bg-white top-0 z-50 w-full 
           border-b border-light-theme-border-color dark:border-dark-theme-border-color dark:bg-dark-theme-bg "

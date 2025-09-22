@@ -5,12 +5,17 @@ import { RootState } from '@/lib/store';
 import { toggleFavorite } from '@/lib/features/favourites/favouritesSlice';
 import { Product } from '@/types/product';
 import AnimatedHeartIcon from '../UI/AnimatedHeartIcon';
+import { toast } from 'sonner';
 
-interface Props {
-  product: { itemId: string };
+interface FavoriteButtonProps {
+  product: Product;
+  onClick?: () => void;
 }
 
-export default function FavoriteButton({ product }: { product: Product }) {
+export default function FavoriteButton({
+  product,
+  onClick,
+}: FavoriteButtonProps) {
   const dispatch = useDispatch();
 
   const isFavorite = useSelector((state: RootState) =>
@@ -18,7 +23,17 @@ export default function FavoriteButton({ product }: { product: Product }) {
   );
 
   const handleToggle = () => {
+    const willBeFavorite = !isFavorite;
+
     dispatch(toggleFavorite(product.itemId));
+
+    if (willBeFavorite) {
+      toast(`${product.name} add to favorites`);
+    } else {
+      toast(`${product.name} removed from favorites`);
+    }
+
+    if (onClick) onClick();
   };
 
   return (

@@ -8,6 +8,7 @@ import FavoriteButton from './FavoriteButton';
 import AddToCartButton from './AddToCartButton';
 
 import ActionButton from '../UI/ActionButton';
+import { toast } from 'sonner';
 
 interface ProductCartProps {
   product: Product;
@@ -107,7 +108,10 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          <AddToCartButton product={product} />
+          <AddToCartButton
+            product={product}
+            onClick={() => toast.success(`${product.name} add to cart!`)}
+          />
           <FavoriteButton product={product} />
         </div>
       </div>
