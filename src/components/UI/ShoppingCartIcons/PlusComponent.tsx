@@ -1,31 +1,31 @@
 // #region Imports
 import Image from 'next/image';
 import React from 'react';
-import PlusGreyBlack from '@/components/UI/icons/Plus(GreyBlack).svg';
-import PlusGreyWhite from '@/components/UI/icons/Plus(GreyWhite).svg';
+import PlusBlack from '@/components/UI/icons/Close(Black).svg';
+import PlusWhite from '@/components/UI/icons/Close(White).svg';
+import PlusGreyWhite from '@/components/UI/icons/Close(GreyWhite).svg';
+import PlusGreyBlack from '@/components/UI/icons/Close(GreyBlack).svg';
 // #endregion
 
 type Props = {
-  variant?: 'default' | 'grey';
+  placement?: 'default' | 'grey';
 };
 
-const PlusComponent: React.FC<Props> = ({ variant = 'default' }) => {
-  const greyBlack = variant === 'grey' ? PlusGreyWhite : PlusGreyBlack;
-  const greyWhite = variant === 'grey' ? PlusGreyBlack : PlusGreyWhite;
+const PlusComponent: React.FC<Props> = ({ placement = 'default' }) => {
+  const Black = placement === 'grey' ? PlusGreyWhite : PlusGreyBlack;
+  const White = placement === 'grey' ? PlusGreyBlack : PlusGreyWhite;
 
   return (
     <>
-      {/* black plus */}
       <Image
-        src={greyBlack}
+        src={placement === 'grey' ? Black : PlusBlack}
         alt="plus"
-        className="dark:hidden"
+        className="dark:hidden pointer-events-none rotate-45"
       />
-      {/* white plus */}
       <Image
-        src={greyWhite}
+        src={placement === 'grey' ? White : PlusWhite}
         alt="plus"
-        className="hidden dark:block"
+        className="hidden dark:block pointer-events-none rotate-45"
       />
     </>
   );

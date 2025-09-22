@@ -73,8 +73,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
             <button
               className={`w-8 h-8 flex items-center justify-center 
                 border rounded-[48px] border-light-theme-border-color dark:border-dark-theme-border-color 
-                text-light-theme-border-active dark:text-dark-theme-border-hover
-                ${quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                ${quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer bg-white dark:bg-dark-theme-btn-selected'}`}
               onClick={() => dispatch(decrementQuantity(product.itemId))}
               disabled={quantity === 1}
             >
@@ -83,18 +82,21 @@ const CartItem: React.FC<Props> = ({ item }) => {
               : <MinusComponent />}
             </button>
             <span className="w-8 h-8 flex items-center justify-center">
-              {quantity}{' '}
+              {quantity}
               {/* <-- 6. Відображаємо кількість з пропсів (з Redux) */}
             </span>
             <button
-              className="w-8 h-8 flex items-center justify-center 
+              className={`w-8 h-8 flex items-center justify-center 
                 border dark:border-0 rounded-[48px] border-light-theme-border-active 
-                text-black dark:text-dark-theme-text 
                 bg-white dark:bg-dark-theme-btn-selected 
-                cursor-pointer"
+                ${quantity === 10 ? 'dark:bg-transparent cursor-not-allowed dark:border-1 border-light-theme-border-color dark:border-dark-theme-border-color ' : 'cursor-pointer'}
+`}
               onClick={() => dispatch(incrementQuantity(product.itemId))}
+              disabled={quantity === 10}
             >
-              <PlusComponent />
+              {quantity === 10 ?
+                <PlusComponent placement="grey" />
+              : <PlusComponent />}
             </button>
           </div>
           <span
