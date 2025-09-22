@@ -53,7 +53,7 @@ const ProductCart = ({
           href={`/products/${product.itemId}`}
           className="
             relative flex justify-center
-            h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
+            h-[130px] sm:h-[196px]
           "
         >
           <Image
