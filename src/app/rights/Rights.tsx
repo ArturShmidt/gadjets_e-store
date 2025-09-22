@@ -10,7 +10,7 @@ import {
   Tag,
   Lock,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const rightsList = [
@@ -66,7 +66,13 @@ const rightsList = [
 
 const Rights = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 = next, -1 = prev
+  const [direction, setDirection] = useState(0);
+  const [isGridView, setIsGridView] = useState(false); // 🔹 дефолт false
+
+  // 🔹 При першому рендері автоматично вмикаємо grid
+  useEffect(() => {
+    setIsGridView(true);
+  }, []);
 
   const nextCard = () => {
     setDirection(1);
@@ -79,8 +85,6 @@ const Rights = () => {
       (prev) => (prev - 1 + rightsList.length) % rightsList.length,
     );
   };
-
-  const Icon = rightsList[currentIndex].icon;
 
   const variants = {
     enter: (dir: number) => ({
@@ -96,51 +100,86 @@ const Rights = () => {
     }),
   };
 
+  const Icon = rightsList[currentIndex].icon;
+
   return (
     <div className="flex flex-col items-center pb-16 pt-6 sm:pt-8 lg:pb-20 lg:pt-14 px-4 sm:px-8 lg:px-16 dark:bg-dark-theme-bg">
       <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-light-theme-text dark:text-dark-theme-text mb-10">
         Customer Rights
       </h1>
 
-      <div className="relative w-full max-w-xl h-[400px] flex items-center justify-center">
-        <AnimatePresence custom={direction}>
-          <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.5 }}
-            className="absolute top-0 w-full p-8 rounded-3xl shadow-2xl border border-light-theme-border-active dark:border-dark-theme-border-hover bg-white dark:bg-item-bg flex flex-col items-start"
+      <div className="flex gap-4 mt-4 mb-12">
+        {!isGridView && (
+          <button
+            onClick={prevCard}
+            className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer transition"
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-dark-theme-text dark:bg-dark-theme-btn-hover mb-5">
-              <Icon className="w-7 h-7 text-light-theme-btn-product-bg dark:text-dark-theme-text" />
-            </div>
-            <h2 className="text-xl font-semibold text-light-theme-text dark:text-dark-theme-text mb-3">
-              {rightsList[currentIndex].title}
-            </h2>
-            <p className="text-base text-light-theme-text-menu dark:text-text-gray leading-relaxed">
-              {rightsList[currentIndex].description}
-            </p>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="flex gap-4 mt-8">
+            Prev
+          </button>
+        )}
         <button
-          onClick={prevCard}
+          onClick={() => setIsGridView(!isGridView)}
           className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer transition"
         >
-          Prev
+          {isGridView ? 'Show one' : 'Show all'}
         </button>
-        <button
-          onClick={nextCard}
-          className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer"
-        >
-          Next
-        </button>
+        {!isGridView && (
+          <button
+            onClick={nextCard}
+            className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer"
+          >
+            Next
+          </button>
+        )}
       </div>
+
+      {isGridView ?
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+          {rightsList.map((right, idx) => {
+            const Icon = right.icon;
+            return (
+              <div
+                key={idx}
+                className="p-6 rounded-3xl shadow-lg border border-light-theme-border-active dark:border-dark-theme-border-hover bg-white dark:bg-item-bg flex flex-col"
+              >
+                <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-dark-theme-text dark:bg-dark-theme-btn-hover mb-5">
+                  <Icon className="w-7 h-7 text-light-theme-btn-product-bg dark:text-dark-theme-text" />
+                </div>
+                <h2 className="text-lg font-semibold text-light-theme-text dark:text-dark-theme-text mb-2">
+                  {right.title}
+                </h2>
+                <p className="text-sm text-light-theme-text-menu dark:text-text-gray leading-relaxed">
+                  {right.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      : <div className="relative w-full max-w-xl h-[400px] flex items-center justify-center">
+          <AnimatePresence custom={direction}>
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+              className="absolute top-0 w-full p-8 rounded-3xl shadow-2xl border border-light-theme-border-active dark:border-dark-theme-border-hover bg-white dark:bg-item-bg flex flex-col items-start"
+            >
+              <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-dark-theme-text dark:bg-dark-theme-btn-hover mb-5">
+                <Icon className="w-7 h-7 text-light-theme-btn-product-bg dark:text-dark-theme-text" />
+              </div>
+              <h2 className="text-xl font-semibold text-light-theme-text dark:text-dark-theme-text mb-3">
+                {rightsList[currentIndex].title}
+              </h2>
+              <p className="text-base text-light-theme-text-menu dark:text-text-gray leading-relaxed">
+                {rightsList[currentIndex].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      }
     </div>
   );
 };
