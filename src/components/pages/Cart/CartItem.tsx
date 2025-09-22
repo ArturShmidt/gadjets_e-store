@@ -55,7 +55,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
           />
         </div>
         <Link
-          href={`/products/${product.id}`}
+          href={`/products/${product.itemId}`}
           className="text-[14px] flex items-center w-32 sm:w-44 "
         >
           {product.name}
