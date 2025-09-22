@@ -3,6 +3,7 @@ import path from 'path';
 import { Product as ProductSummary } from '@/types/product';
 import {
   CategoryWithCount,
+  ProductData,
   ProductType as ProductDetails,
 } from '@/types/CategoryType';
 import { CategoryName } from '@/types/CategoryName';
@@ -174,4 +175,37 @@ export async function getRelatedProducts(
       (p) => p.category === currentProduct.category && p.itemId !== itemId,
     )
     .slice(0, limit);
+}
+
+export async function getProductAndVariants(
+  itemId: string,
+): Promise<ProductData> {
+  const allSummaries = await getProducts();
+  const productSummary = allSummaries.find((p) => p.itemId === itemId);
+
+  if (!productSummary) {
+    return { product: null, variants: [] };
+  }
+
+  const category = productSummary.category;
+  const detailedFileName = categoryToFileMap[category];
+
+  if (!detailedFileName) {
+    return { product: null, variants: [] };
+  }
+
+  const allDetailedProducts =
+    await readJsonFile<ProductDetails[]>(detailedFileName);
+
+  const currentProduct = allDetailedProducts.find((p) => p.id === itemId);
+
+  if (!currentProduct) {
+    return { product: null, variants: [] };
+  }
+
+  const variants = allDetailedProducts.filter(
+    (p) => p.namespaceId === currentProduct.namespaceId,
+  );
+
+  return { product: currentProduct, variants: variants };
 }
