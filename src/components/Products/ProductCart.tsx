@@ -4,10 +4,9 @@ import { Product } from '@/types/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-import FavoriteButton from './FavoriteButton';
-import AddToCartButton from './AddToCartButton';
+import FavoriteButton from '@/components/Products/FavoriteButton';
+import AddToCartButton from '@/components/Products/AddToCartButton';
 
-import ActionButton from '../UI/ActionButton';
 import { toast } from 'sonner';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
@@ -49,12 +48,12 @@ const ProductCart = ({
         hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]
       "
     >
-      <div className="p-8 w-[287px] h-[440px sm:h-[506px] md:w-[229px] lg-max:w-[272px]">
+      <div className="p-8">
         <Link
           href={`/products/${product.itemId}`}
           className="
             relative flex justify-center
-            h-[130px] sm:h-[196px] md:h-[196px] lg:h-[196px]
+            h-[130px] sm:h-[196px]
           "
         >
           <Image
