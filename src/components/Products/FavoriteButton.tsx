@@ -42,7 +42,7 @@ export default function FavoriteButton({
       className="
         bg-white dark:bg-gray-700
         p-2.5 rounded-full
-        border border-light-theme-border-active
+        border border-light-theme-border-active dark:border-none
         hover:border-light-theme-text hover:cursor-pointer
         dark:hover:bg-dark-theme-border-hover dark:hover:border-dark-theme-border-color
         flex items-center justify-center
