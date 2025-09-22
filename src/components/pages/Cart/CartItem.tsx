@@ -14,6 +14,7 @@ import { Product } from '@/types/product';
 import MinusComponent from '@/components/UI/ShoppingCartIcons/MinusComponent';
 import PlusComponent from '@/components/UI/ShoppingCartIcons/PlusComponent';
 import CloseComponent from '@/components/UI/ShoppingCartIcons/CloseComponent';
+import NumberCounter from '@/components/pages/Cart/NumberCounter';
 
 // 1. Оновлюємо пропси: компонент тепер приймає об'єкт CartItem
 interface CartItem {
@@ -101,7 +102,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
             text-light-theme-text dark:text-dark-theme-text leading-[1.4] tracking-normal font-bold text-[22px]"
           >
             {/* 7. Розраховуємо ціну на основі кількості з Redux */}$
-            {product.price * quantity}
+            <NumberCounter value={product.price * quantity} />
           </span>
         </div>
       </div>
