@@ -1,3 +1,5 @@
+import { CategoryName } from './CategoryName';
+
 export type CategoryWithCount = {
   id: string;
   name: string;
@@ -11,7 +13,7 @@ export type DescriptionItem = {
 
 export type ProductType = {
   id: string;
-  category: string;
+  category: CategoryName;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];

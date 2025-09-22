@@ -6,8 +6,10 @@ import { CategoryName } from '@/types/CategoryName';
 
 const CategoryBreadcrumb = ({
   categoryName,
+  name,
 }: {
   categoryName: CategoryName;
+  name?: string;
 }) => {
   const formattedCategory =
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
@@ -30,9 +32,27 @@ const CategoryBreadcrumb = ({
         <div className="px-2">
           <ArrowRightCategoryComponent />
         </div>
-        <span className="dark:text-text-gray text-light-theme-text-menu ">
-          {formattedCategory}
-        </span>
+        {name ?
+          <Link
+            href={`/${formattedCategory.toLowerCase()}`}
+            className="dark:text-dark-theme-text text-light-theme-text "
+          >
+            {formattedCategory}
+          </Link>
+        : <span className="dark:text-text-gray text-light-theme-text-menu ">
+            {formattedCategory}
+          </span>
+        }
+        {name && (
+          <>
+            <div className="px-2">
+              <ArrowRightCategoryComponent />
+            </div>
+            <span className="dark:text-text-gray text-light-theme-text-menu ">
+              {name}
+            </span>
+          </>
+        )}
       </nav>
     </>
   );

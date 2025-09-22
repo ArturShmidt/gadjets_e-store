@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
-import ProductDetailsHeroSectionNavBar from './ProductDetailsHeroSectionNavBar';
+import CategoryBreadcrumb from '@/components/UI/CategoryBreadcrumb';
+import { CategoryName } from '@/types/CategoryName';
+import ArrowLeftComponent from '@/components/UI/ShoppingCartIcons/ArrowLeftComponent';
 
 interface Props {
-  category: string;
+  category: CategoryName;
   name: string;
 }
 
@@ -12,30 +14,22 @@ const ProductDetailsHeroSectionHeader: React.FC<Props> = ({
   category,
 }) => {
   return (
-    <div className="p-4 dark:text-dark-theme-text">
-      <ProductDetailsHeroSectionNavBar
-        category={category}
+    <div className="mt-6 mx-4 sm:mx-6 lg-max:mx-8 dark:text-dark-theme-text">
+      <CategoryBreadcrumb
+        categoryName={category}
         name={name}
       />
       <Link
         href={`/${category}`}
-        className="flex items-center gap-2 text-sm font-medium mb-4 hover:text-gray-300"
+        className="flex mb-6 sm:mb-4  w-13 cursor-pointer"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-            clipRule="evenodd"
-          />
-        </svg>
-        Back
+        <div className="mr-1 text-light-theme-text dark:text-dark-theme-text">
+          <ArrowLeftComponent />
+        </div>
+        <span className="text-light-theme-text-menu dark:text-dark-theme-text font-bold text-[12px]">
+          Back
+        </span>
       </Link>
-
       <h1 className="font-bold mb-6 text-[clamp(1.5rem,5vw,3rem)]">{name}</h1>
     </div>
   );
