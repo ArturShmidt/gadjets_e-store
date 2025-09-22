@@ -3,12 +3,36 @@ import React from 'react';
 interface CheckoutSummaryProps {
   totalPrice: number;
   itemsCount: number;
+  detailedCartItems?: {
+    product: { name: string; price: number; image: string };
+    quantity: number;
+  }[];
 }
 
 const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
   totalPrice,
   itemsCount,
+  detailedCartItems = [],
 }) => {
+  const handleCheckout = async () => {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items: detailedCartItems.map((item) => ({
+          name: item.product.name,
+          price: item.product.price,
+          quantity: item.quantity,
+        })),
+      }),
+    });
+
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url; // редірект на Stripe Checkout
+    }
+  };
+
   return (
     <div
       className="w-72 h-[190px] lg:h-[206px] sm:w-148 lg:w-92
@@ -35,6 +59,7 @@ const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
         </span>
       </div>
       <button
+        onClick={handleCheckout}
         className="w-60 sm:w-136 lg:w-80 h-12 flex justify-center items-center
             bg-light-theme-btn-product-bg text-white
             dark:bg-product-add-btn dark:text-text-light
