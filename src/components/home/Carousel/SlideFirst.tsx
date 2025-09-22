@@ -2,12 +2,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import ModelCanvas from './ModelCanvas';
+import Link from 'next/link';
 
 interface SlideProps {
   slide: {
     product: string;
     productSlogan: string;
     modelUrl?: string;
+    itemId: string;
   };
 }
 
@@ -38,7 +40,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
   return (
     <div
       ref={ref}
-      className="relative flex flex-col sm:flex-row h-[320px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
+      className="relative flex flex-col sm:flex-row h-[220px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
     >
       <div className="w-full sm:w-1/2 flex flex-col justify-center px-6 py-6 z-20 relative">
         <motion.h2
@@ -57,16 +59,17 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
         >
           {slide.productSlogan}
         </motion.p>
-        <motion.button
+        <motion.a
+          href={`/products/${slide.itemId}`}
           variants={buttonVariants}
           initial="hidden"
           animate={controls}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 z-10"
+          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 text-center block"
         >
           ORDER NOW
-        </motion.button>
+        </motion.a>
       </div>
 
       <div className="w-full sm:w-1/2 flex justify-center items-center relative mt-0 sm:mt-0 z-0">

@@ -94,7 +94,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
   return (
     <div
       ref={ref}
-      className="relative flex flex-col sm:flex-row h-[320px] sm:h-[189px] md:h-[240px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
+      className="relative flex flex-col sm:flex-row h-[320px] sm:h-[220px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
     >
       {/* Фон */}
       <motion.div
@@ -203,19 +203,19 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
         </div>
 
         {/* Кнопка між блоками та картинкою */}
-        <motion.button
+        <motion.a
+          href="/accessories"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="absolute left-[48%] bottom-[60%] sm:left-[38%] sm:bottom-[55%] md:bottom-[55%] md:left-[40%]  lg:left-[40%] lg:bottom-[55%]
-            sm:px-4 sm:py-2 md:px-10 md:py-3 lg:px-14 lg:py-5 lg:text-[18px]
-            bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold
-            rounded-full text-sm shadow-lg z-30 hover:cursor-pointer"
-          initial="hidden"
-          animate={controls}
-          variants={floatingPanel}
+          className="absolute left-[48%] bottom-[60%] sm:left-[38%] sm:bottom-[55%] md:left-[40%] md:bottom-[55%] lg:left-[40%] lg:bottom-[55%] z-30"
         >
-          BUY APPLE WATCH
-        </motion.button>
+          <button
+            className="px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third
+                      text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg hover:cursor-pointer"
+          >
+            BUY APPLE WATCH
+          </button>
+        </motion.a>
       </div>
     </div>
   );

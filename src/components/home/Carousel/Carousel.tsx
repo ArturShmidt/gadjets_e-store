@@ -14,7 +14,7 @@ import SlideThird from './SlideThird';
 
 const buttonClass = `
   hidden sm:flex items-center justify-center
-  sm:w-[32px] sm:mx-[24px] sm:h-[240px] md:h-[240px] lg:h-[400px]
+  sm:w-[32px] sm:mx-[24px] sm:h-[220px] md:h-[280px] lg:h-[400px]
   bg-white text-black border border-light-theme-border-active rounded-2xl
   hover:cursor-pointer hover:border-light-theme-text
   dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-dark-theme-border-color

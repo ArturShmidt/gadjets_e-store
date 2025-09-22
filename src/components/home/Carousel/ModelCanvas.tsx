@@ -26,7 +26,10 @@ const Model: React.FC<ModelProps> = ({ url }) => {
 
 const ModelCanvas: React.FC<ModelProps> = ({ url }) => (
   <div className="w-[300px] md:w-[320px] h-[280px] md:h-[320px]">
-    <Canvas className="rounded-xl">
+    <Canvas
+      className="rounded-xl"
+      dpr={Math.min(window.devicePixelRatio, 1.5)}
+    >
       <ambientLight intensity={0.5} />
       <directionalLight
         position={[5, 5, 5]}
