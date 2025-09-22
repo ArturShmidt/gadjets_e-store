@@ -1,14 +1,15 @@
 export const slides = [
   {
+    itemId: 'apple-iphone-14-pro-512gb-spaceblack',
     text: 'Now available',
     subText: 'in our store!',
     slogan: 'Be the first!',
     product: 'iPhone 14 Pro',
     productSlogan: 'Pro. Beyond.',
-    image: '/img/Carousel/category-phones.png',
-    modelUrl: '/models/iPhone14Pro.glb',
+    image: '/img/Carousel/iphone.png',
   },
   {
+    itemId: 'apple-ipad-pro-11-2021-2tb-spacegray',
     text: 'Apple iPad Pro 11',
     subText: 'in our store!',
     slogan: 'Limited Edition!',
@@ -17,6 +18,7 @@ export const slides = [
     image: '/img/Carousel/ipad.png',
   },
   {
+    itemId: '',
     text: 'Now available',
     subText: 'in our store!',
     slogan: 'Exclusive Watch!',

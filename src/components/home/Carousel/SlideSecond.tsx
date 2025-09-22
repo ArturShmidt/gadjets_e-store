@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Tilt from 'react-parallax-tilt';
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
+import Link from 'next/link';
 
 type Slide = {
   text: string;
@@ -11,7 +12,7 @@ type Slide = {
   product: string;
   productSlogan?: string;
   image: string;
-  modelUrl?: string;
+  itemId: string;
 };
 
 interface SlideProps {
@@ -56,14 +57,14 @@ const SlideSecond: React.FC<SlideProps> = ({ slide }) => {
   return (
     <div
       ref={ref}
-      className="relative flex flex-col sm:flex-row h-[320px] sm:h-[220px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d0d0d] to-[#1a1a1a]"
+      className="relative flex flex-col sm:flex-row h-[320px] sm:h-[220px] md:h-[280px] lg:h-[400px] rounded-2xl overflow-hidden bg-black"
     >
-      <div className="relative w-full sm:w-1/2 flex flex-col justify-center items-center sm:items-start px-6 py-3 md:px-10 z-20">
+      <div className="w-full sm:w-1/2 flex flex-col justify-center items-center sm:items-baseline px-6 py-6 z-20 relative">
         <motion.h1
           variants={titleVariants}
           initial="hidden"
           animate={controls}
-          className="font-[Mont] font-extrabold text-3xl md:text-4xl lg:text-5xl text-white text-center sm:text-left"
+          className="font-[Mont] font-extrabold text-3xl sm:text-2xl md:text-4xl lg:text-5xl text-white text-center sm:text-left"
         >
           {slide.text}
         </motion.h1>
@@ -85,17 +86,17 @@ const SlideSecond: React.FC<SlideProps> = ({ slide }) => {
         >
           {slide.slogan}
         </motion.p>
-
-        <motion.button
+        <motion.a
+          href={`/products/${slide.itemId}`}
           variants={buttonVariants}
           initial="hidden"
           animate={controls}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold rounded-full shadow-lg"
+          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 text-center block"
         >
           ORDER NOW
-        </motion.button>
+        </motion.a>
       </div>
 
       <div className="relative w-full sm:w-1/2 flex justify-center items-center mt-0 sm:mt-0 z-10 px-4">
@@ -116,7 +117,7 @@ const SlideSecond: React.FC<SlideProps> = ({ slide }) => {
               alt={slide.product}
               width={574}
               height={341}
-              className="w-[220px] sm:w-[200px] md:w-[280px] lg:w-[420px] object-cover rounded-xl"
+              className="w-[220px] sm:w-[200px] md:w-[250px] lg:w-[300px] object-cover rounded-xl"
             />
           </motion.div>
         </Tilt>
