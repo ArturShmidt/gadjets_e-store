@@ -30,3 +30,8 @@ export type ProductType = {
   zoom?: string;
   cell: string[];
 };
+
+export type ProductData = {
+  product: ProductType | null;
+  variants: ProductType[];
+};
