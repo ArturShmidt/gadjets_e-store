@@ -80,7 +80,7 @@ export default function CategoryCard({
             />
           </motion.div>
         </motion.div>
-        <h3 className="font-mont text-[20px] font-[500] leading-none tracking-tight pb-1 pt-4">
+        <h3 className="text-[20px] font-[500] leading-none tracking-tight pb-1 pt-4">
           {category.name}
         </h3>
         <p className="text-gray font-normal text-[14px] leading-[21px] tracking-normal">

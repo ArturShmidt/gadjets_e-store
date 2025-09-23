@@ -111,7 +111,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
       {/* Мобілки */}
       <div className="flex flex-col sm:hidden w-full justify-center items-center p-4 z-10 relative">
         <motion.h2
-          className="font-[Mont] font-extrabold text-2xl md:text-3xl text-white text-center z-20"
+          className="font-extrabold text-2xl md:text-3xl text-white text-center z-20"
           initial="hidden"
           animate={controls}
           variants={floatingPanel}
@@ -144,7 +144,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="mt-4 px-5 py-3 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text
-            font-[Mont] font-bold rounded-full text-sm shadow-lg z-30"
+            font-bold rounded-full text-sm shadow-lg z-30"
           initial="hidden"
           animate={controls}
           variants={floatingPanel}
@@ -162,7 +162,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
               key={idx}
               className={`absolute w-32 h-20 sm:w-20 sm:h-12 md:w-24 md:h-16 lg:w-32 lg:h-20
                 bg-gradient-to-r ${block.color} rounded-2xl flex justify-center items-center
-                ${block.textColor} font-[Mont] font-bold shadow-lg`}
+                ${block.textColor} font-bold shadow-lg`}
               style={{
                 top: `${3 + idx * 10}%`, // збільшуємо відстань між блоками
                 left: `${3 + idx * 8}%`,
@@ -211,7 +211,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
         >
           <button
             className="px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third
-                      text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg hover:cursor-pointer"
+                      text-dark-theme-text font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg hover:cursor-pointer"
           >
             BUY APPLE WATCH
           </button>

@@ -97,7 +97,7 @@ const ProductCart = ({
             <span className="text-light-theme-text-menu dark:text-text-gray">
               Screen
             </span>
-            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+            <span className="text-light-theme-text dark:text-text-light font-bold text-[12px]">
               {product.screen}
             </span>
           </div>
@@ -105,7 +105,7 @@ const ProductCart = ({
             <span className="text-light-theme-text-menu dark:text-text-gray">
               Capacity
             </span>
-            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+            <span className="text-light-theme-text dark:text-text-light font-bold text-[12px]">
               {product.capacity}
             </span>
           </div>
@@ -113,7 +113,7 @@ const ProductCart = ({
             <span className="text-light-theme-text-menu dark:text-text-gray">
               RAM
             </span>
-            <span className="text-light-theme-text dark:text-text-light font-[Mont] font-bold text-[12px]">
+            <span className="text-light-theme-text dark:text-text-light font-bold text-[12px]">
               {product.ram}
             </span>
           </div>
