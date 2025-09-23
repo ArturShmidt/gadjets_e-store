@@ -59,6 +59,7 @@ const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
         </span>
       </div>
       <button
+        aria-label="Checkout"
         onClick={handleCheckout}
         className="w-60 sm:w-136 lg:w-80 h-12 flex justify-center items-center
             bg-light-theme-btn-product-bg text-white

@@ -143,6 +143,7 @@ const Contacts = () => {
             className="p-3 border rounded-lg border-light-theme-border-active dark:border-dark-theme-border-hover dark:bg-dark-theme-btn-selected text-light-theme-text dark:text-dark-theme-text focus:outline-none focus:ring-2 focus:ring-light-theme-btn-product-bg dark:focus:ring-dark-theme-btn-selected h-32 resize-none"
           />
           <button
+            aria-label="submt form"
             type="submit"
             className="flex items-center justify-center gap-2 px-6 py-3 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray transition"
           >

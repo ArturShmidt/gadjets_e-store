@@ -85,6 +85,7 @@ export const Pagination = ({
         {pages.map((page: number) => (
           <li key={page}>
             <button
+              aria-label="Change Page To"
               onClick={() => handlePageClick(page)}
               className={`px-3 py-1 border hover:border-light-theme-text dark:text-text-light rounded-full cursor-pointer
                           ${

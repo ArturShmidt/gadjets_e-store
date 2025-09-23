@@ -63,6 +63,7 @@ const ProductDetailsHeroSectionSlider: React.FC<Prop> = ({ name, images }) => {
             const isSelected = index === selectedIndex;
             return (
               <button
+                aria-label="change big image"
                 key={img}
                 onClick={() => onThumbClick(index)}
                 className={`

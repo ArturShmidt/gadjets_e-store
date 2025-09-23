@@ -75,7 +75,10 @@ export default function AIChat() {
         >
           <div className="flex justify-between items-center p-2 border-b border-text-gray">
             <h3 className="font-semibold">Got Questions?</h3>
-            <button onClick={() => setIsOpen(false)}>
+            <button
+              aria-label="Close chat"
+              onClick={() => setIsOpen(false)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer"
@@ -125,6 +128,7 @@ export default function AIChat() {
               onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
             />
             <button
+              aria-label="Send Message"
               onClick={sendMessage}
               className="px-3 sm:px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
             >

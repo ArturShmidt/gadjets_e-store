@@ -111,6 +111,7 @@ const Rights = () => {
       <div className="flex gap-4 mt-4 mb-12">
         {!isGridView && (
           <button
+            aria-label="Previous Card"
             onClick={prevCard}
             className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer transition"
           >
@@ -118,6 +119,7 @@ const Rights = () => {
           </button>
         )}
         <button
+          aria-label="Show All"
           onClick={() => setIsGridView(!isGridView)}
           className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer transition"
         >
@@ -125,6 +127,7 @@ const Rights = () => {
         </button>
         {!isGridView && (
           <button
+            aria-label="Next Card"
             onClick={nextCard}
             className="px-6 py-2 bg-light-theme-btn-product-bg dark:bg-dark-theme-btn-selected text-white rounded-lg hover:bg-text-gray cursor-pointer"
           >

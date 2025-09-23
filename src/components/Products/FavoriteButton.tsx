@@ -38,6 +38,7 @@ export default function FavoriteButton({
 
   return (
     <button
+      aria-labelledby="Toggle Favorite"
       onClick={handleToggle}
       aria-label="Add to Favorite"
       className="
