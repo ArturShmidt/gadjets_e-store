@@ -41,6 +41,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
       <div className="flex justify-between gap-4 sm:gap-6">
         {/* 4. Кнопка видалення тепер відправляє action `removeItem` */}
         <button
+          aria-label={`Delete ${product.itemId} from cart`}
           onClick={() => dispatch(removeItem(product.itemId))}
           className="w-4 h-4 flex items-center justify-center m-auto cursor-pointer"
         >
@@ -71,6 +72,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
           <div className="flex items-center w-24">
             {/* 5. Кнопки +/- тепер відправляють actions `decrement/incrementQuantity` */}
             <button
+              aria-label={`Decrease quantity of ${product.itemId} in cart by 1`}
               className={`w-8 h-8 flex items-center justify-center 
                 border rounded-[48px] border-light-theme-border-color dark:border-dark-theme-border-color 
                 ${quantity === 1 ? 'cursor-not-allowed' : 'cursor-pointer bg-white dark:bg-dark-theme-btn-selected'}`}
@@ -86,6 +88,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
               {/* <-- 6. Відображаємо кількість з пропсів (з Redux) */}
             </span>
             <button
+              aria-label={`Increase quantity of ${product.itemId} in cart by 1`}
               className={`w-8 h-8 flex items-center justify-center 
                 border dark:border-0 rounded-[48px] border-light-theme-border-active 
                 bg-white dark:bg-dark-theme-btn-selected 

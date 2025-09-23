@@ -76,6 +76,7 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
             scroll={false}
           >
             <button
+              aria-label="Pick a color"
               className={`w-8 h-8 rounded-full p-0.5 transition-all border-2 shadow-md border-gray-300 dark:border-gray-800 cursor-pointer ${isActive ? '!border-black dark:!border-white' : ''}`}
             >
               <div
@@ -103,6 +104,7 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
               scroll={false}
             >
               <button
+                aria-label="Pick a capacity"
                 className={`w-full flex items-center justify-center px-4 py-2 border rounded-md text-sm font-bold transition-colors cursor-pointer ${isActive ? 'dark:bg-white bg-light-theme-text text-white dark:text-dark-theme-bg border-light-theme-text' : 'border-light-theme-border-active text-gray-500 dark:hover:border-white dark:border-dark-theme-border-hover hover:border-dark-theme-bg'}`}
               >
                 {capacity}

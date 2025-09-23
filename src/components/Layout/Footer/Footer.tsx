@@ -50,6 +50,7 @@ const Footer: React.FC = () => {
 
       <div className="flex items-center justify-center gap-4">
         <button
+          aria-label="Scroll to Top"
           onClick={scrollToTop}
           className="text-[12px] font-bold leading-none tracking-[0.04em] 
             text-light-theme-text-menu dark:text-text-gray dark:hover:text-dark-theme-text hover:text-light-theme-text
@@ -58,6 +59,7 @@ const Footer: React.FC = () => {
           Back to top
         </button>
         <button
+          aria-label="Scroll to Top"
           onClick={scrollToTop}
           className="bg-white dark:bg-dark-theme-btn-selected
             border dark:border-[0] border-light-theme-border-active rounded-[48px] hover:border-light-theme-text dark:hover:bg-dark-theme-border-hover

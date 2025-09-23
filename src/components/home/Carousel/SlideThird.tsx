@@ -210,6 +210,7 @@ const SlideThird: React.FC<SlideProps> = ({ slide }) => {
           className="absolute left-[48%] bottom-[60%] sm:left-[38%] sm:bottom-[55%] md:left-[40%] md:bottom-[55%] lg:left-[40%] lg:bottom-[55%] z-30"
         >
           <button
+            aria-label="Go on Apple Watch product page"
             className="px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third
                       text-dark-theme-text font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg hover:cursor-pointer"
           >

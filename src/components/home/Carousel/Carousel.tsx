@@ -49,6 +49,7 @@ const Carousel = () => {
       >
         <div className="flex items-start justify-center w-full">
           <button
+            aria-label="Prev Slide"
             ref={prevRef}
             className={buttonClass}
           >
@@ -90,6 +91,7 @@ const Carousel = () => {
           )}
 
           <button
+            aria-label="Next Slide"
             ref={nextRef}
             className={buttonClass}
           >

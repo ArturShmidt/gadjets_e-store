@@ -51,6 +51,7 @@ export const Pagination = ({
           <button
             onClick={handlePrevClick}
             disabled={currentPage === 1}
+            aria-label="Prev Page"
             className={`group p-2 flex justify-center items-center border dark:border-product-add-btn-selected
               w-8 h-8 rounded-full cursor-pointer
               ${
@@ -84,6 +85,7 @@ export const Pagination = ({
         {pages.map((page: number) => (
           <li key={page}>
             <button
+              aria-label="Change Page To"
               onClick={() => handlePageClick(page)}
               className={`px-3 py-1 border hover:border-light-theme-text dark:text-text-light rounded-full cursor-pointer
                           ${
@@ -101,6 +103,7 @@ export const Pagination = ({
         <li>
           <button
             onClick={handleNextClick}
+            aria-label="Next Page"
             disabled={currentPage === totalPages}
             className={`group p-2 flex justify-center items-center border dark:border-product-add-btn-selected
               w-8 h-8 rounded-full cursor-pointer
