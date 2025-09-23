@@ -1,7 +1,7 @@
 import {
   getProducts,
-  getProductById,
   getProductAndVariants,
+  getRelatedProducts,
 } from '@/lib/services/product.service';
 import ProductDetails from '@/components/pages/ProductDetails/ProductDetails';
 import { notFound } from 'next/navigation';
@@ -22,8 +22,12 @@ export default async function ProductPage({
 }) {
   const { productId } = params;
 
-  const { product: initialProduct, variants } =
-    await getProductAndVariants(productId);
+  const [productData, relatedProducts] = await Promise.all([
+    getProductAndVariants(productId),
+    getRelatedProducts(productId),
+  ]);
+
+  const { product: initialProduct, variants } = productData;
 
   if (!initialProduct) {
     notFound();
@@ -33,6 +37,7 @@ export default async function ProductPage({
     <ProductDetails
       initialProduct={initialProduct}
       variants={variants}
+      relatedProducts={relatedProducts}
     />
   );
 }

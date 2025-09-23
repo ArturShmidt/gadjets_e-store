@@ -1,9 +1,14 @@
 'use client';
 
-import { useGetCategoriesQuery } from '@/lib/features/api/apiSlice';
+// import { useGetCategoriesQuery } from '@/lib/features/api/apiSlice';
 import React from 'react';
 import CategoryCard from './CategoryCard';
 import { motion } from 'framer-motion';
+import { CategoryWithCount } from '@/types/CategoryType';
+
+interface Props {
+  categories: CategoryWithCount[];
+}
 
 const containerVariants = {
   hidden: {},
@@ -14,17 +19,18 @@ const containerVariants = {
   },
 };
 
-const CategoryShowcase = () => {
-  const { data: categories, isLoading, isError } = useGetCategoriesQuery();
+const CategoryShowcase: React.FC<Props> = ({ categories }) => {
+  console.log(categories);
+  // const { data: categories, isLoading, isError } = useGetCategoriesQuery();
 
-  if (isLoading) {
-    // Тут можна показати скелетон для трьох карток
-    return <div>Loading Categories...</div>;
-  }
+  // if (isLoading) {
+  //   // Тут можна показати скелетон для трьох карток
+  //   return <div>Loading Categories...</div>;
+  // }
 
-  if (isError || !categories) {
-    return null;
-  }
+  // if (isError || !categories) {
+  //   return null;
+  // }
 
   return (
     <section className="text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg-max:px-8 pb-14 sm:pb-16 lg-max:pb-20 ">

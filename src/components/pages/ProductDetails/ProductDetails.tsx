@@ -11,15 +11,18 @@ import ProductDetailsHeroSectionHeader from './ProductDetailsHeroSectionHeader';
 import { ProductType } from '@/types/CategoryType';
 import { useGetProductByIdQuery } from '@/lib/features/api/apiSlice';
 
-import ProductSliderWrapper from '@/components/UI/productSlider/ProductSliderWrapper';
 import { SliderType } from '@/types/SliderType';
+import { Product } from '@/types/product';
+import ProductSlider from '@/components/UI/productSlider/ProductSlider';
 
 const ProductDetails = ({
   initialProduct,
   variants,
+  relatedProducts,
 }: {
   initialProduct: ProductType;
   variants: ProductType[];
+  relatedProducts: Product[];
 }) => {
   const { data: product = initialProduct, isError } = useGetProductByIdQuery(
     initialProduct.id,
@@ -84,9 +87,10 @@ const ProductDetails = ({
           <ProductDetailsSpecs specsData={specsData} />
         </div>
       </div>
-      <ProductSliderWrapper
-        type={SliderType.Related}
-        productId={product.id}
+      relatedProducts
+      <ProductSlider
+        title={SliderType.Related}
+        products={relatedProducts || []}
       />
     </div>
   );
