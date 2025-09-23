@@ -5,6 +5,7 @@ import NavBar from '@/components/Layout/NavBar/NavBar';
 import Footer from '@/components/Layout/Footer/Footer';
 import StoreProvider from '@/lib/StoreProvider';
 import { Toaster } from 'sonner';
+import AIChat from '@/components/Products/AIChat';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,6 +34,9 @@ export default function RootLayout({
         antialiased dark:bg-dark-theme-bg 
         min-h-screen flex flex-col `}
       >
+        <div className="z-50">
+          <AIChat />
+        </div>
         <StoreProvider>
           <Toaster
             richColors

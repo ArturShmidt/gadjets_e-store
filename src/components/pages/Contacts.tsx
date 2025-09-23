@@ -52,7 +52,7 @@ const Contacts = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg"
+            className="absolute top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg"
           >
             Message sent ✅
           </motion.div>
@@ -93,7 +93,7 @@ const Contacts = () => {
             <span>Bolsunovska Street, 13, Kyiv</span>
           </div>
           <a
-            href="https://www.google.com/maps"
+            href="https://www.google.com/maps/place/Apple+(%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0)/@50.4217454,30.5505875,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4cf188f63b925:0x71f93299836af48!8m2!3d50.421742!4d30.5531624!16s%2Fg%2F11rg_sqrzm?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             className="text-light-theme-btn-product-bg dark:text-dark-theme-text hover:underline hover:scale-110 transition duration-300"
           >
