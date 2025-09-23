@@ -69,19 +69,19 @@ export default function AIChat() {
 
       {isOpen && (
         <div
-          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-white dark:bg-text-light border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
+          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-white dark:bg-item-bg border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
                transform transition-all duration-300 ea-out
                opacity-100 scale-100"
         >
           <div className="flex justify-between items-center p-2 border-b border-text-gray">
-            <h3 className="font-semibold">Got Questions?</h3>
+            <h3 className="font-semibold dark:text-white">Got Questions?</h3>
             <button
               aria-label="Close chat"
               onClick={() => setIsOpen(false)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer"
+                className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer dark:text-white dark:hover:text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -113,7 +113,7 @@ export default function AIChat() {
                     className={`inline-block px-3 py-2 rounded-lg ${
                       m.role === 'user' ?
                         'bg-blue-500 text-white dark:bg-product-add-btn'
-                      : 'bg-gray-200 text-black'
+                      : 'bg-gray-200 text-black dark:bg-dark-theme-bg dark:text-white border dark:border-text-gray'
                     }`}
                   >
                     {m.content}
@@ -126,7 +126,7 @@ export default function AIChat() {
           <div className="flex gap-2 p-2 border-t border-text-gray">
             <input
               type="text"
-              className="flex-1 min-w-0 px-3 py-2 border border-text-gray rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-product-add-btn"
+              className="flex-1 min-w-0 px-3 py-2 border border-text-gray dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-product-add-btn"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about..."
