@@ -1,5 +1,5 @@
-import Cart from '@/components/pages/Cart/Cart';
+import CartWrapper from '@/components/pages/HydrationWrappers/CartWrapper';
 
 export default async function CartPage() {
-  return <Cart />;
+  return <CartWrapper />;
 }

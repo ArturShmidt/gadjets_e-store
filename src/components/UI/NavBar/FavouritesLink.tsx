@@ -4,7 +4,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FavouritesBlack from '@/components/UI/icons/Favourites(Black).svg';
 import FavouritesWhite from '@/components/UI/icons/Favourites(White).svg';
 import { CategoryName } from '@/types/CategoryName';
@@ -19,12 +19,17 @@ type Props = {
 };
 
 const FavouritesLink: React.FC<Props> = ({ onClose, isBurger = false }) => {
+  const [isClient, setIsClient] = useState(false);
   const favoritesCount = useSelector(
     (state: RootState) => state.persisted.favourites.items.length,
   );
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const baseClasses = `
-    relative block  // Додаємо block, щоб можна було позиціонувати лічильник
+    relative block
     ${
       isBurger ?
         `w-full h-16 flex justify-center items-center  // Додаємо items-center
@@ -51,11 +56,8 @@ const FavouritesLink: React.FC<Props> = ({ onClose, isBurger = false }) => {
         alt="FavouritesWhite"
         className="hidden dark:block"
       />
-      {favoritesCount > 0 && (
-        <span
-          className="absolute top-0 right-0 bg-red-500 text-white text-xs 
-                     rounded-full h-4 w-4 flex items-center justify-center"
-        >
+      {isClient && favoritesCount > 0 && (
+        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
           {favoritesCount > 9 ? '9+' : favoritesCount}
         </span>
       )}

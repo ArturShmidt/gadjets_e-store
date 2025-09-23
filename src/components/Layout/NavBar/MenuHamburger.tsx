@@ -1,11 +1,20 @@
-// #region Imports
-
 import React from 'react';
 
 import ThemeSwitcher from '@/components/UI/ThemeSwitcher';
-import ShoppingCartLink from '@/components/UI/NavBar/ShoppingCartLink';
-import FavouritesLink from '@/components/UI/NavBar/FavouritesLink';
+// import ShoppingCartLink from '@/components/UI/NavBar/ShoppingCartLink';
+// import FavouritesLink from '@/components/UI/NavBar/FavouritesLink';
 import CategoriesMenu from '@/components/UI/NavBar/CategoriesMenu';
+import dynamic from 'next/dynamic';
+// import { HydratedIcons } from './HydradetIcons';
+
+const HydratedIcons = dynamic(
+  () => import('./HydradetIcons').then((mod) => mod.HydratedIcons),
+  {
+    ssr: false,
+    // 2. (Опціонально, але рекомендовано) Додаємо заглушку, щоб уникнути стрибка UI
+    loading: () => <div className="h-16 w-24" />, // Заглушка з фіксованими розмірами
+  },
+);
 
 // #endregion
 
@@ -30,7 +39,9 @@ const MenuHamburger: React.FC<Props> = ({ onClose }) => {
         >
           <ThemeSwitcher />
         </div>
-        <div className="flex h-16 items-center justify-between">
+        <HydratedIcons onClose={onClose} />
+
+        {/* <div className="flex h-16 items-center justify-between">
           <FavouritesLink
             isBurger
             onClose={onClose}
@@ -39,7 +50,7 @@ const MenuHamburger: React.FC<Props> = ({ onClose }) => {
             fullWidth
             onClose={onClose}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
