@@ -1,6 +1,6 @@
 'use client';
-import React, { useRef, useEffect, useState } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,16 +13,25 @@ interface SlideProps {
   };
 }
 
+const MotionLink = motion(Link);
+
 const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
-  const inView = useInView(ref, { once: true });
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  // TODO clear code
+  // const inView = useInView(ref, { once: true });
+  // const [mounted, setMounted] = useState(false);
+
+  // useEffect(() => setMounted(true), []);
+
   useEffect(() => {
-    if (inView) controls.start('visible');
-  }, [inView, controls]);
+    controls.start('visible');
+  }, [controls]);
+
+  // useEffect(() => {
+  //   if (inView) controls.start('visible');
+  // }, [inView, controls]);
 
   const textVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -43,7 +52,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.8, delay: 0.5 },
+      transition: { duration: 0.8 }, //, delay: 0.5
     },
   };
 
@@ -69,7 +78,8 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
         >
           {slide.productSlogan}
         </motion.p>
-        <motion.a
+
+        <MotionLink
           href={`/products/${slide.itemId}`}
           variants={buttonVariants}
           initial="hidden"
@@ -79,7 +89,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
           className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 text-center block"
         >
           ORDER NOW
-        </motion.a>
+        </MotionLink>
       </div>
 
       <div className="w-full sm:w-1/2 flex justify-center items-center relative mt-0 sm:mt-0 z-0">
