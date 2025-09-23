@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CartBlack from '@/components/UI/icons/Cart(Black).svg';
 import CartWhite from '@/components/UI/icons/Cart(White).svg';
 import { CategoryName } from '@/types/CategoryName';
@@ -15,9 +15,14 @@ interface Props {
 }
 
 const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
+  const [isClient, setIsClient] = useState(false);
   const itemCount = useSelector((state: RootState) =>
     state.persisted.cart.items.reduce((sum, item) => sum + item.quantity, 0),
   );
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <Link
@@ -41,11 +46,8 @@ const ShoppingCartLink: React.FC<Props> = ({ onClose, fullWidth = false }) => {
         alt="CartWhite"
         className="hidden dark:block"
       />
-      {itemCount > 0 && (
-        <span
-          className="absolute top-0 right-0 bg-red-500 text-white text-xs 
-            rounded-full h-4 w-4 flex items-center justify-center"
-        >
+      {isClient && itemCount > 0 && (
+        <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
           {itemCount > 9 ? '9+' : itemCount}
         </span>
       )}

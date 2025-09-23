@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '@/types/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -22,6 +22,7 @@ const ProductCart = ({
   index = 0,
   disableOnce = false,
 }: ProductCartProps) => {
+  const [isClient, setIsClient] = useState(false);
   const imgSrc = `/${product.image}`;
 
   const isInCart = useSelector((state: RootState) =>
@@ -29,6 +30,10 @@ const ProductCart = ({
       (item) => item.productId === product.itemId,
     ),
   );
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <motion.div
@@ -115,7 +120,7 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          {isInCart ?
+          {isClient && isInCart ?
             <Link
               href="/cart"
               className="

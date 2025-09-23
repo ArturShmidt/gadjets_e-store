@@ -1,25 +1,24 @@
-// src/lib/StoreProvider.tsx
 'use client';
 
-import { useRef } from 'react';
+import { createContext, PropsWithChildren, useContext, useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore } from './store';
-import { PersistGate } from 'redux-persist/integration/react';
-import { Persistor } from 'redux-persist'; // Імпортуємо тип
-import AppleLoader from '@/components/UI/loader/Loader';
+import { Persistor } from 'redux-persist';
 
-// Тип для нашого ref
-type StoreAndPersistor = {
-  store: ReturnType<typeof makeStore>['store'];
-  persistor: Persistor;
+const PersistorContext = createContext<Persistor | null>(null);
+
+export const usePersistor = () => {
+  const context = useContext(PersistorContext);
+  if (!context) {
+    throw new Error('usePersistor must be used within a StoreProvider');
+  }
+  return context;
 };
 
-export default function StoreProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const storeRef = useRef<StoreAndPersistor | null>(null);
+type AppStore = ReturnType<typeof makeStore>;
+
+export default function StoreProvider({ children }: PropsWithChildren) {
+  const storeRef = useRef<AppStore | null>(null);
 
   if (!storeRef.current) {
     // Просто викликаємо makeStore один раз, щоб отримати і store, і persistor
@@ -28,12 +27,9 @@ export default function StoreProvider({
 
   return (
     <Provider store={storeRef.current.store}>
-      <PersistGate
-        loading={<AppleLoader />}
-        persistor={storeRef.current.persistor}
-      >
+      <PersistorContext.Provider value={storeRef.current.persistor}>
         {children}
-      </PersistGate>
+      </PersistorContext.Provider>
     </Provider>
   );
 }
