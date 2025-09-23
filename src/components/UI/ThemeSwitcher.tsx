@@ -15,6 +15,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggleTheme}
+      aria-label="Change color theme"
       className="relative w-[14px] h-[10px] flex items-center justify-center rounded-full transition-transform duration-500 hover:rotate-180 hover:cursor-pointer"
     >
       <p className="w-6 h-6 text-gray-800 dark:hidden">

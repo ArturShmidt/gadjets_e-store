@@ -47,6 +47,7 @@ export default function AIChat() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          aria-label="Chat with AI"
           className="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition cursor-pointer"
         >
           <svg
