@@ -68,7 +68,7 @@ export default function AIChat() {
 
       {isOpen && (
         <div
-          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
+          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-white dark:bg-text-light border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
                transform transition-all duration-300 ea-out
                opacity-100 scale-100"
         >
