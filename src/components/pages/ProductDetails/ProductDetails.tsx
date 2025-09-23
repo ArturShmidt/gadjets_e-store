@@ -87,7 +87,6 @@ const ProductDetails = ({
           <ProductDetailsSpecs specsData={specsData} />
         </div>
       </div>
-      relatedProducts
       <ProductSlider
         title={SliderType.Related}
         products={relatedProducts || []}
