@@ -95,6 +95,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
               alt={slide.product}
               width={400}
               height={400}
+              priority
               className="object-cover rounded-xl w-[250px] sm:w-[220px] md:w-[300px] lg:w-[400px]"
             />
           </motion.div>
