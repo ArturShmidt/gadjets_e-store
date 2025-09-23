@@ -57,7 +57,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
           variants={textVariants}
           initial="hidden"
           animate={controls}
-          className="font-[Mont] font-extrabold text-3xl md:text-4xl lg:text-5xl text-white text-center sm:text-left"
+          className="font-extrabold text-3xl md:text-4xl lg:text-5xl text-white text-center sm:text-left"
         >
           {slide.product}
         </motion.h2>
@@ -76,7 +76,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
           animate={controls}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-[Mont] font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 text-center block"
+          className="hover:cursor-pointer mt-4 sm:mt-6 px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-carousel-title-first via-carousel-title-second to-carousel-title-third text-dark-theme-text font-bold rounded-full text-sm md:text-base lg:text-lg shadow-lg mx-auto sm:mx-0 text-center block"
         >
           ORDER NOW
         </motion.a>

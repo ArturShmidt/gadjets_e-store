@@ -20,7 +20,8 @@ const containerVariants = {
 };
 
 const CategoryShowcase: React.FC<Props> = ({ categories }) => {
-  console.log(categories);
+  // TODO remove comments
+  // console.log(categories);
   // const { data: categories, isLoading, isError } = useGetCategoriesQuery();
 
   // if (isLoading) {
@@ -35,7 +36,7 @@ const CategoryShowcase: React.FC<Props> = ({ categories }) => {
   return (
     <section className="text-light-theme-text dark:text-dark-theme-text px-4 sm:px-6 lg-max:px-8 pb-14 sm:pb-16 lg-max:pb-20 ">
       <motion.h2
-        className="font-[Mont] font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal pb-6"
+        className="font-extrabold text-[22px] sm:text-[32px] sm:leading-[41px] leading-[1.4] sm:tracking-[-0.01em] tracking-normal pb-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}

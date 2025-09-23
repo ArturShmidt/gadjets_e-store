@@ -7,6 +7,7 @@ import StoreProvider from '@/lib/StoreProvider';
 import { Toaster } from 'sonner';
 import ThemeScript from '@/components/ThemeScript';
 import AIChat from '@/components/Products/AIChat';
+import { montFont } from '@/lib/fonts';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      className={montFont.className}
     >
       <body
         className={`${geistSans.variable} ${geistMono.variable} 

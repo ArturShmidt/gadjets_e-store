@@ -36,7 +36,7 @@ const Carousel = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h1 className="font-[Mont] font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-black dark:text-white text-center">
+        <h1 className=" font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-black dark:text-white text-center">
           Welcome to Nice Gadgets store!
         </h1>
       </motion.div>
