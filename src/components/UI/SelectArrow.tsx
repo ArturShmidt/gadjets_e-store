@@ -7,7 +7,7 @@ type Props = {
 const SelectArrow: React.FC<Props> = ({ className }) => {
   return (
     <svg
-      className={`absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 pointer-events-none ${className}`}
+      className={`absolute right-2 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 dark:text-text-light pointer-events-none ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
