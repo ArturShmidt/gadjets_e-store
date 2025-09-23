@@ -100,28 +100,33 @@ export default function AIChat() {
             ref={scrollRef}
             className="flex-1 overflow-y-auto p-2 space-y-2 max-h-64"
           >
-            {messages.map((m, idx) => (
-              <div
-                key={idx}
-                className={m.role === 'user' ? 'text-right' : 'text-left'}
-              >
-                <p
-                  className={`inline-block px-3 py-2 rounded-lg ${
-                    m.role === 'user' ?
-                      'bg-blue-500 text-white'
-                    : 'bg-gray-200 text-black'
-                  }`}
-                >
-                  {m.content}
-                </p>
+            {messages.length === 0 ?
+              <div className="text-center text-gray-400 italic">
+                Here will be your question
               </div>
-            ))}
+            : messages.map((m, idx) => (
+                <div
+                  key={idx}
+                  className={m.role === 'user' ? 'text-right' : 'text-left'}
+                >
+                  <p
+                    className={`inline-block px-3 py-2 rounded-lg ${
+                      m.role === 'user' ?
+                        'bg-blue-500 text-white dark:bg-product-add-btn'
+                      : 'bg-gray-200 text-black'
+                    }`}
+                  >
+                    {m.content}
+                  </p>
+                </div>
+              ))
+            }
           </div>
 
           <div className="flex gap-2 p-2 border-t border-text-gray">
             <input
               type="text"
-              className="flex-1 min-w-0 px-3 py-2 border border-text-gray rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="flex-1 min-w-0 px-3 py-2 border border-text-gray rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-product-add-btn"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about..."
@@ -130,7 +135,7 @@ export default function AIChat() {
             <button
               aria-label="Send Message"
               onClick={sendMessage}
-              className="px-3 sm:px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
+              className="px-3 sm:px-4 py-2 bg-blue-500 dark:bg-product-add-btn text-white rounded cursor-pointer"
             >
               Send
             </button>

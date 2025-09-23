@@ -38,7 +38,7 @@ ${JSON.stringify(productsForAI)}
   } catch (error: unknown) {
     console.error('OpenAI Error:', error);
     return NextResponse.json(
-      { answer: 'An error occurred while accessing the AI.' },
+      { answer: 'Login first for chatting!' },
       { status: 500 },
     );
   }
