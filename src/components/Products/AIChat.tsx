@@ -48,7 +48,7 @@ export default function AIChat() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Chat with AI"
-          className="fixed bottom-5 right-5 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition cursor-pointer"
+          className="fixed bottom-5 right-5 bg-blue-500 text-dark-theme-text p-4 rounded-full shadow-lg hover:bg-blue-600 transition cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,19 +69,21 @@ export default function AIChat() {
 
       {isOpen && (
         <div
-          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-white dark:bg-text-light border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
+          className="fixed bottom-5 right-5 w-60 sm:w-80 bg-dark-theme-text dark:bg-item-bg border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl flex flex-col
                transform transition-all duration-300 ea-out
                opacity-100 scale-100"
         >
           <div className="flex justify-between items-center p-2 border-b border-text-gray">
-            <h3 className="font-semibold">Got Questions?</h3>
+            <h3 className="font-semibold dark:text-dark-theme-text">
+              Got Questions?
+            </h3>
             <button
               aria-label="Close chat"
               onClick={() => setIsOpen(false)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer"
+                className="w-5 h-5 text-gray-600 hover:text-gray-900 cursor-pointer dark:text-dark-theme-text dark:hover:text-dark-theme-text"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -112,8 +114,8 @@ export default function AIChat() {
                   <p
                     className={`inline-block px-3 py-2 rounded-lg ${
                       m.role === 'user' ?
-                        'bg-blue-500 text-white dark:bg-product-add-btn'
-                      : 'bg-gray-200 text-black'
+                        'bg-blue-500 text-dark-theme-text dark:bg-product-add-btn'
+                      : 'bg-gray-200 text-black dark:bg-dark-theme-bg dark:text-dark-theme-text border dark:border-text-gray'
                     }`}
                   >
                     {m.content}
@@ -126,7 +128,7 @@ export default function AIChat() {
           <div className="flex gap-2 p-2 border-t border-text-gray">
             <input
               type="text"
-              className="flex-1 min-w-0 px-3 py-2 border border-text-gray rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-product-add-btn"
+              className="flex-1 min-w-0 px-3 py-2 border border-text-gray dark:text-dark-theme-text rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-product-add-btn"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about..."
@@ -135,7 +137,7 @@ export default function AIChat() {
             <button
               aria-label="Send Message"
               onClick={sendMessage}
-              className="px-3 sm:px-4 py-2 bg-blue-500 dark:bg-product-add-btn text-white rounded cursor-pointer"
+              className="px-3 sm:px-4 py-2 bg-blue-500 dark:bg-product-add-btn text-dark-theme-text rounded cursor-pointer"
             >
               Send
             </button>
