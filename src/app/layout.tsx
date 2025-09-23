@@ -6,6 +6,7 @@ import Footer from '@/components/Layout/Footer/Footer';
 import StoreProvider from '@/lib/StoreProvider';
 import { Toaster } from 'sonner';
 import ThemeScript from '@/components/ThemeScript';
+import AIChat from '@/components/Products/AIChat';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,6 +39,9 @@ export default function RootLayout({
         min-h-screen flex flex-col `}
       >
         <ThemeScript />
+        <div className="z-50">
+          <AIChat />
+        </div>
         <StoreProvider>
           <Toaster
             richColors
