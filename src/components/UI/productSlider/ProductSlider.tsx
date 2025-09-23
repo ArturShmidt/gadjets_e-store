@@ -8,11 +8,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCart from '@/components/Products/ProductCart';
 import { Product } from '@/types/product';
+import { SliderType } from '@/types/SliderType';
 
 interface ProductSliderProps {
   title: string;
   products: Product[];
 }
+
+const titleMap: Record<SliderType, string> = {
+  [SliderType.New]: 'Brand new models',
+  [SliderType.Bestsellers]: 'Hot prices',
+  [SliderType.Related]: 'You may also like',
+};
 
 export default function ProductSlider({ title, products }: ProductSliderProps) {
   // Використовуємо useRef для кнопок
@@ -22,6 +29,8 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
   if (!products || products.length === 0) {
     return null;
   }
+
+  const SliderTitle = titleMap[title as SliderType];
 
   return (
     <div className="w-full relative pb-10 sm:pb-12 lg:pb-16">
@@ -33,7 +42,7 @@ export default function ProductSlider({ title, products }: ProductSliderProps) {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
         >
-          {title}
+          {SliderTitle}
         </motion.h2>
         <div className="flex flex-row gap-4">
           <button
