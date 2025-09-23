@@ -6,29 +6,23 @@ import { Sun } from '@/components/animate-ui/icons/sun';
 import { MoonStar } from '@/components/animate-ui/icons/moon-star';
 
 const ThemeSwitcher = () => {
-  const [mode, setMode] = useThemeSwitcher();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [theme, setTheme] = useThemeSwitcher();
 
-  if (!mounted) {
-    return <div className="w-[14px] h-[10px]" />;
-  }
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
     <button
-      onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+      onClick={toggleTheme}
       className="relative w-[14px] h-[10px] flex items-center justify-center rounded-full transition-transform duration-500 hover:rotate-180 hover:cursor-pointer"
     >
-      {mode === 'light' ?
-        <p>
-          <Sun animateOnHover />
-        </p>
-      : <p className="dark:text-dark-theme-text rounded-full">
-          <MoonStar animateOnHover />
-        </p>
-      }
+      <p className="w-6 h-6 text-gray-800 dark:hidden">
+        <Sun animateOnHover />
+      </p>
+      <p className="w-6 h-6 text-gray-100 hidden dark:block">
+        <MoonStar animateOnHover />
+      </p>
     </button>
   );
 };
