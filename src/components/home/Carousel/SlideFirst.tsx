@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,6 +18,7 @@ const MotionLink = motion(Link);
 const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   // TODO clear code
   // const inView = useInView(ref, { once: true });
@@ -27,6 +28,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
 
   useEffect(() => {
     controls.start('visible');
+    setIsInitialRender(false);
   }, [controls]);
 
   // useEffect(() => {
@@ -96,7 +98,8 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
         <div className="mt-[0px] sm:mt-[90px] lg:mt-[140px]">
           <motion.div
             variants={imageVariants}
-            initial="hidden"
+            // initial="hidden"
+            initial={isInitialRender ? 'visible' : 'hidden'}
             animate={controls}
             className=""
           >
@@ -107,6 +110,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
               height={400}
               priority
               className="object-cover rounded-xl w-[250px] sm:w-[220px] md:w-[300px] lg:w-[400px]"
+              sizes="(min-width: 1024px) 400px, (min-width: 768px) 300px, (min-width: 640px) 220px, 250px"
             />
           </motion.div>
         </div>

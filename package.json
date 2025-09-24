@@ -68,5 +68,10 @@
   },
   "lint-staged": {
     "*": "npm run fix-style"
-  }
+  },
+  "browserslist": [
+    ">0.3%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
