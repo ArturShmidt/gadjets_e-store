@@ -96,13 +96,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
 
       <div className="w-full sm:w-1/2 flex justify-center items-center relative mt-0 sm:mt-0 z-0">
         <div className="mt-[0px] sm:mt-[90px] lg:mt-[140px]">
-          <motion.div
-            variants={imageVariants}
-            // initial="hidden"
-            initial={isInitialRender ? 'visible' : 'hidden'}
-            animate={controls}
-            className=""
-          >
+          <div>
             <Image
               src={slide.image}
               alt={slide.product}
@@ -112,7 +106,7 @@ const SlideFirst: React.FC<SlideProps> = ({ slide }) => {
               className="object-cover rounded-xl w-[250px] sm:w-[220px] md:w-[300px] lg:w-[400px]"
               sizes="(min-width: 1024px) 400px, (min-width: 768px) 300px, (min-width: 640px) 220px, 250px"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
