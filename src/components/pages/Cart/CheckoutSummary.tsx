@@ -28,9 +28,7 @@ const CheckoutSummary: React.FC<CheckoutSummaryProps> = ({
 
     const data = await res.json();
     if (data.url) {
-      {
-        window.location.href = data.url;
-      } // редірект на Stripe Checkout
+      window.location.href = data.url; // редірект на Stripe Checkout
     }
   };
 
