@@ -11,7 +11,7 @@ interface Props {
 
 const ProductDetailsSpecs: React.FC<Props> = ({ specsData }) => {
   return (
-    <div className="text-light-theme-text dark:text-dark-theme-text p-6 rounded-lg">
+    <div className="text-light-theme-text dark:text-dark-theme-text px-6 pb-6 rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Tech specs</h2>
       <hr className="border-gray-700 mb-6" />
 

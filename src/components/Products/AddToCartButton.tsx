@@ -3,7 +3,6 @@
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/lib/features/cart/cartSlice';
 import { Product } from '@/types/product';
-import { toast } from 'sonner';
 
 interface AddToCartButtonProps {
   product: Product;
