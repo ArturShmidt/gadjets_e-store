@@ -110,7 +110,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
         }
       </div>
       <Pagination
-        total={total}
+        total={filteredProducts.length}
         perPage={perPage}
         currentPage={currentPage}
         onPageChange={handlePageChange}
