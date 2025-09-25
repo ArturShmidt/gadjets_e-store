@@ -1,106 +1,90 @@
 'use client';
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+
+// Імпортуємо всі необхідні стилі Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { motion } from 'framer-motion';
 
 import { slides } from './slidesData';
 import SlideFirst from './SlideFirst';
 import SlideSecond from './SlideSecond';
 import SlideThird from './SlideThird';
 
+// Класи для кнопок, трохи спрощені для кращої роботи з flex
 const buttonClass = `
   hidden sm:flex items-center justify-center
-  sm:w-[32px] sm:mx-[24px] sm:h-[220px] md:h-[280px] lg:h-[400px]
+  w-[32px] h-[220px] md:h-[280px] lg:h-[400px]
   bg-white text-black border border-light-theme-border-active rounded-2xl
   hover:cursor-pointer hover:border-light-theme-text
   dark:bg-dark-theme-btn-selected dark:bg-opacity-50 dark:text-dark-theme-text dark:border-dark-theme-border-color
   dark:hover:bg-dark-theme-border-hover
+  transition-colors
+  flex-shrink-0
+  mx-6
 `;
 
 const Carousel = () => {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const [swiperReady, setSwiperReady] = useState(false);
-
-  useEffect(() => setSwiperReady(true), []);
 
   return (
-    <div className="w-full">
-      <motion.div
-        className="dark:bg-dark-theme-bg px-6 py-6 sm:px-8 sm:py-12"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        <h1 className=" font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-black dark:text-white text-center">
+    <div className="w-full pb-24">
+      <div className="dark:bg-dark-theme-bg px-6 py-6 sm:px-8 sm:py-12">
+        <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-black dark:text-white text-center">
           Welcome to Nice Gadgets store!
         </h1>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="w-full dark:bg-dark-theme-bg flex flex-col items-center pb-[88px] sm:pb-[96px] lg:pb-[112px]"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        <div className="flex items-start justify-center w-full">
+      {/* Головний контейнер слайдера */}
+      <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center">
+        <div className="w-full flex items-center justify-center">
           <button
-            aria-label="Prev Slide"
+            aria-label="Previous Slide"
             ref={prevRef}
-            className={buttonClass}
+            className={`${buttonClass} main-carousel-prev mr-6`}
           >
             &#10094;
           </button>
 
-          {swiperReady && (
-            <Swiper
-              modules={[Pagination, Navigation, Autoplay]}
-              pagination={{ clickable: true, el: '.custom-pagination' }}
-              loop
-              slidesPerView={1}
-              navigation={{
-                prevEl: prevRef.current!,
-                nextEl: nextRef.current!,
-              }}
-              autoplay={{ delay: 7000, disableOnInteraction: true }}
-              onBeforeInit={(swiper) => {
-                if (
-                  swiper.params.navigation &&
-                  typeof swiper.params.navigation !== 'boolean'
-                ) {
-                  swiper.params.navigation.prevEl = prevRef.current!;
-                  swiper.params.navigation.nextEl = nextRef.current!;
-                }
-              }}
-              className="w-full"
-            >
-              <SwiperSlide>
-                <SlideFirst slide={slides[0]} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SlideSecond slide={slides[1]} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <SlideThird slide={slides[2]} />
-              </SwiperSlide>
-            </Swiper>
-          )}
+          <Swiper
+            modules={[Pagination, Navigation, Autoplay]}
+            // 👇 Змінюємо селектор пагінації, щоб він був унікальним
+            pagination={{ clickable: true, el: '.carousel-pagination' }}
+            loop
+            slidesPerView={1}
+            navigation={{
+              prevEl: '.main-carousel-prev', // Унікальний клас для кнопки "Назад"
+              nextEl: '.main-carousel-next', // Унікальний клас для кнопки "Вперед"
+            }}
+            autoplay={{ delay: 7000, disableOnInteraction: true }}
+            className="flex-1 w-full"
+          >
+            <SwiperSlide>
+              <SlideFirst slide={slides[0]} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <SlideSecond slide={slides[1]} />
+            </SwiperSlide>
+            <SwiperSlide>
+              <SlideThird slide={slides[2]} />
+            </SwiperSlide>
+          </Swiper>
 
           <button
             aria-label="Next Slide"
             ref={nextRef}
-            className={buttonClass}
+            className={`${buttonClass} main-carousel-next ml-6`}
           >
             &#10095;
           </button>
         </div>
 
-        <div className="custom-pagination mt-6 flex justify-center"></div>
-      </motion.div>
+        {/* 👇 Пагінація тепер тут, з правильним класом */}
+        <div className="carousel-pagination mt-6 flex justify-center"></div>
+      </div>
     </div>
   );
 };
