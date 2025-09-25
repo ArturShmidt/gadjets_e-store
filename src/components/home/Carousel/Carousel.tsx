@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
-// Імпортуємо всі необхідні стилі Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -13,7 +12,6 @@ import SlideFirst from './SlideFirst';
 import SlideSecond from './SlideSecond';
 import SlideThird from './SlideThird';
 
-// Класи для кнопок, трохи спрощені для кращої роботи з flex
 const buttonClass = `
   hidden sm:flex items-center justify-center
   w-[32px] h-[220px] md:h-[280px] lg:h-[400px]
@@ -38,26 +36,24 @@ const Carousel = () => {
         </h1>
       </div>
 
-      {/* Головний контейнер слайдера */}
-      <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center">
+      <div className="w-full mx-auto flex flex-col items-center">
         <div className="w-full flex items-center justify-center">
           <button
             aria-label="Previous Slide"
             ref={prevRef}
-            className={`${buttonClass} main-carousel-prev mr-6`}
+            className={`${buttonClass} main-carousel-prev`}
           >
             &#10094;
           </button>
 
           <Swiper
             modules={[Pagination, Navigation, Autoplay]}
-            // 👇 Змінюємо селектор пагінації, щоб він був унікальним
             pagination={{ clickable: true, el: '.carousel-pagination' }}
             loop
             slidesPerView={1}
             navigation={{
-              prevEl: '.main-carousel-prev', // Унікальний клас для кнопки "Назад"
-              nextEl: '.main-carousel-next', // Унікальний клас для кнопки "Вперед"
+              prevEl: '.main-carousel-prev',
+              nextEl: '.main-carousel-next',
             }}
             autoplay={{ delay: 7000, disableOnInteraction: true }}
             className="flex-1 w-full"
@@ -76,13 +72,12 @@ const Carousel = () => {
           <button
             aria-label="Next Slide"
             ref={nextRef}
-            className={`${buttonClass} main-carousel-next ml-6`}
+            className={`${buttonClass} main-carousel-next`}
           >
             &#10095;
           </button>
         </div>
 
-        {/* 👇 Пагінація тепер тут, з правильним класом */}
         <div className="carousel-pagination mt-6 flex justify-center"></div>
       </div>
     </div>
