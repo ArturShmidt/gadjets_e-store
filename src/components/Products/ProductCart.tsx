@@ -30,7 +30,7 @@ const ProductCart = ({
         ease: [0.42, 0, 0.58, 1],
         delay: index < 4 ? index * 0.15 : 0,
       }}
-      viewport={{ once: !disableOnce, amount: 0.3 }}
+      viewport={{ once: !disableOnce, amount: 0.1 }}
       className="
         border border-light-theme-border-color
         rounded-2xl
@@ -49,11 +49,11 @@ const ProductCart = ({
         >
           <Image
             src={imgSrc}
-            style={{ objectFit: 'contain' }}
             width={208}
             height={196}
             alt={product.name}
-            className="transition-transform duration-600 ease-in-out hover:scale-110"
+            sizes="(max-width: 640px) 130px, 196px"
+            className="transition-transform duration-600 ease-in-out hover:scale-110 object-contain"
           />
         </Link>
 
