@@ -26,6 +26,7 @@ const NavBar: React.FC = () => {
       document.body.style.overflow = 'auto';
     };
   }, [opened]);
+
   const pathname = usePathname();
 
   return (
