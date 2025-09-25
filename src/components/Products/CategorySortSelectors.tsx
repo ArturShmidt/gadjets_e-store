@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SortOption } from '@/types/SortOption';
 import { ItemsPerPageOption } from '@/types/ItemsPerPageOption';
 import SelectArrow from '../UI/SelectArrow';
+import { Product } from '@/types/product';
 
 type Props = {
   perPage: ItemsPerPageOption;
@@ -10,6 +11,7 @@ type Props = {
   setSortBy: (value: SortOption) => void;
   searchTerm: string;
   setSearchTerm: (value: string) => void;
+  productlist: Product[];
 };
 
 const CategorySortSelectors: React.FC<Props> = ({
@@ -19,7 +21,18 @@ const CategorySortSelectors: React.FC<Props> = ({
   setSortBy,
   searchTerm,
   setSearchTerm,
+  productlist,
 }) => {
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const suggestions = productlist
+    .filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .slice(0, 5);
+
+  const handleSelectSuggestion = (name: string) => {
+    setSearchTerm(name);
+    setShowSuggestions(false);
+  };
   return (
     <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 pt-8 pb-6 w-full">
       {/* Сортування */}
@@ -95,8 +108,8 @@ const CategorySortSelectors: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* 🔍 Пошук */}
-      <div className="flex flex-col gap-1 w-full sm:w-1/3">
+      {/*  Пошук */}
+      <div className="flex flex-col gap-1 w-full sm:w-1/3 relative">
         <label
           htmlFor="search"
           className="font-[700] text-[12px] text-light-theme-text-menu dark:text-text-gray"
@@ -108,13 +121,38 @@ const CategorySortSelectors: React.FC<Props> = ({
           type="text"
           placeholder="Type product name..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="px-4 py-2 border border-light-theme-border-active 
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setShowSuggestions(true);
+          }}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={(e) => {
+            setTimeout(() => {
+              if (!document.activeElement?.closest('.suggestions-list')) {
+                setShowSuggestions(false);
+              }
+            }, 200);
+          }}
+          className="w-full px-4 py-2 border border-light-theme-border-active 
             dark:border-dark-theme-btn-selected 
             rounded-md bg-light-theme-bg-dark dark:bg-dark-theme-btn-selected
             text-light-theme-text dark:text-text-light
             focus:outline-none focus:ring-2 focus:ring-light-theme-border-active"
         />
+        {/* Dropdown suggestions */}
+        {showSuggestions && suggestions.length > 0 && (
+          <ul className="absolute top-full left-0 mt-1 w-full bg-white dark:text-text-light border dark:bg-dark-theme-bg border border-gray-300 dark:border-dark-theme-border-color rounded-md shadow-lg z-10 suggestions-list">
+            {suggestions.map((s) => (
+              <li
+                key={s.id}
+                onMouseDown={() => handleSelectSuggestion(s.name)} // <-- змінено з onClick на onMouseDown
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-theme-btn-selected"
+              >
+                {s.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

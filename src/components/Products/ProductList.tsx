@@ -48,8 +48,10 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
     }
   });
 
+  const searchWords = searchTerm.toLowerCase().trim().split(/\s+/); // розбиваємо по пробілах
+
   const filteredProducts = sortedProducts.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    searchWords.every((word) => p.name.toLowerCase().includes(word)),
   );
 
   const indexOfLastItem = currentPage * perPage;
@@ -78,6 +80,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
         setSortBy={setSortBy}
         searchTerm={searchInput} // передаємо саме input, не дебаунснуте
         setSearchTerm={setSearchInput} // оновлюємо лише введення
+        productlist={productlist}
       />
 
       <div
@@ -107,7 +110,7 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
         }
       </div>
       <Pagination
-        total={total}
+        total={filteredProducts.length}
         perPage={perPage}
         currentPage={currentPage}
         onPageChange={handlePageChange}
