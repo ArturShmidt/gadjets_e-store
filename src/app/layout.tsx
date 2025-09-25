@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     'gadgets',
     'online store',
   ],
+  icons: {
+    icon: '/Favicon2.png',
+    shortcut: '/Favicon2.png',
+  },
 };
 
 export default function RootLayout({
