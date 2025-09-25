@@ -1,6 +1,6 @@
 // #region Imports
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCart from './ProductCart';
 import { Product } from '@/types/product';
 import { Pagination } from '../UI/pagination/Pagination';
@@ -20,7 +20,18 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(ItemsPerPageOption.Sixteen);
   const [sortBy, setSortBy] = useState(SortOption.Newest);
+  const [searchInput, setSearchInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const listRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(searchInput);
+      setCurrentPage(1);
+    }, 400);
+
+    return () => clearTimeout(handler);
+  }, [searchInput]);
 
   const sortedProducts = [...productlist].sort((a, b) => {
     switch (sortBy) {
@@ -37,9 +48,16 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
     }
   });
 
+  const filteredProducts = sortedProducts.filter((p) =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
-  const currentItems = sortedProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem,
+  );
 
   // Scroll to top of product list on page change
   const handlePageChange = (page: number) => {
@@ -58,6 +76,8 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
         setPerPage={setPerPage}
         sortBy={sortBy}
         setSortBy={setSortBy}
+        searchTerm={searchInput} // передаємо саме input, не дебаунснуте
+        setSearchTerm={setSearchInput} // оновлюємо лише введення
       />
 
       <div
@@ -75,11 +95,16 @@ const ProductList = ({ productlist, total }: ProductListProps) => {
         {/* просто створення масиву від 0 до 4, і мапінг товарів для прикладу */}
         {/* класи рендерять по 2 товари на сторінку вихідно */}
 
-        {currentItems.map((el) => (
-          <div key={el.id}>
-            <ProductCart product={el} />
-          </div>
-        ))}
+        {currentItems.length > 0 ?
+          currentItems.map((el) => (
+            <div key={el.id}>
+              <ProductCart product={el} />
+            </div>
+          ))
+        : <p className="col-span-full text-center text-gray-500 dark:text-gray-400">
+            No products found
+          </p>
+        }
       </div>
       <Pagination
         total={total}
