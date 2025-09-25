@@ -5,11 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import FavoriteButton from '@/components/Products/FavoriteButton';
-import AddToCartButton from '@/components/Products/AddToCartButton';
 
-import { toast } from 'sonner';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/lib/store';
+import AddOrNavToCartButton from '../UI/AddOrNavToCartButton';
 
 interface ProductCartProps {
   product: Product;
@@ -22,18 +19,7 @@ const ProductCart = ({
   index = 0,
   disableOnce = false,
 }: ProductCartProps) => {
-  const [isClient, setIsClient] = useState(false);
   const imgSrc = `/${product.image}`;
-
-  const isInCart = useSelector((state: RootState) =>
-    state.persisted.cart.items.some(
-      (item) => item.productId === product.itemId,
-    ),
-  );
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   return (
     <motion.div
@@ -120,29 +106,7 @@ const ProductCart = ({
         </div>
 
         <div className="flex items-center gap-2 mt-4">
-          {isClient && isInCart ?
-            <Link
-              href="/cart"
-              className="
-                h-[35px] w-[80%] flex justify-center items-center
-              bg-white text-[#333] border border-light-theme-border-color hover:border-light-theme-border-active
-              dark:bg-gray-700 dark:text-text-light dark:border-none
-                text-sm leading-[21px]
-                rounded-[8px]
-                transition-transform duration-500
-                hover:shadow-[0_0_13px_0_rgba(23,32,49,0.4)]
-                hover:cursor-pointer
-              dark:hover:bg-dark-theme-border-hover
-                hover:scale-105
-              "
-            >
-              Already in cart
-            </Link>
-          : <AddToCartButton
-              product={product}
-              onClick={() => toast.success(`${product.name} add to cart!`)}
-            />
-          }
+          <AddOrNavToCartButton product={product} />
           <FavoriteButton product={product} />
         </div>
       </div>

@@ -2,12 +2,12 @@
 
 import { useRouter } from 'next/navigation';
 
-import AddToCartButton from '@/components/Products/AddToCartButton';
 import FavoriteButton from '@/components/Products/FavoriteButton';
 import { Product } from '@/types/product';
 import OptionGroup from './ProductDetailsOptionGroup';
 import Link from 'next/link';
 import { ProductType } from '@/types/CategoryType';
+import AddOrNavToCartButton from '@/components/UI/AddOrNavToCartButton';
 
 interface Props {
   product: Product;
@@ -125,7 +125,7 @@ const ProductDetailsOrderOptions: React.FC<Props> = ({
 
       <div className="flex items-center gap-2 mt-4">
         <div className="flex-grow w-full">
-          <AddToCartButton product={product} />
+          <AddOrNavToCartButton product={product} />
         </div>
         <div className="pr-4">
           <FavoriteButton product={product} />

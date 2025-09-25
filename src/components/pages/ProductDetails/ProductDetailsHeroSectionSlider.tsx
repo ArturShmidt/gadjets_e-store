@@ -41,7 +41,7 @@ const ProductDetailsHeroSectionSlider: React.FC<Prop> = ({ name, images }) => {
           <div className="embla__container flex">
             {images.map((img) => (
               <div
-                className="embla__slide flex-[0_0_100%]"
+                className="embla__slide relative flex-[0_0_100%]"
                 key={img}
               >
                 <Image
@@ -49,7 +49,7 @@ const ProductDetailsHeroSectionSlider: React.FC<Prop> = ({ name, images }) => {
                   height={400}
                   src={`/${img}`}
                   alt={name}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto max-h-[550px] object-contain"
                 />
               </div>
             ))}
