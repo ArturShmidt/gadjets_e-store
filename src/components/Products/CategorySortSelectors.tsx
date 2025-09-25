@@ -26,13 +26,46 @@ const CategorySortSelectors: React.FC<Props> = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const suggestions = productlist
-    .filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((p) => {
+      const terms = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
+      return terms.every((t) => p.name.toLowerCase().includes(t));
+    })
     .slice(0, 5);
 
   const handleSelectSuggestion = (name: string) => {
     setSearchTerm(name);
     setShowSuggestions(false);
   };
+
+  const highlightMatch = (text: string): React.ReactNode => {
+    if (!searchTerm) return text;
+
+    const terms = searchTerm.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) return text;
+
+    let result: React.ReactNode[] = [text];
+
+    terms.forEach((term) => {
+      result = result.flatMap((part, i) => {
+        if (typeof part !== 'string') return [part];
+
+        const regex = new RegExp(`(${term})`, 'gi');
+        return part.split(regex).map((chunk, j) =>
+          regex.test(chunk) ?
+            <span
+              key={`${i}-${j}`}
+              className="font-bold text-blue-600"
+            >
+              {chunk}
+            </span>
+          : chunk,
+        );
+      });
+    });
+
+    return <>{result}</>;
+  };
+
   return (
     <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 pt-8 pb-6 w-full">
       {/* Сортування */}
@@ -123,16 +156,10 @@ const CategorySortSelectors: React.FC<Props> = ({
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            setShowSuggestions(true);
+            setShowSuggestions(!!e.target.value);
           }}
-          onFocus={() => setShowSuggestions(true)}
-          onBlur={(e) => {
-            setTimeout(() => {
-              if (!document.activeElement?.closest('.suggestions-list')) {
-                setShowSuggestions(false);
-              }
-            }, 200);
-          }}
+          onFocus={() => searchTerm && setShowSuggestions(true)}
+          onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
           className="w-full px-4 py-2 border border-light-theme-border-active 
             dark:border-dark-theme-btn-selected 
             rounded-md bg-light-theme-bg-dark dark:bg-dark-theme-btn-selected
@@ -148,7 +175,7 @@ const CategorySortSelectors: React.FC<Props> = ({
                 onMouseDown={() => handleSelectSuggestion(s.name)} // <-- змінено з onClick на onMouseDown
                 className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-theme-btn-selected"
               >
-                {s.name}
+                {highlightMatch(s.name)}
               </li>
             ))}
           </ul>
