@@ -39,12 +39,12 @@ const Carousel = () => {
       </div>
 
       {/* Головний контейнер слайдера */}
-      <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center">
+      <div className="w-full mx-auto flex flex-col items-center">
         <div className="w-full flex items-center justify-center">
           <button
             aria-label="Previous Slide"
             ref={prevRef}
-            className={`${buttonClass} main-carousel-prev mr-6`}
+            className={`${buttonClass} main-carousel-prev`}
           >
             &#10094;
           </button>
@@ -76,7 +76,7 @@ const Carousel = () => {
           <button
             aria-label="Next Slide"
             ref={nextRef}
-            className={`${buttonClass} main-carousel-next ml-6`}
+            className={`${buttonClass} main-carousel-next`}
           >
             &#10095;
           </button>
